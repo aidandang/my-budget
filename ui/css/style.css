@@ -1,7 +1,14 @@
+/* Color Theme Swatches in Hex */
+/* Color Theme Swatches in RGBA */
+/* Color Theme Swatches in HSLA */
+:root {
+  --color-primary: #6593A6;
+  --color-secondary: #A0A677;
+  --color-white: #FFFFFF; }
+
 * {
   margin: 0;
-  padding: 0; 
-}
+  padding: 0; }
 
 *,
 *::before,
@@ -16,3 +23,26 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.6; }
+
+.container {
+  background-color: var(--color-white); }
+
+.topbar {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.logo {
+  height: 3rem; }
+
+.topmenu {
+  background-color: brown; }
+
+.usermenu__icon {
+  height: 3rem;
+  width: 1.5rem;
+  fill: var(--color-primary); }

@@ -1,0 +1,26 @@
+.topbar {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+  height: 5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 3rem;
+}
+
+.topmenu {
+  background-color: brown;
+}
+
+.usermenu {
+  &__icon {
+    height: 3rem;
+    width: 1.5rem;
+    fill: var(--color-primary);
+  }
+}
