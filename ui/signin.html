@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Monthly Budget - Sign In</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sign-in">
+        <div class="sign-in__logo-box">
+          <img src="img/logo.svg" alt="logo" class="sign-in__logo">
+        </div>
+        <div class="sign-in__main-box">
+          <h1 class="sign-in__title">
+            <span class="sign-in__title--main">Sign In</span>
+            <span class="sign-in__title--sub">Sign in to either your Google account or your Monthly Budget app's account. <a href="/">Learn more</a></span>
+          </h1>
+          <button type="button" id="ius-google-button" class="ius-google-button">
+            <div class="ius-google-icon-and-text">
+              <span class="ius-google-icon"></span>
+              <span class="ius-google-button-text">Sign in with Google</span>
+            </div>
+          </button>
+          <div class="ius-partner-separator">
+            <span class="ius-strike ius-strike-side"></span>
+            <span id="ius-partner-alternative-text" class="ius-strike-center-text">or</span>
+            <span class="ius-strike ius-strike-side"></span>
+          </div>
+          <fieldset id="ius-fieldset-userid">
+            <label id="ius-label-userid" class="ius-label ius-top-label" for="ius-userid">User ID</label>
+            <div class="ius-text-input-container">
+              <input id="ius-userid" class="ius-text-input" name="Email" type="email" aria-required="true" required="required" data-valid="valid" tabindex="1">
+              <span id="ius-status-userid" class="ius-status" aria-live="assertive" role="alert"></span>
+            </div>
+            <span id="ius-error-userid" class="ius-error ius-field-block" for="ius-userid" aria-live="assertive" role="alert"></span>
+          </fieldset>
+          <fieldset id="ius-fieldset-password">
+            <label id="ius-label-password" class="ius-label" for="ius-password">
+              Password</label>
+            <div class="ius-text-input-container">
+              <input id="ius-password" class="ius-text-input ius-input-error ius-text-input-status-active" name="Password" type="password" aria-required="true" required="required" tabindex="2">
+              <span id="ius-status-password" class="ius-status ius-warning" aria-live="assertive" role="alert"></span>
+            </div>
+            <span id="ius-error-password" class="ius-error ius-field-block" for="ius-password" aria-live="assertive" role="alert">Please enter password.</span>
+          </fieldset>
+          <button id="ius-sign-in-submit-btn" class="ius-btn ius-btn-submit ius-display-inline-block ius-float-left ius-btn-prominent" name="SignIn" type="submit" data-clicked-text="Signing In ..." tabindex="4">
+            <span id="ius-sign-in-submit-img" class="ius-white-lock-img"></span>
+            <span id="ius-sign-in-submit-btn-text">Sign In with Email</span>
+          </button>
+          <div id="ius-terms-of-use" class="ius-sign-in-tos-section">
+            <div id="ius-sign-in-terms-of-use" class="ius-side ius-italic ius-centered-tos">
+              <span id="ius-sign-in-terms-of-use-text">By <span id="ius-sign-in-terms-of-use-action">clicking Sign In with Email</span>, you agree to our <br><a id="ius-sign-in-terms-of-use-link" href="https://glam.app.intuit.com/app/guesttos?glocale=en_US" target="_blank">Terms</a><span id="ius-sign-in-additional-terms"><a href="https://quickbooks.intuit.com/payments/legal/" target="_blank">, Payment Terms and pricing</a></span><span id="ius-sign-in-terms-and">&nbsp;and have read and acknowledge our&nbsp;</span><a id="ius-sign-in-privacy-statement-link" href="https://www.intuit.com/privacy/statement/" target="_blank"><span id="ius-sign-in-privacy-statement-country">Global </span>Privacy Statement</a>.</span>
+              <div><strong id="ius-sign-in-terms-of-use-privacy-date"></strong></div>
+            </div>
+            <div id="ius-sign-in-terms-of-use-addons" class="ius-side ius-text-align-center ius-italic"></div>
+          </div>
+          <div id="ius-terms-of-use-addons" class="ius-side ius-italic">
+
+            <hr class="ius-conditional-hr">
+            
+        
+            <ul class="ius-sign-in-list">
+              <li id="ius-link-account-recovery-li">
+                <a id="ius-link-account-recovery" href="#">I forgot my user ID or password</a>
+              </li>
+              <li id="ius-sign-up-link-li" class="ius-hide">
+                <span id="ius-link-sign-up-prefix-text">New to QuickBooks?</span>
+                <span class="ius-hide" style="display: none;"> <a id="ius-link-sign-up" href="#"><a href="http://quickbooks.intuit.com/signup/">Sign up</a></a><span id="ius-create-account-option-period">.</span></span>
+              </li>
+              
+            </ul>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </body>
+</html>

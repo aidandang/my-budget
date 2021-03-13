@@ -39,8 +39,10 @@ body {
 .logo {
   height: 3rem; }
 
-.topmenu {
-  background-color: brown; }
+.topmenu__icon {
+  height: 3rem;
+  width: 1.5rem;
+  fill: var(--color-primary); }
 
 .usermenu__icon {
   height: 3rem;
