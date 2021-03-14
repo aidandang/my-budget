@@ -1,0 +1,22 @@
+.sign-in {
+  max-width: 32rem;
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__logo-box {
+    &__logo {
+      height: 3rem;
+    }
+  }
+
+  &__main-box {
+    border: 1px solid var(--color-light);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

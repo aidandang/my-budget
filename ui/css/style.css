@@ -4,7 +4,9 @@
 :root {
   --color-primary: #6593A6;
   --color-secondary: #A0A677;
-  --color-white: #FFFFFF; }
+  --color-light: #D9D9D9;
+  --color-white: #FFFFFF;
+  --color-black: #000000; }
 
 * {
   margin: 0;
@@ -24,27 +26,16 @@ body {
   font-weight: 400;
   line-height: 1.6; }
 
-.container {
-  background-color: var(--color-white); }
-
-.topbar {
-  max-width: 120rem;
-  margin: 0 auto;
-  padding: 0 1.2rem;
-  height: 5rem;
+.sign-in {
+  max-width: 32rem;
+  padding: 1.5rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center; }
-
-.logo {
-  height: 3rem; }
-
-.topmenu__icon {
-  height: 3rem;
-  width: 1.5rem;
-  fill: var(--color-primary); }
-
-.usermenu__icon {
-  height: 3rem;
-  width: 1.5rem;
-  fill: var(--color-primary); }
+  .sign-in__logo-box__logo {
+    height: 3rem; }
+  .sign-in__main-box {
+    border: 1px solid var(--color-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
