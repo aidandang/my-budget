@@ -15,11 +15,11 @@
       <div class="sign-in">
         <div class="sign-in__logo-box">
           <img src="img/logo.svg" alt="logo" class="sign-in__logo-box__logo">
-          <div>Monthly Budget</div>
         </div>
+        <div class="sign-in__app-text">Monthly Budget App</div>
         <div class="sign-in__main-box">
           <h1 class="sign-in__main-box__title">Sign In</h1>
-          <div class="sign-in__main-box__subtitle">Sign in to either your Google account or your Monthly Budget app's account. <a href="/">Learn more</a></div>
+          <div class="sign-in__main-box__subtitle">Sign in with either your Google account or your Monthly Budget app's account. <a href="/">Learn more</a></div>
           <button type="button" class="sign-in__main-box__button-google">
             <span class="sign-in__main-box__button-google--logo"></span>
             <span class="sign-in__main-box__button-google--text">Sign in with Google</span>
@@ -32,7 +32,7 @@
           <div class="sign-in__main-box__email-box">
             <label class="sign-in__main-box__email-box--label" for="sign-in-email">Email</label>
             <div class="sign-in__main-box__email-box--input">
-              <input type="email" id="sign-in-email">
+              <input type="email" class="sign-in__input">
             </div>
             <div class="sign-in__main-box__email-box--error">
               <span></span>
@@ -41,7 +41,7 @@
           <div class="sign-in__main-box__password-box">
             <label class="sign-in__main-box__password-box--label" for="ius-userid">Password</label>
             <div class="sign-in__main-box__password-box--input">
-              <input type="password" id="ius-userid">
+              <input type="password" class="sign-in__input">
             </div>
             <div class="sign-in__main-box__password-box--error">
               <span></span>
@@ -51,20 +51,15 @@
             <span class="sign-in__main-box__button-email--logo"></span>
             <span class="sign-in__main-box__button-email--text">Sign in with Email</span>
           </button>
-          <div id="ius-sign-in-terms-of-use" class="ius-side ius-italic ius-centered-tos">
-            <span>By clicking Sign In with Email, you agree to our <a id="ius-sign-in-terms-of-use-link" href="https://glam.app.intuit.com/app/guesttos?glocale=en_US" target="_blank">Terms</a>, <a href="https://quickbooks.intuit.com/payments/legal/" target="_blank">Payment Terms and pricing</a> and have read and acknowledge our <a id="ius-sign-in-privacy-statement-link" href="https://www.intuit.com/privacy/statement/" target="_blank">Global Privacy Statement</a>.</span>
-            <div><strong id="ius-sign-in-terms-of-use-privacy-date"></strong></div>
+          <div class="sign-in__main-box__terms">By clicking Sign In with Email, you agree to our <a href="/" target="_blank">Terms</a>, <a href="/" target="_blank">Payment Terms and pricing</a> and have read and acknowledge our <a href="/" target="_blank">Global Privacy Statement</a>.</div>
+          <div class="sign-in__main-box__separator">
+            <span class="sign-in__main-box__separator--left"></span>
+            <span class="sign-in__main-box__separator--or"></span>
+            <span class="sign-in__main-box__separator--right"></span>
           </div>
-          <div>
-            <ul class="ius-sign-in-list">
-              <li id="ius-link-account-recovery-li">
-                <a id="ius-link-account-recovery" href="#">I forgot my user ID or password</a>
-              </li>
-              <li id="ius-sign-up-link-li" class="ius-hide">
-                <span id="ius-link-sign-up-prefix-text">New to QuickBooks?</span>
-                <span><a href="http://quickbooks.intuit.com/signup/">Sign up</a>.</span>
-              </li>
-            </ul>
+          <div class="sign-in__main-box__sign-up">
+            <span><a id="ius-link-account-recovery" href="#">I forgot my user ID or password</a></span><br />  
+            <span>New to QuickBooks? <a href="http://quickbooks.intuit.com/signup/">Sign up</a>.</span>
           </div>
         </div> 
       </div>
