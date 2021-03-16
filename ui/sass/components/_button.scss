@@ -4,10 +4,12 @@
   font-weight: 400;
   font-size: 1.6rem;
   text-decoration: none;
-  padding: 0.8rem 2rem 1rem 2rem;
-  display: inline-block;
+  padding: 0.5rem 2.5rem 0.9rem 2.5rem;
+  display: block;
   border-radius: 3rem;
-  line-height: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn--white {

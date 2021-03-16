@@ -1,11 +1,70 @@
-.sign-in {
+.sign-in-box {
+  margin: 2rem auto;
   max-width: 32rem;
-  padding: 1.5rem;
-  font-size: 1.2rem;
-
+  padding: 1.5rem 2.5rem;
+  border: 1px solid var(--color-light);
+  
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &__subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  &__google {
+    margin: 2rem 0;
+  }
+
+  &__separator {
+    color: #808080;
+    width: 100%;
+    text-align: center;
+
+    &--or {
+      width: 11%;
+      display: inline-block;
+      color: var(--color-black);
+    }
+
+    &--left, &--right {
+      width: 30%;
+      border-bottom: 1px solid #d4d7dc;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  &__user-id, &__password {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  &__input {
+    margin-top: 0.25rem;
+  }
+
+  &__email {
+    margin: 3rem 0 0.8rem 0;
+  }
+
+  &__terms {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  &__sign-up {
+    margin: 2rem 0;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
+.sign-in {
+  
+
+
 
   &__logo-box {
     margin-top: 1rem;
@@ -17,19 +76,16 @@
 
   &__main-box {
     border: 1px solid var(--color-light);
-    margin-top: 2rem;
     padding-top: 1rem;
     padding-bottom: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    &__subtitle {
-      text-align: center;
-    }
+    
 
     &__button-google {
       margin-top: 1rem;
@@ -82,17 +138,18 @@
       text-align: center;
     }
   }
+}
 
-  &__input {
-    font-family: inherit;
-    font-size: inherit;
-    display: block;
-    width: 100%;
-    padding: 0.65em 0.75em;
-    background: none;
-    border: solid 1px var(--color-light);
-    color: inherit;
-    border-radius: 0.5em;
-    outline: none;
-  }
+.google-logo {
+  height: 2rem;
+  margin-right: 0.8rem;
+  vertical-align: middle;
+}
+
+.btn--sign-in {
+  width: 100%;
+}
+
+.input--sign-in {
+  width: 100%;
 }
