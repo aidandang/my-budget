@@ -79,9 +79,20 @@ body {
   padding: 1.5rem 2.5rem;
   border: 1px solid var(--color-light);
   box-shadow: 0rem 0.3rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.5em;
   display: flex;
   flex-direction: column;
   align-items: center; }
+  .sign-in-box__logo-box {
+    margin: 1rem 0; }
+    .sign-in-box__logo-box__logo {
+      height: 4rem;
+      vertical-align: middle; }
+    .sign-in-box__logo-box__text {
+      margin-left: 0.5rem;
+      font-weight: bold; }
+  .sign-in-box__title {
+    margin-top: 0.5rem; }
   .sign-in-box__subtitle {
     text-align: center;
     font-size: 1.2rem; }
@@ -113,62 +124,6 @@ body {
   .sign-in-box__sign-up {
     margin: 2rem 0;
     font-size: 1.2rem;
-    text-align: center; }
-
-.sign-in__logo-box {
-  margin-top: 1rem; }
-  .sign-in__logo-box__logo {
-    height: 3.5rem; }
-
-.sign-in__main-box {
-  border: 1px solid var(--color-light);
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  .sign-in__main-box__button-google {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    transition: background-color 0.2s ease-in-out;
-    background-color: var(--color-primary);
-    border: 0;
-    border-radius: 3em;
-    color: var(--color-white);
-    cursor: pointer;
-    display: inline-block;
-    height: 3em;
-    line-height: 3em;
-    outline: 0;
-    padding: 0 2em 0 2em;
-    position: relative;
-    text-align: center;
-    text-decoration: none; }
-  .sign-in__main-box__button-email {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    transition: background-color 0.2s ease-in-out;
-    background-color: var(--color-primary);
-    border: 0;
-    border-radius: 3em;
-    color: var(--color-white);
-    cursor: pointer;
-    display: inline-block;
-    height: 3em;
-    line-height: 3em;
-    outline: 0;
-    padding: 0 2em 0 2em;
-    position: relative;
-    text-align: center;
-    text-decoration: none; }
-  .sign-in__main-box__terms {
-    margin-bottom: 1rem;
-    text-align: center; }
-  .sign-in__main-box__sign-up {
     text-align: center; }
 
 .google-logo {

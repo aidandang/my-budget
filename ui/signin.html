@@ -5,18 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
 
     <title>Monthly Budget - Sign In</title>
   </head>
   <body>
     <div class="container">
+      <header class="sign-in-header"></header>
       <div class="sign-in-box">
+        <div class="sign-in-box__logo-box">
+          <img
+            src="img/logo.svg"
+            alt="logo"
+            class="sign-in-box__logo-box__logo"
+          />
+        </div>
         <h2 class="sign-in-box__title">Sign In</h2>
-        <div class="sign-in-box__subtitle">Sign in with either your Google account or your Monthly Budget account. <a href="/">Learn more</a></div>
+        <div class="sign-in-box__subtitle">
+          Sign in with either your Google account or
+          <a href="/">Monthly Budget</a>
+          application account.
+        </div>
         <a href="/" class="btn btn--white btn--sign-in sign-in-box__google">
-          <img src="img/google.svg" alt="logo" class="google-logo"><span>Sign in with Google</span>
+          <img
+            src="img/google.svg"
+            alt="google-logo"
+            class="google-logo"
+          /><span>Sign in with Google</span>
         </a>
         <div class="sign-in-box__separator">
           <span class="sign-in-box__separator--left"></span>
@@ -26,24 +45,35 @@
         <div class="sign-in-box__user-id">
           <label for="sign-in-user-id">Email</label>
           <div class="sign-in-box__input">
-            <input type="email" class="input input--sign-in">
+            <input type="email" class="input input--sign-in" />
           </div>
         </div>
         <div class="sign-in-box__password">
           <label for="sign-in-password">Password</label>
           <div class="sign-in-box__input">
-            <input type="password" class="input input--sign-in">
+            <input type="password" class="input input--sign-in" />
           </div>
         </div>
         <a href="/" class="btn btn--primary btn--sign-in sign-in-box__email">
           <span>Sign in with Email</span>
         </a>
-        <div class="sign-in-box__terms">By clicking Sign In with Email, you agree to our <a href="/" target="_blank">Terms</a>, <a href="/" target="_blank">Payment Terms and pricing</a> and have read and acknowledge our <a href="/" target="_blank">Global Privacy Statement</a>.</div>
-        <div class="sign-in-box__sign-up">
-          <span><a id="ius-link-account-recovery" href="#">I forgot my user ID or password</a></span><br />  
-          <span>New to Monthly Budget? <a href="http://quickbooks.intuit.com/signup/">Sign up</a>.</span>
+        <div class="sign-in-box__terms">
+          By clicking Sign In with Email, you agree to our
+          <a href="/" target="_blank">Terms</a>, and have read our
+          <a href="/" target="_blank">Global Privacy Statement</a>.
         </div>
-      </div> 
+        <div class="sign-in-box__sign-up">
+          <span
+            ><a id="ius-link-account-recovery" href="#"
+              >I forgot my user ID or password</a
+            ></span
+          ><br />
+          <span
+            >New to Monthly Budget?
+            <a href="http://quickbooks.intuit.com/signup/">Sign up</a></span
+          >
+        </div>
+      </div>
     </div>
   </body>
 </html>
