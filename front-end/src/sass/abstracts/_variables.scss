@@ -1,2 +1,28 @@
-// COLORS
-$color-black: #000000;
+/* Color Theme Swatches in Hex */
+// $financial-background-1-hex: #6593A6;
+// $financial-background-2-hex: #A0A677;
+// $financial-background-3-hex: #BF8F73;
+// $financial-background-4-hex: #735353;
+// $financial-background-5-hex: #D9D9D9;
+
+/* Color Theme Swatches in RGBA */
+// $financial-background-1-rgba: rgba(101,147,165, 1);
+// $financial-background-2-rgba: rgba(160,165,119, 1);
+// $financial-background-3-rgba: rgba(191,142,114, 1);
+// $financial-background-4-rgba: rgba(114,82,82, 1);
+// $financial-background-5-rgba: rgba(216,216,216, 1);
+
+/* Color Theme Swatches in HSLA */
+// $financial-background-1-hsla: hsla(196, 26, 52, 1);
+// $financial-background-2-hsla: hsla(67, 20, 55, 1);
+// $financial-background-3-hsla: hsla(22, 37, 60, 1);
+// $financial-background-4-hsla: hsla(0, 16, 38, 1);
+// $financial-background-5-hsla: hsla(0, 0, 85, 1);
+
+:root {
+  --color-primary: #6593A6;
+  --color-secondary: #A0A677;
+  --color-light: #D9D9D9;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+}
