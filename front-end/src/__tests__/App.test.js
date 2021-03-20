@@ -1,20 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
+import { mount } from 'enzyme';
 
 import App from '../App';
+import { LandingPage } from '../components/pages/Landing';
+import { SignInPage } from '../components/pages/SignIn';
 
-it('shows the landing page', () => {
-  const div = document.createElement('div');
-
-  ReactDOM.render(
-    <Router>
+it('shows LandingPage component', () => {
+  const wrapped = mount(
+    <MemoryRouter initialEntries={['/', '/random']}>
       <App />
-    </Router>,
-    div
+    </MemoryRouter>
   );
 
-  // expect(div.innerHTML).toContain('Landing Page');
+  expect(wrapped.find(LandingPage)).toHaveLength(1);
+});
 
-  ReactDOM.unmountComponentAtNode(div);
+it('shows SignInPage component', () => {
+  const wrapped = mount(
+    <MemoryRouter initialEntries={['/sign-in']}>
+      <App />
+    </MemoryRouter>
+  );
+
+  expect(wrapped.find(SignInPage)).toHaveLength(1);
 });
