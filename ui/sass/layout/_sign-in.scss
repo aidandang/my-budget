@@ -30,6 +30,8 @@
 
   &__subtitle {
     text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-size: 1.2rem;
   }
 
@@ -43,14 +45,14 @@
     text-align: center;
 
     &--or {
-      width: 11%;
+      width: 12%;
       display: inline-block;
       color: var(--color-black);
     }
 
     &--left,
     &--right {
-      width: 30%;
+      width: 44%;
       border-bottom: 1px solid #d4d7dc;
       display: inline-block;
       vertical-align: middle;
@@ -73,6 +75,8 @@
 
   &__terms {
     font-size: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     text-align: center;
   }
 

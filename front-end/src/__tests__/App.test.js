@@ -2,12 +2,18 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
 
-import App from '../App';
-import { LandingPage } from '../components/pages/Landing';
-import { SignInPage } from '../components/pages/SignIn';
+import App from 'App';
+import { LandingPage } from 'components/pages/Landing';
+import { SignInPage } from 'components/pages/SignIn';
+
+let wrapped;
+
+afterEach(() => {
+  wrapped.unmount();
+});
 
 it('shows LandingPage component', () => {
-  const wrapped = mount(
+  wrapped = mount(
     <MemoryRouter initialEntries={['/', '/random']}>
       <App />
     </MemoryRouter>
@@ -17,7 +23,7 @@ it('shows LandingPage component', () => {
 });
 
 it('shows SignInPage component', () => {
-  const wrapped = mount(
+  wrapped = mount(
     <MemoryRouter initialEntries={['/sign-in']}>
       <App />
     </MemoryRouter>
