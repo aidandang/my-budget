@@ -56,6 +56,7 @@ class SignInContainer extends Component {
         </div>
         <a
           href="/"
+          id="sign-in-button"
           className="btn btn--primary btn--sign-in sign-in-box__email"
           onClick={this.handleSubmit}
         >
