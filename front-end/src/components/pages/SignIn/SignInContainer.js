@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../state/actions';
 
 import SignInRender from './SignInRender';
+import { signInWithGoogle } from '../../../firebase/firebase.utils';
 
 const initialState = {
   email: '',
@@ -31,7 +32,7 @@ class SignInContainer extends Component {
 
   render() {
     return (
-      <SignInRender>
+      <SignInRender signInWithGoogle={signInWithGoogle}>
         <div className="sign-in-box__user-id">
           <label htmlFor="sign-in-user-id">Email</label>
           <div className="sign-in-box__input">

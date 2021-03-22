@@ -3,7 +3,7 @@ import React from 'react';
 import logo from '../../../assets/logo.svg';
 import google from '../../../assets/google.svg';
 
-const SignInRender = ({ children }) => {
+const SignInRender = ({ signInWithGoogle, children }) => {
   return (
     <>
       <div className="container">
@@ -26,6 +26,10 @@ const SignInRender = ({ children }) => {
           <a
             href="/"
             className="btn btn--white btn--sign-in sign-in-box__google"
+            onClick={(e) => {
+              e.preventDefault();
+              signInWithGoogle();
+            }}
           >
             <img src={google} alt="gl" className="google-logo" />
             <span>Sign in with Google</span>
