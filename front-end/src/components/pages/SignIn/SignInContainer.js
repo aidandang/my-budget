@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../state/actions';
+
 import SignInRender from './SignInRender';
 
 const initialState = {
@@ -19,6 +22,7 @@ class SignInContainer extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
+    this.props.saveUser(this.state);
     this.setState((prevState) => ({
       ...prevState,
       ...initialState,
@@ -67,4 +71,4 @@ class SignInContainer extends Component {
   }
 }
 
-export default SignInContainer;
+export default connect(null, actions)(SignInContainer);

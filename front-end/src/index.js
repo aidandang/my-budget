@@ -1,13 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import App from './App'
-import './sass/main.scss'
+import Root from './Root';
+import App from './App';
+import './sass/main.scss';
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <Root>
+    <Router>
+      <App />
+    </Router>
+  </Root>,
   document.getElementById('root')
-)
+);
