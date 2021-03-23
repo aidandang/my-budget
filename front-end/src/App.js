@@ -12,15 +12,19 @@ const initialState = {
 class App extends Component {
   state = initialState;
 
+  unsubcribeFromAuth = null;
+
   componentDidMount() {
-    auth.onAuthStateChanged((user) => {
+    this.unsubcribeFromAuth = auth.onAuthStateChanged((user) => {
       this.setState((prevState) => ({
         ...prevState,
         currentUser: user,
       }));
-
-      console.log(user);
     });
+  }
+
+  componentWillUnmount() {
+    this.unsubcribeFromAuth();
   }
 
   render() {
