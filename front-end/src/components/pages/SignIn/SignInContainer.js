@@ -4,7 +4,7 @@ import * as actions from '../../../state/actions';
 
 import SignInRender from './SignInRender';
 import { signInWithGoogle } from '../../../firebase/firebase.utils';
-import { Button } from '../../common/Form/Button';
+import { Button } from '../../common/Button';
 
 const initialState = {
   email: '',

@@ -6,32 +6,31 @@ import { Button } from './Button';
 export default {
   title: 'Components/Button',
   component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 };
 
-const Template = (args) => <Button {...args} />;
+const Template = (args) => <Button {...args}>Button</Button>;
 
 export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
+Primary.args = {};
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: 'Button',
+  mode: 'secondary',
+};
+
+export const Disable = Template.bind({});
+Disable.args = {
+  mode: 'disable',
 };
 
 export const Large = Template.bind({});
 Large.args = {
+  mode: 'primary',
   size: 'large',
-  label: 'Button',
 };
 
 export const Small = Template.bind({});
 Small.args = {
+  mode: 'primary',
   size: 'small',
-  label: 'Button',
 };

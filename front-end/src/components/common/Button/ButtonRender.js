@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Button = ({ mode, size, otherStyle, children, ...props }) => {
+export default function Button({ mode, size, otherStyle, children, ...props }) {
   return (
     <button
       type="button"
@@ -15,4 +15,4 @@ export const Button = ({ mode, size, otherStyle, children, ...props }) => {
       {children}
     </button>
   );
-};
+}

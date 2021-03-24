@@ -1,46 +1,12 @@
-.btn:link,
-.btn:visited {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 1.6rem;
-  text-decoration: none;
-  padding: 0.5rem 2.5rem 0.9rem 2.5rem;
-  display: block;
-  border-radius: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn--white {
-  background-color: var(--color-white);
-  border: 2px solid var(--color-light);
-  color: var(--color-black);
-}
-
-.btn--white:hover {
-  border: 2px solid var(--color-primary);
-}
-
-.btn--primary {
-  background-color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-  color: var(--color-white);
-}
-
-.btn--primary:hover {
-  border: 2px solid var(--color-light);
-}
-
 .button {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   border-radius: 2em;
-  cursor: pointer;
   display: inline-block;
   line-height: 1;
 
   &--primary {
+    cursor: pointer;
     background-color: #6593a6;
     border: 2px solid #6593a6;
     color: #ffffff;
@@ -50,7 +16,13 @@
     border: 2px solid #d9d9d9;
   }
 
+  &--primary:focus {
+    outline: none;
+    border: 2px solid lightblue;
+  }
+
   &--secondary {
+    cursor: pointer;
     background-color: #ffffff;
     border: 2px solid #d9d9d9;
     color: #000000;
@@ -58,6 +30,21 @@
 
   &--secondary:hover {
     border: 2px solid #6593a6;
+  }
+
+  &--secondary:focus {
+    outline: none;
+    border: 2px solid lightblue;
+  }
+
+  &--disable {
+    background-color: #d9d9d9;
+    border: 2px solid #d9d9d9;
+    color: #ffffff;
+  }
+
+  &--disable:focus {
+    outline: none;
   }
 
   &--small {
