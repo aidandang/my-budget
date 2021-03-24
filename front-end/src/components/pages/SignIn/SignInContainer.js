@@ -4,6 +4,7 @@ import * as actions from '../../../state/actions';
 
 import SignInRender from './SignInRender';
 import { signInWithGoogle } from '../../../firebase/firebase.utils';
+import { Button } from '../../common/Form/Button';
 
 const initialState = {
   email: '',
@@ -59,14 +60,16 @@ class SignInContainer extends Component {
             />
           </div>
         </div>
-        <a
-          href="/"
-          id="sign-in-button"
-          className="btn btn--primary btn--sign-in sign-in-box__email"
-          onClick={this.handleSubmit}
-        >
-          <span>Sign in with Email</span>
-        </a>
+        <div className="sign-in-box__email">
+          <Button
+            primary={true}
+            size={'large'}
+            otherStyle={'button--sign-in'}
+            onClick={this.handleSubmit}
+          >
+            Sign in with Email
+          </Button>
+        </div>
       </SignInRender>
     );
   }

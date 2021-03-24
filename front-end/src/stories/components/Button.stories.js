@@ -4,7 +4,7 @@ import { Button } from './Button';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  title: 'Button',
+  title: 'Components/Button',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },

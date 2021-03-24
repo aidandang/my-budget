@@ -36,7 +36,8 @@
   }
 
   &__google {
-    margin: 2rem 0;
+    width: 100%;
+    margin: 2rem 0 1.5rem 0;
   }
 
   &__separator {
@@ -70,6 +71,7 @@
   }
 
   &__email {
+    width: 100%;
     margin: 2.5rem 0 0.8rem 0;
   }
 
@@ -88,12 +90,14 @@
 }
 
 .google-logo {
-  height: 2rem;
+  width: 2rem;
   margin-right: 0.8rem;
+  margin-bottom: -0.1rem;
+  margin-top: -0.4rem;
   vertical-align: middle;
 }
 
-.btn--sign-in {
+.button--sign-in {
   width: 100%;
 }
 

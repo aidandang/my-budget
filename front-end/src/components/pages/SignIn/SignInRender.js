@@ -2,6 +2,7 @@ import React from 'react';
 
 import logo from '../../../assets/logo.svg';
 import google from '../../../assets/google.svg';
+import { Button } from '../../common/Form/Button';
 
 const SignInRender = ({ signInWithGoogle, children }) => {
   return (
@@ -23,17 +24,20 @@ const SignInRender = ({ signInWithGoogle, children }) => {
             <a href="/">Monthly Budget</a> application account.
           </div>
 
-          <a
-            href="/"
-            className="btn btn--white btn--sign-in sign-in-box__google"
-            onClick={(e) => {
-              e.preventDefault();
-              signInWithGoogle();
-            }}
-          >
-            <img src={google} alt="gl" className="google-logo" />
-            <span>Sign in with Google</span>
-          </a>
+          <div className="sign-in-box__google">
+            <Button
+              primary={false}
+              size={'large'}
+              otherStyle={'button--sign-in'}
+              onClick={(e) => {
+                e.preventDefault();
+                signInWithGoogle();
+              }}
+            >
+              <img src={google} alt="gl" className="google-logo" />
+              <span className="google-text">Sign in with Google</span>
+            </Button>
+          </div>
 
           <div className="sign-in-box__separator">
             <span className="sign-in-box__separator--left"></span>
@@ -58,7 +62,7 @@ const SignInRender = ({ signInWithGoogle, children }) => {
           <div className="sign-in-box__sign-up">
             <span>
               <a id="ius-link-account-recovery" href="/">
-                I forgot my user ID or password
+                Forgot my email or password?
               </a>
             </span>
             <br />
