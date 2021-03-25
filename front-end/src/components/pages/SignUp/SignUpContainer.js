@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../state/actions';
 
-import SignInRender from './SignInRender';
-import { signInWithGoogle } from '../../../firebase/firebase.utils';
+import SignUpRender from './SignUpRender';
 import { Button } from '../../common/Button';
+import { auth } from '../../../firebase/firebase.utils';
 
 const initialState = {
   email: '',
   password: '',
+  confirmedPassword: '',
+  mode: 'primary',
 };
 
-class SignInContainer extends Component {
+class SignUpContainer extends Component {
   state = initialState;
 
   handleChange = (e) => {
@@ -21,10 +23,22 @@ class SignInContainer extends Component {
     }));
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
-    this.props.saveUser(this.state);
+    const { email, password, confirmedPassword } = this.state;
+
+    if (password !== confirmedPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+
+    try {
+      await auth.createUserWithEmailAndPassword(email, password);
+    } catch (err) {
+      console.log(err);
+    }
+
     this.setState((prevState) => ({
       ...prevState,
       ...initialState,
@@ -33,46 +47,66 @@ class SignInContainer extends Component {
 
   render() {
     return (
-      <SignInRender signInWithGoogle={signInWithGoogle}>
+      <SignUpRender>
         <div className="sign-in-sign-up__user-id">
           <label htmlFor="sign-in-user-id">Email</label>
           <div className="sign-in-sign-up__input">
             <input
               type="email"
-              id="sign-in-user-id"
+              id="sign-up-user-id"
               name="email"
               className="input input--sign-in-sign-up"
               onChange={this.handleChange}
               value={this.state.email}
+              required
             />
           </div>
         </div>
+
         <div className="sign-in-sign-up__password">
           <label htmlFor="sign-in-password">Password</label>
           <div className="sign-in-sign-up__input">
             <input
               type="password"
-              id="sign-in-password"
+              id="sign-up-password"
               name="password"
               className="input input--sign-in-sign-up"
               onChange={this.handleChange}
               value={this.state.password}
+              required
             />
           </div>
         </div>
+
+        <div className="sign-in-sign-up__password">
+          <label htmlFor="sign-in-confirmed-password">Confirmed Password</label>
+          <div className="sign-in-sign-up__input">
+            <input
+              type="password"
+              id="sign-up-confirmed-password"
+              name="confirmedPassword"
+              className="input input--sign-in-sign-up"
+              onChange={this.handleChange}
+              value={this.state.confirmedPassword}
+              required
+            />
+          </div>
+        </div>
+
         <div className="sign-in-sign-up__email">
           <Button
-            mode={'primary'}
+            id={'sign-up-button'}
+            mode={this.state.mode}
             size={'large'}
             otherStyle={'button--sign-in-sign-up'}
             onClick={this.handleSubmit}
           >
-            Sign in with Email
+            Sign up with Email
           </Button>
         </div>
-      </SignInRender>
+      </SignUpRender>
     );
   }
 }
 
-export default connect(null, actions)(SignInContainer);
+export default connect(null, actions)(SignUpContainer);

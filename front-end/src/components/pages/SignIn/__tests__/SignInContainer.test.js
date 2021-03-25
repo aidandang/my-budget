@@ -56,7 +56,7 @@ describe('the email and password input events', () => {
   });
 
   it('has a button and user can click to submit and clear inputs', () => {
-    wrapped.find('a#sign-in-button').simulate('click');
+    wrapped.find('Button#sign-in-button').simulate('click');
     wrapped.update();
 
     expect(wrapped.find('input#sign-in-user-id').prop('value')).toEqual('');

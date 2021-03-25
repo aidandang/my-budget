@@ -3,7 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import { LandingPage } from './components/pages/Landing';
 import { SignInPage } from './components/pages/SignIn';
-import { auth } from './firebase/firebase.utils';
+import { SignUpPage } from './components/pages/SignUp';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 const initialState = {
   currentUser: null,
@@ -15,11 +16,25 @@ class App extends Component {
   unsubcribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubcribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState((prevState) => ({
-        ...prevState,
-        currentUser: user,
-      }));
+    this.unsubcribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot((snapShot) => {
+          this.setState((prevState) => ({
+            ...prevState,
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            },
+          }));
+        });
+      } else {
+        this.setState((prevState) => ({
+          ...prevState,
+          currentUser: userAuth,
+        }));
+      }
     });
   }
 
@@ -31,6 +46,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/sign-in" component={SignInPage} />
+        <Route exact path="/sign-up" component={SignUpPage} />
         <Route path="/" component={LandingPage} />
       </Switch>
     );

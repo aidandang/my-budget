@@ -6,6 +6,7 @@ import Root from 'Root';
 import App from 'App';
 import { LandingPage } from 'components/pages/Landing';
 import { SignInPage } from 'components/pages/SignIn';
+import { SignUpPage } from 'components/pages/SignUp';
 
 let wrapped;
 
@@ -35,4 +36,16 @@ it('shows SignInPage component', () => {
   );
 
   expect(wrapped.find(SignInPage)).toHaveLength(1);
+});
+
+it('shows SignUpPage component', () => {
+  wrapped = mount(
+    <Root>
+      <MemoryRouter initialEntries={['/sign-up']}>
+        <App />
+      </MemoryRouter>
+    </Root>
+  );
+
+  expect(wrapped.find(SignUpPage)).toHaveLength(1);
 });

@@ -24,7 +24,6 @@ class SignInContainer extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.props.saveUser(this.state);
     this.setState((prevState) => ({
       ...prevState,
       ...initialState,
@@ -62,6 +61,7 @@ class SignInContainer extends Component {
         </div>
         <div className="sign-in-sign-up__email">
           <Button
+            id="sign-in-button"
             mode={'primary'}
             size={'large'}
             otherStyle={'button--sign-in-sign-up'}
