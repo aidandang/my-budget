@@ -27,7 +27,19 @@ export const SignUp = ({ mode }) => (
         <span className="sign-in-sign-up__separator--right"></span>
       </div>
 
-      <div className="sign-in-sign-up__user-id">
+      <div className="sign-in-sign-up__input-box">
+        <label htmlFor="sign-in-display-name">Display Name</label>
+        <div className="sign-in-sign-up__input">
+          <input
+            type="text"
+            id="sign-in-display-name"
+            name="displayName"
+            className="input input--sign-in-sign-up"
+          />
+        </div>
+      </div>
+
+      <div className="sign-in-sign-up__input-box">
         <label htmlFor="sign-in-user-id">Email</label>
         <div className="sign-in-sign-up__input">
           <input
@@ -39,7 +51,7 @@ export const SignUp = ({ mode }) => (
         </div>
       </div>
 
-      <div className="sign-in-sign-up__password">
+      <div className="sign-in-sign-up__input-box">
         <label htmlFor="sign-in-password">Password</label>
         <div className="sign-in-sign-up__input">
           <input
@@ -51,13 +63,13 @@ export const SignUp = ({ mode }) => (
         </div>
       </div>
 
-      <div className="sign-in-sign-up__password">
-        <label htmlFor="sign-in-password">Confirmed Password</label>
+      <div className="sign-in-sign-up__input-box">
+        <label htmlFor="sign-in-password">Password Confirm</label>
         <div className="sign-in-sign-up__input">
           <input
             type="password"
             id="sign-in-confirmed-password"
-            name="password"
+            name="passwordConfirm"
             className="input input--sign-in-sign-up"
           />
         </div>

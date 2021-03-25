@@ -4,12 +4,16 @@ import * as actions from '../../../state/actions';
 
 import SignUpRender from './SignUpRender';
 import { Button } from '../../common/Button';
-import { auth } from '../../../firebase/firebase.utils';
+import {
+  auth,
+  createUserProfileDocument,
+} from '../../../firebase/firebase.utils';
 
 const initialState = {
+  displayName: '',
   email: '',
   password: '',
-  confirmedPassword: '',
+  passwordConfirm: '',
   mode: 'primary',
 };
 
@@ -26,7 +30,7 @@ class SignUpContainer extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { email, password, confirmedPassword } = this.state;
+    const { displayName, email, password, confirmedPassword } = this.state;
 
     if (password !== confirmedPassword) {
       alert("Passwords don't match");
@@ -34,7 +38,14 @@ class SignUpContainer extends Component {
     }
 
     try {
-      await auth.createUserWithEmailAndPassword(email, password);
+      const user = await auth.createUserWithEmailAndPassword(email, password);
+
+      await createUserProfileDocument(user, { displayName });
+
+      this.setState((prevState) => ({
+        ...prevState,
+        ...initialState,
+      }));
     } catch (err) {
       console.log(err);
     }
@@ -48,7 +59,22 @@ class SignUpContainer extends Component {
   render() {
     return (
       <SignUpRender>
-        <div className="sign-in-sign-up__user-id">
+        <div className="sign-in-sign-up__input-box">
+          <label htmlFor="sign-in-display-name">Display Name</label>
+          <div className="sign-in-sign-up__input">
+            <input
+              type="text"
+              id="sign-in-display-name"
+              name="displayName"
+              className="input input--sign-in-sign-up"
+              onChange={this.handleChange}
+              value={this.state.displayName}
+              required
+            />
+          </div>
+        </div>
+
+        <div className="sign-in-sign-up__input-box">
           <label htmlFor="sign-in-user-id">Email</label>
           <div className="sign-in-sign-up__input">
             <input
@@ -63,7 +89,7 @@ class SignUpContainer extends Component {
           </div>
         </div>
 
-        <div className="sign-in-sign-up__password">
+        <div className="sign-in-sign-up__input-box">
           <label htmlFor="sign-in-password">Password</label>
           <div className="sign-in-sign-up__input">
             <input
@@ -78,16 +104,16 @@ class SignUpContainer extends Component {
           </div>
         </div>
 
-        <div className="sign-in-sign-up__password">
-          <label htmlFor="sign-in-confirmed-password">Confirmed Password</label>
+        <div className="sign-in-sign-up__input-box">
+          <label htmlFor="sign-in-password-confirm">Password Confirm</label>
           <div className="sign-in-sign-up__input">
             <input
               type="password"
-              id="sign-up-confirmed-password"
-              name="confirmedPassword"
+              id="sign-in-password-confirm"
+              name="passwordConfirm"
               className="input input--sign-in-sign-up"
               onChange={this.handleChange}
-              value={this.state.confirmedPassword}
+              value={this.state.passwordConfirm}
               required
             />
           </div>
