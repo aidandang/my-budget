@@ -5,6 +5,7 @@ import * as actions from '../../../state/actions';
 import SignInRender from './SignInRender';
 import { signInWithGoogle } from '../../../firebase/firebase.utils';
 import { Button } from '../../common/Button';
+import { Input } from '../../common/Input';
 
 const initialState = {
   email: '',
@@ -33,31 +34,27 @@ class SignInContainer extends Component {
   render() {
     return (
       <SignInRender signInWithGoogle={signInWithGoogle}>
-        <div className="sign-in-sign-up__user-id">
-          <label htmlFor="sign-in-user-id">Email</label>
-          <div className="sign-in-sign-up__input">
-            <input
-              type="email"
-              id="sign-in-user-id"
-              name="email"
-              className="input input--sign-in-sign-up"
-              onChange={this.handleChange}
-              value={this.state.email}
-            />
-          </div>
+        <div className="sign-in-sign-up__input-box">
+          <Input
+            type="email"
+            id="sign-in-user-id"
+            size={'large'}
+            label={'Email'}
+            name="email"
+            onChange={this.handleChange}
+            value={this.state.email}
+          />
         </div>
-        <div className="sign-in-sign-up__password">
-          <label htmlFor="sign-in-password">Password</label>
-          <div className="sign-in-sign-up__input">
-            <input
-              type="password"
-              id="sign-in-password"
-              name="password"
-              className="input input--sign-in-sign-up"
-              onChange={this.handleChange}
-              value={this.state.password}
-            />
-          </div>
+        <div className="sign-in-sign-up__input-box">
+          <Input
+            type="password"
+            id="sign-in-password"
+            size={'large'}
+            label={'Password'}
+            name="password"
+            onChange={this.handleChange}
+            value={this.state.email}
+          />
         </div>
         <div className="sign-in-sign-up__email">
           <Button

@@ -16,11 +16,6 @@
     border: 2px solid #d9d9d9;
   }
 
-  &--primary:focus {
-    outline: none;
-    border: 2px solid lightblue;
-  }
-
   &--secondary {
     cursor: pointer;
     background-color: #ffffff;
@@ -32,19 +27,10 @@
     border: 2px solid #6593a6;
   }
 
-  &--secondary:focus {
-    outline: none;
-    border: 2px solid lightblue;
-  }
-
   &--disable {
     background-color: #d9d9d9;
     border: 2px solid #d9d9d9;
     color: #ffffff;
-  }
-
-  &--disable:focus {
-    outline: none;
   }
 
   &--small {

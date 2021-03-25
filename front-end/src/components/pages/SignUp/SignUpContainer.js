@@ -4,6 +4,7 @@ import * as actions from '../../../state/actions';
 
 import SignUpRender from './SignUpRender';
 import { Button } from '../../common/Button';
+import { Input } from '../../common/Input';
 import {
   auth,
   createUserProfileDocument,
@@ -60,63 +61,51 @@ class SignUpContainer extends Component {
     return (
       <SignUpRender>
         <div className="sign-in-sign-up__input-box">
-          <label htmlFor="sign-in-display-name">Display Name</label>
-          <div className="sign-in-sign-up__input">
-            <input
-              type="text"
-              id="sign-in-display-name"
-              name="displayName"
-              className="input input--sign-in-sign-up"
-              onChange={this.handleChange}
-              value={this.state.displayName}
-              required
-            />
-          </div>
+          <Input
+            type={'text'}
+            id={'sign-up-display-name'}
+            size={'large'}
+            label={'Display Name'}
+            name={'displayName'}
+            value={this.state.displayName}
+            onChange={this.handleChange}
+          />
         </div>
 
         <div className="sign-in-sign-up__input-box">
-          <label htmlFor="sign-in-user-id">Email</label>
-          <div className="sign-in-sign-up__input">
-            <input
-              type="email"
-              id="sign-up-user-id"
-              name="email"
-              className="input input--sign-in-sign-up"
-              onChange={this.handleChange}
-              value={this.state.email}
-              required
-            />
-          </div>
+          <Input
+            type={'email'}
+            id={'sign-up-user-id'}
+            size={'large'}
+            label={'Email'}
+            name={'email'}
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
         </div>
 
         <div className="sign-in-sign-up__input-box">
-          <label htmlFor="sign-in-password">Password</label>
-          <div className="sign-in-sign-up__input">
-            <input
-              type="password"
-              id="sign-up-password"
-              name="password"
-              className="input input--sign-in-sign-up"
-              onChange={this.handleChange}
-              value={this.state.password}
-              required
-            />
-          </div>
+          <Input
+            type={'password'}
+            id={'sign-up-password'}
+            size={'large'}
+            label={'Password'}
+            name={'password'}
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
         </div>
 
         <div className="sign-in-sign-up__input-box">
-          <label htmlFor="sign-in-password-confirm">Password Confirm</label>
-          <div className="sign-in-sign-up__input">
-            <input
-              type="password"
-              id="sign-in-password-confirm"
-              name="passwordConfirm"
-              className="input input--sign-in-sign-up"
-              onChange={this.handleChange}
-              value={this.state.passwordConfirm}
-              required
-            />
-          </div>
+          <Input
+            type={'password'}
+            id={'sign-up-password-confirm'}
+            size={'large'}
+            label={'Password Confirm'}
+            name={'passwordConfirm'}
+            value={this.state.passwordConfirm}
+            onChange={this.handleChange}
+          />
         </div>
 
         <div className="sign-in-sign-up__email">
