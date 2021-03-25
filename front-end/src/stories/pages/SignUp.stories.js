@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { SignIn } from './SignIn';
+import { SignUp } from './SignUp';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  title: 'Pages/SignIn',
-  component: SignIn,
+  title: 'Pages/SignUp',
+  component: SignUp,
 };
 
-const Template = (args) => <SignIn {...args} />;
+const Template = (args) => <SignUp {...args} />;
 
 export const ButtonEnable = Template.bind({});
 ButtonEnable.args = {

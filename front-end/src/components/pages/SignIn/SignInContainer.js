@@ -34,37 +34,37 @@ class SignInContainer extends Component {
   render() {
     return (
       <SignInRender signInWithGoogle={signInWithGoogle}>
-        <div className="sign-in-box__user-id">
+        <div className="sign-in-sign-up__user-id">
           <label htmlFor="sign-in-user-id">Email</label>
-          <div className="sign-in-box__input">
+          <div className="sign-in-sign-up__input">
             <input
               type="email"
               id="sign-in-user-id"
               name="email"
-              className="input input--sign-in"
+              className="input input--sign-in-sign-up"
               onChange={this.handleChange}
               value={this.state.email}
             />
           </div>
         </div>
-        <div className="sign-in-box__password">
+        <div className="sign-in-sign-up__password">
           <label htmlFor="sign-in-password">Password</label>
-          <div className="sign-in-box__input">
+          <div className="sign-in-sign-up__input">
             <input
               type="password"
               id="sign-in-password"
               name="password"
-              className="input input--sign-in"
+              className="input input--sign-in-sign-up"
               onChange={this.handleChange}
               value={this.state.password}
             />
           </div>
         </div>
-        <div className="sign-in-box__email">
+        <div className="sign-in-sign-up__email">
           <Button
-            primary={true}
+            mode={'primary'}
             size={'large'}
-            otherStyle={'button--sign-in'}
+            otherStyle={'button--sign-in-sign-up'}
             onClick={this.handleSubmit}
           >
             Sign in with Email

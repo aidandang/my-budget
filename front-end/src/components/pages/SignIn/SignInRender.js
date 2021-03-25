@@ -2,28 +2,32 @@ import React from 'react';
 
 import logo from '../../../assets/logo.svg';
 import google from '../../../assets/google.svg';
-import { Button } from '../../common/Form/Button';
+import { Button } from '../../common/Button';
 
 const SignInRender = ({ signInWithGoogle, children }) => {
   return (
     <div className="container">
-      <div className="sign-in-box">
-        <div className="sign-in-box__logo-box">
-          <img src={logo} alt="logo" className="sign-in-box__logo-box__logo" />
+      <div className="sign-in-sign-up">
+        <div className="sign-in-sign-up__logo-box">
+          <img
+            src={logo}
+            alt="logo"
+            className="sign-in-sign-up__logo-box__logo"
+          />
         </div>
 
-        <h2 className="sign-in-box__title">Sign In</h2>
+        <h2 className="sign-in-sign-up__title">Sign In</h2>
 
-        <div className="sign-in-box__subtitle">
+        <div className="sign-in-sign-up__subtitle">
           Sign in with either your Google account or{' '}
           <a href="/">Monthly Budget</a> application account.
         </div>
 
-        <div className="sign-in-box__google">
+        <div className="sign-in-sign-up__google">
           <Button
-            primary={false}
+            mode={'secondary'}
             size={'large'}
-            otherStyle={'button--sign-in'}
+            otherStyle={'button--sign-in-sign-up'}
             onClick={(e) => {
               e.preventDefault();
               signInWithGoogle();
@@ -34,15 +38,15 @@ const SignInRender = ({ signInWithGoogle, children }) => {
           </Button>
         </div>
 
-        <div className="sign-in-box__separator">
-          <span className="sign-in-box__separator--left"></span>
-          <span className="sign-in-box__separator--or">or</span>
-          <span className="sign-in-box__separator--right"></span>
+        <div className="sign-in-sign-up__separator">
+          <span className="sign-in-sign-up__separator--left"></span>
+          <span className="sign-in-sign-up__separator--or">or</span>
+          <span className="sign-in-sign-up__separator--right"></span>
         </div>
 
         {children}
 
-        <div className="sign-in-box__terms">
+        <div className="sign-in-sign-up__terms">
           By clicking Sign In with Email, you agree to our{' '}
           <a href="/" target="_blank">
             Terms
@@ -54,7 +58,7 @@ const SignInRender = ({ signInWithGoogle, children }) => {
           .
         </div>
 
-        <div className="sign-in-box__sign-up">
+        <div className="sign-in-sign-up__sign-up">
           <span>
             <a id="ius-link-account-recovery" href="/">
               Forgot your email or password?

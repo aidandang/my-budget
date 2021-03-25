@@ -1,10 +1,9 @@
 import React from 'react';
 
-import google from '../assets/google.svg';
 import logo from '../assets/logo.svg';
 import { Button } from '../components/Button';
 
-export const SignIn = ({ mode }) => (
+export const SignUp = ({ mode }) => (
   <div className="container">
     <div className="sign-in-sign-up">
       <div className="sign-in-sign-up__logo-box">
@@ -15,27 +14,16 @@ export const SignIn = ({ mode }) => (
         />
       </div>
 
-      <h2 className="sign-in-sign-up__title">Sign In</h2>
+      <h2 className="sign-in-sign-up__title">Sign Up</h2>
 
       <div className="sign-in-sign-up__subtitle">
-        Sign in with either your Google account or{' '}
-        <a href="/">Monthly Budget</a> application account.
-      </div>
-
-      <div className="sign-in-sign-up__google">
-        <Button
-          mode={'secondary'}
-          size={'large'}
-          otherStyle={'button--sign-in-sign-up'}
-        >
-          <img src={google} alt="gl" className="google-logo" />
-          <span className="google-text">Sign in with Google</span>
-        </Button>
+        Sign up to Monthly Budget and all other <a href="/">aidandang.com</a>{' '}
+        applications.
       </div>
 
       <div className="sign-in-sign-up__separator">
         <span className="sign-in-sign-up__separator--left"></span>
-        <span className="sign-in-sign-up__separator--or">or</span>
+        <span className="sign-in-sign-up__separator--or">x</span>
         <span className="sign-in-sign-up__separator--right"></span>
       </div>
 
@@ -50,6 +38,7 @@ export const SignIn = ({ mode }) => (
           />
         </div>
       </div>
+
       <div className="sign-in-sign-up__password">
         <label htmlFor="sign-in-password">Password</label>
         <div className="sign-in-sign-up__input">
@@ -61,18 +50,31 @@ export const SignIn = ({ mode }) => (
           />
         </div>
       </div>
+
+      <div className="sign-in-sign-up__password">
+        <label htmlFor="sign-in-password">Confirmed Password</label>
+        <div className="sign-in-sign-up__input">
+          <input
+            type="password"
+            id="sign-in-confirmed-password"
+            name="password"
+            className="input input--sign-in-sign-up"
+          />
+        </div>
+      </div>
+
       <div className="sign-in-sign-up__email">
         <Button
           mode={mode}
           size={'large'}
           otherStyle={'button--sign-in-sign-up'}
         >
-          Sign in with Email
+          Sign up with Email
         </Button>
       </div>
 
       <div className="sign-in-sign-up__terms">
-        By clicking Sign In with Email, you agree to our{' '}
+        By clicking Sign Up with Email, you agree to our{' '}
         <a href="/" target="_blank">
           Terms
         </a>
@@ -83,18 +85,7 @@ export const SignIn = ({ mode }) => (
         .
       </div>
 
-      <div className="sign-in-sign-up__sign-up">
-        <span>
-          <a id="ius-link-account-recovery" href="/">
-            Forgot your email or password?
-          </a>
-        </span>
-        <br />
-        <span>
-          New to Monthly Budget?{' '}
-          <a href="http://quickbooks.intuit.com/signup/">Sign up</a>
-        </span>
-      </div>
+      <div className="sign-in-sign-up__bottom"></div>
     </div>
   </div>
 );

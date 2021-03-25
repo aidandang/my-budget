@@ -1,4 +1,4 @@
-.sign-in-box {
+.sign-in-sign-up {
   margin: 2rem auto;
   max-width: 32rem;
   padding: 1.5rem 2.5rem;
@@ -83,9 +83,13 @@
   }
 
   &__sign-up {
-    margin: 2rem 0;
+    margin: 2rem 0 3rem 0;
     font-size: 1.2rem;
     text-align: center;
+  }
+
+  &__bottom {
+    margin-bottom: 3rem;
   }
 }
 
@@ -97,10 +101,10 @@
   vertical-align: middle;
 }
 
-.button--sign-in {
+.button--sign-in-sign-up {
   width: 100%;
 }
 
-.input--sign-in {
+.input--sign-in-sign-up {
   width: 100%;
 }
