@@ -4,70 +4,120 @@ import SignInRender from './SignInRender';
 import { signInWithGoogle } from '../../../firebase/firebase.utils';
 import { Button } from '../../common/Button';
 import { Input } from '../../common/Input';
+import google from '../../../assets/google.svg';
 
-const initialState = {
-  email: '',
-  password: '',
-};
+import { compose } from 'redux';
+import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import * as actions from '../../../state/actions';
 
 class SignInContainer extends Component {
-  state = initialState;
-
-  handleChange = (e) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    this.setState((prevState) => ({
-      ...prevState,
-      ...initialState,
-    }));
+  onSubmit = (formProps) => {
+    this.props.signin(formProps, () => {
+      this.props.history.push('/dashboard');
+    });
   };
 
   render() {
+    const { handleSubmit, pristine, submitting, invalid } = this.props;
+
     return (
-      <SignInRender signInWithGoogle={signInWithGoogle}>
-        <div className="sign-in-sign-up__input-box">
-          <Input
-            type="email"
-            id="sign-in-user-id"
-            size={'large'}
-            label={'Email'}
-            name="email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
-        </div>
-        <div className="sign-in-sign-up__input-box">
-          <Input
-            type="password"
-            id="sign-in-password"
-            size={'large'}
-            label={'Password'}
-            name="password"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
-        </div>
-        <div className="sign-in-sign-up__email">
+      <SignInRender>
+        <div className="sign-in-sign-up__google">
           <Button
-            id="sign-in-button"
-            mode={'primary'}
+            mode={'secondary'}
             size={'large'}
             otherStyle={'button--sign-in-sign-up'}
-            onClick={this.handleSubmit}
+            onClick={(e) => {
+              e.preventDefault();
+              signInWithGoogle();
+            }}
           >
-            Sign in with Email
+            <img src={google} alt="gl" className="google-logo" />
+            <span className="google-text">Sign in with Google</span>
           </Button>
         </div>
+
+        <div className="sign-in-sign-up__separator">
+          <span className="sign-in-sign-up__separator--left"></span>
+          <span className="sign-in-sign-up__separator--or">or</span>
+          <span className="sign-in-sign-up__separator--right"></span>
+        </div>
+
+        <form
+          className="sign-in-sign-up__form"
+          onSubmit={handleSubmit(this.onSubmit)}
+        >
+          {this.props.errorMessage && (
+            <div className="sign-in-sign-up__error">
+              {this.props.errorMessage}
+            </div>
+          )}
+
+          <div className="sign-in-sign-up__input-box">
+            <Field
+              name="email"
+              type="email"
+              component={Input}
+              label="Email"
+              size="large"
+              autoComplete="none"
+            />
+          </div>
+          <div className="sign-in-sign-up__input-box">
+            <Field
+              name="password"
+              type="password"
+              component={Input}
+              label="Password"
+              size="large"
+              autoComplete="none"
+            />
+          </div>
+          <div className="sign-in-sign-up__email">
+            <Button
+              size={'large'}
+              otherStyle={'button--sign-in-sign-up'}
+              disabled={invalid || submitting || pristine}
+            >
+              Sign in with Email
+            </Button>
+          </div>
+        </form>
       </SignInRender>
     );
   }
 }
 
-export default SignInContainer;
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
+  if (!values.password) {
+    errors.password = 'Required';
+  }
+
+  return errors;
+};
+
+const warn = (values) => {
+  const warnings = {};
+  return warnings;
+};
+
+const mapStateToProps = (state) => ({
+  errorMessage: state.auth.errorMessage,
+});
+
+export default compose(
+  connect(mapStateToProps, actions),
+  reduxForm({
+    form: 'signin',
+    validate,
+    warn,
+  })
+)(SignInContainer);

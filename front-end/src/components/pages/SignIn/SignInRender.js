@@ -1,10 +1,8 @@
 import React from 'react';
 
 import logo from '../../../assets/logo.svg';
-import google from '../../../assets/google.svg';
-import { Button } from '../../common/Button';
 
-const SignInRender = ({ signInWithGoogle, children }) => {
+const SignInRender = ({ children }) => {
   return (
     <div className="container">
       <div className="sign-in-sign-up">
@@ -21,27 +19,6 @@ const SignInRender = ({ signInWithGoogle, children }) => {
         <div className="sign-in-sign-up__subtitle">
           Sign in with either your Google account or{' '}
           <a href="/">Monthly Budget</a> application account.
-        </div>
-
-        <div className="sign-in-sign-up__google">
-          <Button
-            mode={'secondary'}
-            size={'large'}
-            otherStyle={'button--sign-in-sign-up'}
-            onClick={(e) => {
-              e.preventDefault();
-              signInWithGoogle();
-            }}
-          >
-            <img src={google} alt="gl" className="google-logo" />
-            <span className="google-text">Sign in with Google</span>
-          </Button>
-        </div>
-
-        <div className="sign-in-sign-up__separator">
-          <span className="sign-in-sign-up__separator--left"></span>
-          <span className="sign-in-sign-up__separator--or">or</span>
-          <span className="sign-in-sign-up__separator--right"></span>
         </div>
 
         {children}

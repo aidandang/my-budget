@@ -1,6 +1,13 @@
 import React from 'react';
 
-export const Button = ({ mode, size, otherStyle, children, ...props }) => {
+export const Button = ({
+  mode,
+  size,
+  otherStyle,
+  disabled,
+  children,
+  ...props
+}) => {
   return (
     <button
       type="button"
@@ -8,6 +15,7 @@ export const Button = ({ mode, size, otherStyle, children, ...props }) => {
         'button',
         `button--${size ? size : 'medium'}`,
         `button--${mode ? mode : 'primary'}`,
+        `${disabled ? 'button--disabled' : null}`,
         otherStyle ? otherStyle : null,
       ].join(' ')}
       {...props}

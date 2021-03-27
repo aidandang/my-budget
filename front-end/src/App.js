@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { LandingPage } from './components/pages/Landing';
+import { Container } from './components/common/Container';
 import { SignInPage } from './components/pages/SignIn';
 import { SignUpPage } from './components/pages/SignUp';
 import { auth } from './firebase/firebase.utils';
 
-const initialState = {
-  currentUser: null,
-};
+import { connect } from 'react-redux';
+import * as actions from './state/actions';
 
 class App extends Component {
-  state = initialState;
-
   unsubcribeFromAuth = null;
 
   componentDidMount() {
     this.unsubcribeFromAuth = auth.onAuthStateChanged((userAuth) => {
-      this.setState((prevState) => ({
-        ...prevState,
-        currentUser: userAuth,
-      }));
+      this.props.authChanged(userAuth);
     });
   }
 
@@ -33,10 +27,10 @@ class App extends Component {
       <Switch>
         <Route exact path="/sign-in" component={SignInPage} />
         <Route exact path="/sign-up" component={SignUpPage} />
-        <Route path="/" component={LandingPage} />
+        <Route path="/" component={Container} />
       </Switch>
     );
   }
 }
 
-export default App;
+export default connect(null, actions)(App);
