@@ -1,8 +1,12 @@
-import { SAVE_USER } from './types';
+import { auth } from '../../firebase/firebase.utils';
+import { AUTH_USER, AUTH_ERROR } from './types';
 
-export function saveUser(user) {
-  return {
-    type: SAVE_USER,
-    payload: user,
-  };
-}
+export const signup = ({ email, password }) => async (dispatch) => {
+  try {
+    const userAuth = await auth.createUserWithEmailAndPassword(email, password);
+
+    dispatch({ type: AUTH_USER, payload: userAuth });
+  } catch (err) {
+    dispatch({ type: AUTH_ERROR, payload: err.message });
+  }
+};

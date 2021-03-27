@@ -3,7 +3,7 @@ import React from 'react';
 export default function Button({ mode, size, otherStyle, children, ...props }) {
   return (
     <button
-      type="button"
+      type="submit"
       className={[
         'button',
         `button--${size ? size : 'medium'}`,

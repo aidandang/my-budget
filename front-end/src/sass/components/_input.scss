@@ -7,6 +7,7 @@
   border: solid 1px var(--color-light);
   color: inherit;
   border-radius: 0.5em;
+  outline: none;
 
   &--small {
     font-size: 1.2rem;
@@ -23,6 +24,10 @@
   &--disabled {
     background-color: var(--color-light);
   }
+}
+
+.input:focus {
+  border: solid 1px lightblue;
 }
 
 .input-label {

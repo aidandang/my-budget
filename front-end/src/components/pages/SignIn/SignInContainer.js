@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../../state/actions';
 
 import SignInRender from './SignInRender';
 import { signInWithGoogle } from '../../../firebase/firebase.utils';
@@ -72,4 +70,4 @@ class SignInContainer extends Component {
   }
 }
 
-export default connect(null, actions)(SignInContainer);
+export default SignInContainer;
