@@ -36,10 +36,15 @@
     border: 2px solid lightblue;
   }
 
-  &--disable {
-    background-color: #d9d9d9;
+  &--disabled {
+    background-color: rgba(101, 147, 166, 0.8);
     border: 2px solid #d9d9d9;
     color: #ffffff;
+    cursor: default;
+  }
+
+  &--disabled:hover {
+    border: 2px solid #d9d9d9;
   }
 
   &--small {

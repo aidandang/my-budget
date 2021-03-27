@@ -5,7 +5,7 @@ import { Button } from '../../common/Button';
 import { Input } from '../../common/Input';
 
 import { compose } from 'redux';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../../../state/actions';
 
@@ -15,7 +15,7 @@ class SignUpContainer extends Component {
   };
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, pristine, submitting, invalid } = this.props;
 
     return (
       <SignUpRender>
@@ -23,45 +23,49 @@ class SignUpContainer extends Component {
           className="sign-in-sign-up__form"
           onSubmit={handleSubmit(this.onSubmit)}
         >
+          {this.props.errorMessage && (
+            <div className="sign-in-sign-up__error">
+              {this.props.errorMessage}
+            </div>
+          )}
+
           <div className="sign-in-sign-up__input-box">
-            <label className="input-label--large">Display Name</label>
-            <Input
-              type="text"
-              name={'displayName'}
-              size={'large'}
-              autoComplete="none"
-            />
-          </div>
-          <div className="sign-in-sign-up__input-box">
-            <label className="input-label--large">Email</label>
-            <Input
+            <Field
+              name="email"
               type="email"
-              name={'email'}
-              size={'large'}
+              component={Input}
+              label="Email"
+              size="large"
               autoComplete="none"
             />
           </div>
           <div className="sign-in-sign-up__input-box">
-            <label className="input-label--large">Password</label>
-            <Input
+            <Field
+              name="password"
               type="password"
-              name={'password'}
-              size={'large'}
+              component={Input}
+              label="Password"
+              size="large"
               autoComplete="none"
             />
           </div>
           <div className="sign-in-sign-up__input-box">
-            <label className="input-label--large">Confirm Password</label>
-            <Input
+            <Field
+              name="passwordConfirm"
               type="password"
-              name={'passwordConfirm'}
-              size={'large'}
+              component={Input}
+              label="Confirm Password"
+              size="large"
               autoComplete="none"
             />
           </div>
-          <div>{this.props.errorMessage}</div>
+
           <div className="sign-in-sign-up__email">
-            <Button size={'large'} otherStyle={'button--sign-in-sign-up'}>
+            <Button
+              size={'large'}
+              otherStyle={'button--sign-in-sign-up'}
+              disabled={invalid || submitting || pristine}
+            >
               Sign up with Email
             </Button>
           </div>
@@ -71,6 +75,31 @@ class SignUpContainer extends Component {
   }
 }
 
+const validate = (values) => {
+  const errors = {};
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
+  if (!values.password) {
+    errors.password = 'Required';
+  } else if (values.password.length < 8) {
+    errors.password = 'Must be 8 characters or more';
+  }
+  if (!values.passwordConfirm) {
+    errors.passwordConfirm = 'Required';
+  } else if (values.password !== values.passwordConfirm) {
+    errors.passwordConfirm = 'Confirm password does not match';
+  }
+  return errors;
+};
+
+export const warn = (values) => {
+  const warnings = {};
+  return warnings;
+};
+
 const mapStateToProps = (state) => ({
   errorMessage: state.auth.errorMessage,
 });
@@ -79,5 +108,7 @@ export default compose(
   connect(mapStateToProps, actions),
   reduxForm({
     form: 'signup',
+    validate,
+    warn,
   })
 )(SignUpContainer);

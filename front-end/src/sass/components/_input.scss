@@ -43,3 +43,15 @@
     font-size: 1.6rem;
   }
 }
+
+.input-error {
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: var(--color-danger);
+}
+
+.input-warning {
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: var(--color-warning);
+}
