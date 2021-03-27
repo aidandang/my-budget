@@ -10,6 +10,15 @@
   flex-direction: column;
   align-items: center;
 
+  &__error {
+    width: 100%;
+    font-size: 1.4rem;
+    margin: 1.5rem 0;
+    padding: 1.5rem 2.5rem;
+    background-color: var(--color-danger-light);
+    color: var(--color-danger);
+  }
+
   &__logo-box {
     margin: 1rem 0;
 

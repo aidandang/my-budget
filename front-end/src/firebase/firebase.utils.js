@@ -12,11 +12,6 @@ const config = {
   measurementId: 'G-EGENZDK5TH',
 };
 
-/*
-  This method gets authorized user information and additional Data
-  from Google Firebase Auth
-*/
-
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
