@@ -12,12 +12,14 @@ export const signup = ({ email, password }, callback) => async (dispatch) => {
   }
 };
 
-export const signin = ({ email, password }, callback) => async (dispatch) => {
+export const signin = ({ email, password }, goToDashboard) => async (
+  dispatch
+) => {
   try {
     const userAuth = await auth.signInWithEmailAndPassword(email, password);
     dispatch({ type: AUTH_USER, payload: userAuth });
 
-    callback();
+    goToDashboard();
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err.message });
   }

@@ -24,13 +24,21 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/sign-in" component={SignInPage} />
-        <Route exact path="/sign-up" component={SignUpPage} />
-        <Route path="/" component={Container} />
-      </Switch>
+      <>
+        {this.props.isAuthChecked && (
+          <Switch>
+            <Route exact path="/sign-in" component={SignInPage} />
+            <Route exact path="/sign-up" component={SignUpPage} />
+            <Route path="/" component={Container} />
+          </Switch>
+        )}
+      </>
     );
   }
 }
 
-export default connect(null, actions)(App);
+const mapStateToProps = (state) => ({
+  isAuthChecked: state.auth.isAuthChecked,
+});
+
+export default connect(mapStateToProps, actions)(App);

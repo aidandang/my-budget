@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { auth } from '../../../firebase/firebase.utils';
+
 class Header extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Redux Auth</Link>
-        <Link to="/sign-up">Sign Up</Link>
-        <Link to="/sign-in">Sign In</Link>
+        {this.props.currentUser ? (
+          <Link
+            to="/"
+            onClick={(e) => {
+              e.preventDefault();
+              auth.signOut();
+            }}
+          >
+            Sign Out
+          </Link>
+        ) : (
+          <Link to="/sign-in">Sign In</Link>
+        )}
       </div>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  currentUser: state.auth.currentUser,
+});
+
+export default connect(mapStateToProps)(Header);

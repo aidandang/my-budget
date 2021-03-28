@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import withRequiredAuth from '../../common/HOC/withRequiredAuth';
 import DashboardRender from './DashboardRender';
 
 class DashboardContainer extends Component {
@@ -11,4 +12,4 @@ class DashboardContainer extends Component {
   }
 }
 
-export default DashboardContainer;
+export default withRequiredAuth(DashboardContainer);
