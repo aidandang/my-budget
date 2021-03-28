@@ -20,7 +20,7 @@ Secondary.args = {
 
 export const Disable = Template.bind({});
 Disable.args = {
-  mode: 'disable',
+  disabled: true,
 };
 
 export const Large = Template.bind({});

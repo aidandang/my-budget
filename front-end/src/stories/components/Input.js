@@ -1,26 +1,28 @@
 import React from 'react';
 
 export const Input = ({
-  type,
-  size,
+  col,
   label,
-  otherStyle,
-  disabled,
-  ...props
+  placeholder,
+  size,
+  type,
+  touched,
+  error,
+  warning,
 }) => {
   return (
-    <label className={`input-label input--${size ? size : 'medium'}`}>
-      {label ? label : null}
+    <div className={col ? `input-box--${col}` : 'input-box--four'}>
+      <label className={`input-label--${size ? size : 'medium'}`}>
+        {label ? label : 'Primary'}
+      </label>
       <input
-        type={type ? type : 'text'}
-        className={[
-          'input',
-          `input--${size ? size : 'medium'}`,
-          otherStyle ? otherStyle : null,
-          disabled ? 'input--disabled' : null,
-        ].join(' ')}
-        {...props}
+        placeholder={placeholder ? placeholder : null}
+        type={type}
+        className={['input', `input--${size ? size : 'medium'}`].join(' ')}
       />
-    </label>
+      {touched &&
+        ((error && <span className="input-error">{error}</span>) ||
+          (warning && <span className="input-warning">{warning}</span>))}
+    </div>
   );
 };

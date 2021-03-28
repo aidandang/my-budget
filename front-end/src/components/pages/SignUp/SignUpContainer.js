@@ -11,7 +11,9 @@ import * as actions from '../../../state/actions';
 
 class SignUpContainer extends Component {
   onSubmit = (formProps) => {
-    this.props.signup(formProps);
+    this.props.signup(formProps, () => {
+      this.props.history.push('/dashboard');
+    });
   };
 
   render() {
@@ -95,7 +97,7 @@ const validate = (values) => {
   return errors;
 };
 
-export const warn = (values) => {
+const warn = (values) => {
   const warnings = {};
   return warnings;
 };

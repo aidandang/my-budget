@@ -13,12 +13,6 @@ const Template = (args) => <Input {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {};
 
-export const Disable = Template.bind({});
-Disable.args = {
-  disabled: true,
-  label: 'Disabled',
-};
-
 export const Large = Template.bind({});
 Large.args = {
   size: 'large',
