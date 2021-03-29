@@ -10,19 +10,34 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <div className="dropdown">
-          <button className="dropbtn dropbtn--header">
+        <div class="navigation">
+          <input
+            id="navi-toggle"
+            type="checkbox"
+            className="navigation__checkbox"
+          />
+          <label htmlFor="navi-toggle" className="navigation__button">
             <i className="fas fa-bars"></i>
-          </button>
-          <div className="dropdown-content">
-            <Link to="/dashboard" className="dropdown-content--first">
-              Dashboard
-            </Link>
-            <Link to="/budgets">Budgets</Link>
-            <Link to="/transactions" className="dropdown-content--last">
-              Transactions
-            </Link>
-          </div>
+          </label>
+          <nav className="navigation__nav">
+            <ul className="navigation__list">
+              <li className="navigation__item">
+                <Link to="/dashboard" className="navigation__link">
+                  Dashboard
+                </Link>
+              </li>
+              <li className="navigation__item">
+                <Link to="/budgets" className="navigation__link">
+                  Budgets
+                </Link>
+              </li>
+              <li className="navigation__item">
+                <Link to="/transations" className="navigation__link">
+                  Transactions
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
         <div className="header__logo-box">
           <a href="/" alt="home">

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
 
 import { Container } from './components/common/Container';
-import { SignInPage } from './components/pages/SignIn';
-import { SignUpPage } from './components/pages/SignUp';
 import { auth } from './firebase/firebase.utils';
 
 import { connect } from 'react-redux';
@@ -23,17 +20,7 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <>
-        {this.props.isAuthChecked && (
-          <Switch>
-            <Route exact path="/sign-in" component={SignInPage} />
-            <Route exact path="/sign-up" component={SignUpPage} />
-            <Route path="/" component={Container} />
-          </Switch>
-        )}
-      </>
-    );
+    return <>{this.props.isAuthChecked && <Container />}</>;
   }
 }
 
