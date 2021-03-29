@@ -6,7 +6,7 @@ export default (ChildComponent) => {
   class ComposedComponent extends Component {
     shouldNavigateAway() {
       if (!this.props.currentUser) {
-        this.props.history.push('/');
+        this.props.history.push('/sign-in');
       }
     }
 

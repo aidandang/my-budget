@@ -1,19 +1,10 @@
 import React from 'react';
-
-import logo from '../../../assets/logo.svg';
+import { Link } from 'react-router-dom';
 
 const SignInRender = ({ children }) => {
   return (
     <div className="container">
       <div className="sign-in-sign-up">
-        <div className="sign-in-sign-up__logo-box">
-          <img
-            src={logo}
-            alt="logo"
-            className="sign-in-sign-up__logo-box__logo"
-          />
-        </div>
-
         <h2 className="sign-in-sign-up__title">Sign In</h2>
 
         <div className="sign-in-sign-up__subtitle">
@@ -43,8 +34,7 @@ const SignInRender = ({ children }) => {
           </span>
           <br />
           <span>
-            New to Monthly Budget?{' '}
-            <a href="http://quickbooks.intuit.com/signup/">Sign up</a>
+            New to Monthly Budget? <Link to="/sign-up">Sign up</Link>
           </span>
         </div>
       </div>
