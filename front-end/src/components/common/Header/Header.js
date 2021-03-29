@@ -10,7 +10,7 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <div class="navigation">
+        <div className="navigation">
           <input
             id="navi-toggle"
             type="checkbox"
