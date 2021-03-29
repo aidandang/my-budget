@@ -1,18 +1,8 @@
 import React from 'react';
 
-import logo from '../../../assets/logo.svg';
-
 const SignUpRender = ({ children }) => (
   <div className="container">
     <div className="sign-in-sign-up">
-      <div className="sign-in-sign-up__logo-box">
-        <img
-          src={logo}
-          alt="logo"
-          className="sign-in-sign-up__logo-box__logo"
-        />
-      </div>
-
       <h2 className="sign-in-sign-up__title">Sign Up</h2>
 
       <div className="sign-in-sign-up__subtitle">
