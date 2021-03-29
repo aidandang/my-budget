@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import { Container } from './components/common/Container';
 import { auth } from './firebase/firebase.utils';
@@ -20,7 +21,11 @@ class App extends Component {
   }
 
   render() {
-    return <>{this.props.isAuthChecked && <Container />}</>;
+    return (
+      <>
+        {this.props.isAuthChecked && <Route path="/" component={Container} />}
+      </>
+    );
   }
 }
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { auth } from '../../../firebase/firebase.utils';
@@ -10,7 +9,7 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <div class="navigation">
+        <div className="navigation">
           <input
             id="navi-toggle"
             type="checkbox"
@@ -22,19 +21,29 @@ class Header extends Component {
           <nav className="navigation__nav">
             <ul className="navigation__list">
               <li className="navigation__item">
-                <Link to="/dashboard" className="navigation__link">
+                <a href="/dashboard" className="navigation__link">
                   Dashboard
-                </Link>
+                </a>
               </li>
               <li className="navigation__item">
-                <Link to="/budgets" className="navigation__link">
+                <a href="/budgets" className="navigation__link">
                   Budgets
-                </Link>
+                </a>
               </li>
               <li className="navigation__item">
-                <Link to="/transations" className="navigation__link">
+                <a href="/transations" className="navigation__link">
                   Transactions
-                </Link>
+                </a>
+              </li>
+              <li className="navigation__item">
+                <a href="/about" className="navigation__link">
+                  About
+                </a>
+              </li>
+              <li className="navigation__item">
+                <a href="https://aidandang.com" className="navigation__link">
+                  Portfolio
+                </a>
               </li>
             </ul>
           </nav>
@@ -46,19 +55,19 @@ class Header extends Component {
         </div>
         <div className="header__auth-box">
           {this.props.currentUser ? (
-            <Link
-              to="/"
+            <a
+              href="/"
               onClick={(e) => {
                 e.preventDefault();
                 auth.signOut();
               }}
             >
               <i className="fas fa-sign-out-alt"></i>
-            </Link>
+            </a>
           ) : (
-            <Link to="/sign-in">
+            <a href="/sign-in">
               <i className="fas fa-sign-in-alt"></i>
-            </Link>
+            </a>
           )}
         </div>
       </header>

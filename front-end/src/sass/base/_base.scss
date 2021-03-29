@@ -20,3 +20,10 @@ body {
   line-height: 1.6;
   font-size: 1.6rem;
 }
+
+a {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  color: var(--color-primary);
+}
