@@ -1,9 +1,11 @@
-const express = require('express')
+const express = require('express');
+const morgan = require('morgan');
 
-const app = express()
+const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hi there, from Monthly Budget API')
-})
+const router = require('./router');
 
-module.exports = app
+app.use(morgan('dev'));
+router(app);
+
+module.exports = app;
