@@ -1,5 +1,5 @@
+const auth = require('./controllers/authController');
+
 module.exports = function (app) {
-  app.get('/', (req, res, next) => {
-    res.send('Hi there, from Monthly Budget API');
-  });
+  app.post('/signup', auth.signup);
 };
