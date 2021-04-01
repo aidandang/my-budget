@@ -65,6 +65,7 @@
     background-color: var(--color-black);
     z-index: 1500;
     opacity: 0;
+    display: none;
 
     transition: all 1s;
   }
@@ -112,7 +113,9 @@
   }
 
   &__checkbox:checked ~ &__nav {
+    top: 0;
     opacity: 1;
     height: 100vh;
+    display: block;
   }
 }

@@ -1,11 +1,50 @@
+import axios from 'axios';
 import { auth } from '../../firebase/firebase.utils';
 import { AUTH_USER, AUTH_ERROR } from './types';
+
+const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
+
+export const getReqWithAuth = async (pathname) => {
+  try {
+    const token = await auth.currentUser.getIdToken();
+
+    await axios
+      .create({ headers: { Authorization: `Bearer ${token}` } })
+      .get(BASE_API_URL + pathname);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const postReqWithAuth = async (pathname, reqBody) => {
+  try {
+    const token = await auth.currentUser.getIdToken();
+
+    await axios
+      .create({ headers: { Authorization: `Bearer ${token}` } })
+      .post(BASE_API_URL + pathname, reqBody);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const patchReqWithAuth = async (pathname, reqBody) => {
+  try {
+    const token = await auth.currentUser.getIdToken();
+
+    await axios
+      .create({ headers: { Authorization: `Bearer ${token}` } })
+      .patch(BASE_API_URL + pathname, reqBody);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const signup = ({ email, password }, callback) => async (dispatch) => {
   try {
     const userAuth = await auth.createUserWithEmailAndPassword(email, password);
-    dispatch({ type: AUTH_USER, payload: userAuth });
 
+    dispatch({ type: AUTH_USER, payload: userAuth });
     callback();
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err.message });
