@@ -9,50 +9,30 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <div className="navigation">
-          <input
-            id="navi-toggle"
-            type="checkbox"
-            className="navigation__checkbox"
-          />
-          <label htmlFor="navi-toggle" className="navigation__button">
-            <i className="fas fa-bars"></i>
-          </label>
-          <nav className="navigation__nav">
-            <ul className="navigation__list">
-              <li className="navigation__item">
-                <a href="/dashboard" className="navigation__link">
-                  Dashboard
-                </a>
-              </li>
-              <li className="navigation__item">
-                <a href="/budgets" className="navigation__link">
-                  Budgets
-                </a>
-              </li>
-              <li className="navigation__item">
-                <a href="/transations" className="navigation__link">
-                  Transactions
-                </a>
-              </li>
-              <li className="navigation__item">
-                <a href="/about" className="navigation__link">
-                  About
-                </a>
-              </li>
-              <li className="navigation__item">
-                <a href="https://aidandang.com" className="navigation__link">
-                  Portfolio
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div className="header__logo-box">
-          <a href="/" alt="home">
-            <img src={logo} className="header__logo-box__logo" alt="logo" />
-          </a>
-        </div>
+        <a href="/" className="header__bars-box" alt="menu">
+          <i className="fas fa-bars"></i>
+        </a>
+
+        <a href="/" className="header__logo-box">
+          <img src={logo} className="header__logo-box__logo" alt="logo" />
+        </a>
+
+        <nav className="header__nav-box">
+          <ul>
+            <li>
+              <a href="/dashboard">Dashboard</a>
+            </li>
+            <li>
+              <a href="/budgets">Budgets</a>
+            </li>
+            <li>
+              <a href="/transations">Transactions</a>
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+          </ul>
+        </nav>
         <div className="header__auth-box">
           {this.props.currentUser ? (
             <a

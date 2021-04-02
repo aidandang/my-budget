@@ -15,74 +15,50 @@ export const Sidebar = () => {
 
   return (
     <div
-      id="st-container"
-      className={`st-container ${isOpen ? 'st-effect-1 st-menu-open' : null}`}
+      id="container"
+      className={`container ${isOpen ? 'menu-effect menu-open' : null}`}
     >
-      <nav className="st-menu st-effect-1" id="menu-1">
-        <h2 className="icon icon-lab">Sidebar</h2>
+      <nav className="menu menu-effect" id="menu-1">
         <ul>
           <li>
-            <a className="icon icon-data" href="/">
-              Data Management
+            <a href="/dashboard" className="navigation__link">
+              Dashboard
             </a>
           </li>
           <li>
-            <a className="icon icon-location" href="/">
-              Location
+            <a href="/budgets" className="navigation__link">
+              Budgets
             </a>
           </li>
           <li>
-            <a className="icon icon-study" href="/">
-              Study
+            <a href="/transations" className="navigation__link">
+              Transactions
             </a>
           </li>
           <li>
-            <a className="icon icon-photo" href="/">
-              Collections
+            <a href="/about" className="navigation__link">
+              About
             </a>
           </li>
           <li>
-            <a className="icon icon-wallet" href="/">
-              Credits
+            <a href="https://aidandang.com" className="navigation__link">
+              Portfolio
             </a>
           </li>
         </ul>
       </nav>
 
-      <div className="st-pusher" onClick={handleContentClick}>
-        <div className="st-content">
+      <div className="pusher" onClick={handleContentClick}>
+        <div className="content">
           {/* <!-- this is the wrapper for the content --> */}
-          <div className="st-content-inner">
+          <div className="content-inner">
             {/* <!-- extra div for emulating position:fixed of the menu --> */}
             {/* <!-- Top Navigation --> */}
-            <header className="codrops-header">
-              <h1>
-                Sidebar Transitions{' '}
-                <span>Transition effects for off-canvas views</span>
-              </h1>
-            </header>
-            <div className="main clearfix">
-              <div id="st-trigger-effects" className="column">
-                <button name="st-effect-1" onClick={toggle}>
-                  Slide in on top
-                </button>
-              </div>
-              <div className="column">
-                <p>
-                  Sidebar menus or off-canvas navigations can be revealed in
-                  many creative ways.
-                </p>
-                <p>
-                  Here is some inspiration for showing them in style using CSS
-                  transitions.
-                </p>
-              </div>
-            </div>
-            {/* <!-- /main --> */}
+            <button name="menu-effect" onClick={toggle}>
+              Slide in on top
+            </button>
           </div>
-          {/* <!-- /st-content-inner --> */}
         </div>
-        {/* <!-- /st-content --> */}
       </div>
     </div>
   );
