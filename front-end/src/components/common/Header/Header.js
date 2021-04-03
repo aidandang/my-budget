@@ -13,11 +13,14 @@ class Header extends Component {
           <i className="fas fa-bars"></i>
         </a>
 
-        <a href="/" className="header__logo-box">
-          <img src={logo} className="header__logo-box__logo" alt="logo" />
-        </a>
-
         <nav className="header__nav-box">
+          <a href="/" className="header__nav-box__logo-box">
+            <img
+              src={logo}
+              className="header__nav-box__logo-box__logo"
+              alt="logo"
+            />
+          </a>
           <ul>
             <li>
               <a href="/dashboard">Dashboard</a>
