@@ -9,7 +9,15 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <a href="/" className="header__bars-box" alt="menu">
+        <a
+          href="/"
+          className="header__bars-box"
+          alt="menu"
+          onClick={(e) => {
+            e.preventDefault();
+            this.props.toggle();
+          }}
+        >
           <i className="fas fa-bars"></i>
         </a>
 

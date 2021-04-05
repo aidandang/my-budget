@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
   background-color: var(--color-white);
   width: 100%;
@@ -29,7 +29,7 @@
 
     &__logo-box {
       // adds top space to logo for alignment
-      padding-top: 7px;
+      padding-top: 0.7rem;
 
       a {
         text-decoration: none;
