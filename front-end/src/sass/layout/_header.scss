@@ -1,17 +1,16 @@
 .header {
-  padding: 0.5rem 1.5rem;
+  padding: 0 1.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: sticky;
+  background-color: rgba(0, 0, 0, 1);
+  backdrop-filter: blur(1rem);
   top: 0;
-  background-color: var(--color-white);
   width: 100%;
-
-  @media screen and (min-width: 600px) {
-    background-color: var(--color-black);
-  }
+  height: 5rem;
+  z-index: 97;
 
   &__bars-box {
     display: inline-block;
@@ -29,7 +28,7 @@
 
     &__logo-box {
       // adds top space to logo for alignment
-      padding-top: 0.7rem;
+      padding-top: 0.6rem;
 
       a {
         text-decoration: none;
@@ -56,6 +55,8 @@
         margin-right: 2rem;
 
         a {
+          font-weight: 300;
+          text-transform: uppercase;
           text-decoration: none;
         }
       }

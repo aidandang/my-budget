@@ -44,6 +44,7 @@ class Header extends Component {
             </li>
           </ul>
         </nav>
+
         <div className="header__auth-box">
           {this.props.currentUser ? (
             <a
