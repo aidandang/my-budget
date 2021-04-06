@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Header } from '../Header';
+import { Footer } from '../Footer';
 import { Switch, Route } from 'react-router-dom';
 import { LandingPage } from '../../pages/Landing';
 import { NotFoundPage } from '../../pages/NotFound';
@@ -103,6 +104,7 @@ class Container extends Component {
                 Slide in on top
               </button> */}
           </div>
+          <Footer />
         </div>
       </div>
     );
