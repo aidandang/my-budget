@@ -7,8 +7,6 @@ import { DashboardPage } from '../../pages/Dashboard';
 import { SignInPage } from '../../pages/SignIn';
 import { SignUpPage } from '../../pages/SignUp';
 
-import close from '../../../assets/close.svg';
-
 class Container extends Component {
   state = {
     isOpen: false,
@@ -53,11 +51,7 @@ class Container extends Component {
               this.handleContentClick();
             }}
           >
-            <img
-              src={close}
-              className="header__nav-box__logo-box__logo"
-              alt="logo"
-            />
+            &nbsp;
           </span>
           <ul>
             <li>
@@ -91,12 +85,12 @@ class Container extends Component {
         <div
           className="pusher"
           onClick={(e) => {
-            e.preventDefault();
+            e.stopPropagation();
             this.handleContentClick();
           }}
         >
+          <Header toggle={this.toggle} />
           <div className="content">
-            <Header toggle={this.toggle} />
             <Switch>
               <Route path="/" exact component={LandingPage} />
               <Route path="/sign-in" exact component={SignInPage} />
