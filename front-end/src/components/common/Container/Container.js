@@ -99,10 +99,6 @@ class Container extends Component {
               <Route path="/dashboard" exact component={DashboardPage} />
               <Route path="/" component={NotFoundPage} />
             </Switch>
-
-            {/* <button name="menu-effect" onClick={toggle}>
-                Slide in on top
-              </button> */}
           </div>
           <Footer />
         </div>

@@ -4,6 +4,23 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <div className="footer">
+        <div className="footer__about">
+          <p>
+            <small>
+              <i>
+                "If you want to make your money work for you, you have to know
+                how money works - Dave Ramsey."
+              </i>
+            </small>
+          </p>
+          <p>
+            <small>
+              I made this application to help us managing our individual
+              financial. Signed in users can plan monthly cash flow, allocate
+              spending and income, and record daily transactions.
+            </small>
+          </p>
+        </div>
         <hr className="footer__line" />
         <div className="footer__content">
           <div className="footer__content__info">
@@ -41,7 +58,7 @@ const Footer = () => {
               </span>
               <span>
                 <a href="https://www.facebook.com/aidan2303">
-                  <i className="fab fa-facebook-f"></i>
+                  <i className="fab fa-twitter"></i>
                 </a>
               </span>
             </p>
