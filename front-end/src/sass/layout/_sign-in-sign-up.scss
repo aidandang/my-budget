@@ -1,7 +1,7 @@
 .sign-in-sign-up {
-  margin: 3.2rem auto;
+  margin: 0 auto;
   max-width: 32rem;
-  padding: 1.5rem 2rem;
+  padding: 0 2rem;
   background-color: var(--color-white);
 
   display: flex;
@@ -18,7 +18,7 @@
   }
 
   &__title {
-    margin-top: 0.5rem;
+    margin-top: 2rem;
   }
 
   &__subtitle {
@@ -72,11 +72,12 @@
     font-size: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    margin-bottom: 2rem;
     text-align: center;
   }
 
   &__sign-up {
-    margin: 2rem 0 3rem 0;
+    margin: 1.6rem 0 3rem 0;
     font-size: 1.2rem;
     text-align: center;
   }

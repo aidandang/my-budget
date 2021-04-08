@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SignInRender = ({ children }) => {
   return (
-    <div className="container">
+    <div className="sign-in-sign-up-container">
       <div className="sign-in-sign-up">
         <h2 className="sign-in-sign-up__title">Sign In</h2>
 
@@ -25,6 +25,8 @@ const SignInRender = ({ children }) => {
           </a>
           .
         </div>
+
+        <hr className="separator" />
 
         <div className="sign-in-sign-up__sign-up">
           <span>
