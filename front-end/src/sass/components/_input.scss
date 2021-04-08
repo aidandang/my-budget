@@ -6,14 +6,15 @@
 
 .input {
   font-family: 'Lato', sans-serif;
-  display: block;
   width: 100%;
   padding: 0.5em 0.5em;
-  background: none;
+  background-color: var(--color-white);
   border: solid 1px var(--color-light);
   color: inherit;
   border-radius: 0.5em;
   outline: none;
+  display: inline-block;
+  appearance: none;
 
   &--small {
     font-size: 1.2rem;
