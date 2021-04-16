@@ -21,7 +21,7 @@ const Footer = () => {
             </small>
           </p>
         </div>
-        <hr className="footer__line" />
+        <hr className="separator separator--light" />
         <div className="footer__content">
           <div className="footer__content__info">
             <h5>Aidan Dang</h5>
@@ -64,7 +64,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <hr className="footer__line" />
+        <hr className="separator separator--light" />
         <div className="footer__copyright">
           <small>
             2021. Monthly Budget Project,{' '}

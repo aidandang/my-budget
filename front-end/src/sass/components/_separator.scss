@@ -1,0 +1,13 @@
+.separator {
+  width: 100%;
+  background-color: var(--color-light);
+  border: none;
+
+  &--light {
+    height: 0.1rem;
+  }
+
+  &--bold {
+    height: 0.2rem;
+  }
+}
