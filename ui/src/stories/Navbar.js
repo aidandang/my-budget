@@ -5,18 +5,6 @@ import logo from './assets/logo.svg';
 
 export const Navbar = ({ user, onLogin, onLogout, onCreateAccount }) => (
   <header className="header">
-    <div className="header__bars">
-      <a
-        href="/"
-        alt="menu"
-        onClick={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <i className="fas fa-bars"></i>
-      </a>
-    </div>
-
     <div className="header__logo">
       <a href="/">
         <img src={logo} className="header__logo__img" alt="logo" />
@@ -38,17 +26,27 @@ export const Navbar = ({ user, onLogin, onLogout, onCreateAccount }) => (
           <a href="/about">About</a>
         </li>
       </ul>
+      <div className="header__nav__auth">
+        <a
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <i className="fas fa-user"></i>
+        </a>
+      </div>
+      <div className="header__nav__bars">
+        <a
+          href="/"
+          alt="menu"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <i className="fas fa-bars"></i>
+        </a>
+      </div>
     </nav>
-
-    <div className="header__auth">
-      <a
-        href="/"
-        onClick={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <i className="fas fa-sign-out-alt"></i>
-      </a>
-    </div>
   </header>
 );
