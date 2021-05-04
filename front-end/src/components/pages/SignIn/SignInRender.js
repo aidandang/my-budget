@@ -5,8 +5,7 @@ const SignInRender = ({ children }) => {
   return (
     <div className="sign-in-sign-up-container">
       <div className="sign-in-sign-up">
-        <h2 className="sign-in-sign-up__title">Sign In</h2>
-
+        <h2 className="sign-in-sign-up__title">Sign in</h2>
         <div className="sign-in-sign-up__subtitle">
           Sign in with either your Google account or{' '}
           <a href="/">Monthly Budget</a> application account.
@@ -15,18 +14,16 @@ const SignInRender = ({ children }) => {
         {children}
 
         <div className="sign-in-sign-up__terms">
-          By clicking Sign In with Email, you agree to our{' '}
+          This site is protected by reCAPTCHA and the Google{' '}
           <a href="/" target="_blank">
-            Terms
-          </a>
-          , and have read our{' '}
+            Privacy Policy
+          </a>{' '}
+          and{' '}
           <a href="/" target="_blank">
-            Global Privacy Statement
-          </a>
-          .
+            Terms of Service
+          </a>{' '}
+          apply.
         </div>
-
-        <hr className="separator" />
 
         <div className="sign-in-sign-up__sign-up">
           <span>
