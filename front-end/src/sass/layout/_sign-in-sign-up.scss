@@ -1,7 +1,7 @@
 .sign-in-sign-up {
   margin: 0 auto;
-  max-width: 32rem;
-  padding: 0 2rem;
+  max-width: 320px;
+  padding: 0;
   background-color: var(--color-white);
 
   display: flex;
@@ -23,15 +23,13 @@
 
   &__subtitle {
     text-align: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-bottom: 1rem;
     font-size: 1.2rem;
+    margin-bottom: 0.5rem;
   }
 
   &__google {
     width: 100%;
-    margin: 1rem 0 1.5rem 0;
+    margin: 1rem 0 1.2rem 0;
   }
 
   &__separator {
@@ -56,7 +54,7 @@
 
   &__input-box {
     width: 100%;
-    margin-top: 0.5rem;
+    margin-top: 0.7rem;
   }
 
   &__input {
@@ -70,14 +68,11 @@
 
   &__terms {
     font-size: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-bottom: 2rem;
     text-align: center;
   }
 
   &__sign-up {
-    margin: 1.6rem 0 3rem 0;
+    margin: 2rem 0 3rem 0;
     font-size: 1.2rem;
     text-align: center;
   }

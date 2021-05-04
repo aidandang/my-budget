@@ -10,24 +10,18 @@ const SignUpRender = ({ children }) => (
         applications.
       </div>
 
-      <div className="sign-in-sign-up__separator">
-        <span className="sign-in-sign-up__separator--left"></span>
-        <span className="sign-in-sign-up__separator--or">x</span>
-        <span className="sign-in-sign-up__separator--right"></span>
-      </div>
-
       {children}
 
       <div className="sign-in-sign-up__terms">
-        By clicking Sign Up with Email, you agree to our{' '}
+        This site is protected by reCAPTCHA and the Google{' '}
         <a href="/" target="_blank">
-          Terms
-        </a>
-        , and have read our{' '}
+          Privacy Policy
+        </a>{' '}
+        and{' '}
         <a href="/" target="_blank">
-          Global Privacy Statement
-        </a>
-        .
+          Terms of Service
+        </a>{' '}
+        apply.
       </div>
 
       <div className="sign-in-sign-up__bottom"></div>
