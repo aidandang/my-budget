@@ -1,0 +1,27 @@
+.container,
+.content {
+  height: 100%;
+}
+
+.header {
+  margin: 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 4.2rem;
+  background-color: black;
+  width: 100%;
+}
+
+.content {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  min-height: calc(100vh - 4.2rem);
+}
+
+@media screen and (min-width: 1024px) {
+  .content {
+    width: 1024px;
+  }
+}
