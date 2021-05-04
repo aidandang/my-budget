@@ -1,7 +1,14 @@
 .navigation {
   position: relative;
-  background-color: black;
+  margin: 0 auto;
   height: 4.2rem;
+  background-color: black;
+}
+
+@media screen and (min-width: 1024px) {
+  .navigation {
+    width: 1024px;
+  }
 }
 
 .navigation a,
@@ -99,7 +106,7 @@
   z-index: 150;
   background-color: black;
 
-  opacity: 0;
+  visibility: hidden;
   height: 0;
 
   transition: all 0.8s;
@@ -112,6 +119,7 @@
   transform: translate(-50%, -50%);
   list-style: none;
   text-align: center;
+  visibility: hidden;
 }
 
 .navigation__link,
@@ -135,8 +143,12 @@
 }
 
 .navigation__checkbox:checked ~ .navigation__nav {
-  opacity: 1;
+  visibility: visible;
   height: 100vh;
+}
+
+.navigation__checkbox:checked ~ .navigation__nav .navigation__list {
+  visibility: visible;
 }
 
 .navigation__icon {

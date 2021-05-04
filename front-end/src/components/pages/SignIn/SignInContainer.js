@@ -80,6 +80,13 @@ class SignInContainer extends Component {
                 autoComplete="none"
               />
             </div>
+            <div className="sign-in-sign-up__input-box">
+              <div className="checkbox--sign-in-sign-up">
+                <input type="checkbox" value="lsRememberMe" id="rememberMe" />
+                <span>&nbsp;</span>
+                <label for="rememberMe">Remember me</label>
+              </div>
+            </div>
             <div className="sign-in-sign-up__email">
               <Button
                 size={'large'}
