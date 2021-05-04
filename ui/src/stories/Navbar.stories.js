@@ -10,7 +10,13 @@ export default {
 const Template = (args) => <Navbar {...args} />;
 
 export const LoggedIn = Template.bind({});
-LoggedIn.args = {};
+LoggedIn.args = {
+  user: {
+    displayName: 'Paul Smith',
+  },
+};
 
 export const LoggedOut = Template.bind({});
-LoggedOut.args = {};
+LoggedOut.args = {
+  user: {},
+};
