@@ -1,0 +1,9 @@
+.dashboard {
+  min-width: 360px;
+}
+.dashboard__month {
+  font-size: x-large;
+  font-weight: 300;
+  margin: 1.5rem 0 1.2rem 0;
+  padding: 0;
+}

@@ -22,3 +22,38 @@ body {
   line-height: 1.6;
   font-size: 1.6rem;
 }
+
+.hidden-title {
+  display: none;
+}
+
+.separator {
+  width: 100%;
+  background-color: grey;
+  border: none;
+}
+
+.separator--light {
+  height: 0.1rem;
+}
+
+.separator--bold {
+  height: 0.2rem;
+}
+
+.note {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+}
+
+.inline-bold {
+  font-weight: 700;
+}
+
+.headline-1 {
+  font-size: large;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-top: 1.3rem;
+}
