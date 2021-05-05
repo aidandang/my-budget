@@ -11,35 +11,57 @@ export const Dashboard = ({ user }) => (
         <span className="inline-bold">May</span> 2021
       </div>
       <hr className="separator separator--light" />
-      <p className="note">
+      <p className="dashboard__note">
         HOW TO USE: Enter your budget for each category in the Summary By
         Category table below. Enter transactions on the Transactions sheet to
         see how your actual spending compares to your budget.
       </p>
       <hr className="separator separator--bold" />
-      <div className="headline-1">Cash Flow Report</div>
-      <table>
-        <tr>
-          <th>Account</th>
-          <th>Projected</th>
-          <th>Actual</th>
-        </tr>
-        <tr>
-          <td>Income</td>
-          <td>$3,600.00</td>
-          <td>$3,800.00</td>
-        </tr>
-        <tr>
-          <td>Expense</td>
-          <td>$3,500.00</td>
-          <td>$3,500.00</td>
-        </tr>
-        <tr>
-          <td>Total Cash</td>
-          <td>$100.00</td>
-          <td>$300.00</td>
-        </tr>
-      </table>
+      <div className="dashboard__headline">Cash Flow Report</div>
+      <div className="dashboard__cashflow">
+        <table className="dashboard__cashflow__table">
+          <tr>
+            <th className="dashboard__cashflow__td">Account</th>
+            <th className="dashboard__cashflow__td dashboard__cashflow__td--right">
+              Projected
+            </th>
+            <th className="dashboard__cashflow__td dashboard__cashflow__td--right">
+              Actual
+            </th>
+          </tr>
+          <tr>
+            <td className="dashboard__cashflow__td">Income</td>
+            <td className="dashboard__cashflow__td dashboard__cashflow__td--right">
+              $3,600.00
+            </td>
+            <td className="dashboard__cashflow__td dashboard__cashflow__td--right">
+              $3,800.00
+            </td>
+          </tr>
+          <tr>
+            <td className="dashboard__cashflow__td dashboard__cashflow__td--border-double">
+              Expense
+            </td>
+            <td className="dashboard__cashflow__td dashboard__cashflow__td--right dashboard__cashflow__td--border-double">
+              $3,500.00
+            </td>
+            <td className="dashboard__cashflow__td dashboard__cashflow__td--right dashboard__cashflow__td--border-double">
+              $3,500.00
+            </td>
+          </tr>
+          <tr>
+            <th className="dashboard__cashflow__td dashboard__cashflow__td--bottom">
+              Difference
+            </th>
+            <th className="dashboard__cashflow__td dashboard__cashflow__td--right dashboard__cashflow__td--bottom">
+              $100.00
+            </th>
+            <th className="dashboard__cashflow__td dashboard__cashflow__td--right dashboard__cashflow__td--bottom">
+              $300.00
+            </th>
+          </tr>
+        </table>
+      </div>
     </div>
   </Container>
 );
