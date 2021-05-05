@@ -17,6 +17,7 @@ export const Dashboard = ({ user }) => (
         see how your actual spending compares to your budget.
       </p>
       <hr className="separator separator--bold" />
+      <div className="space--small">&nbsp;</div>
       <div className="dashboard__headline">Cash Flow Report</div>
       <div className="dashboard__cashflow">
         <table className="dashboard__cashflow__table">
@@ -58,6 +59,89 @@ export const Dashboard = ({ user }) => (
             </th>
             <th className="dashboard__cashflow__td dashboard__cashflow__td--right dashboard__cashflow__td--bottom">
               $300.00
+            </th>
+          </tr>
+        </table>
+      </div>
+      <div className="dashboard__headline">Summary by Category</div>
+      <div className="dashboard__category">
+        <table className="dashboard__category__table">
+          <tr>
+            <th className="dashboard__category__td dashboard__category__td--bottom">
+              SAVING
+            </th>
+            <th className="dashboard__category__td dashboard__category__td--bottom dashboard__category__td--right">
+              <span className="dashboard__tab">
+                <a href="/">Planning</a>
+              </span>
+              <span className="dashboard__tab">|</span>
+              <span className="dashboard__tab">Spent</span>
+              <span className="dashboard__tab">|</span>
+              <span className="dashboard__tab">
+                <a href="/">Difference</a>
+              </span>
+            </th>
+          </tr>
+          <tr>
+            <td className="dashboard__category__td">Emergency Fund</td>
+            <td className="dashboard__category__td dashboard__category__td--right">
+              $3,800.00
+            </td>
+          </tr>
+          <tr>
+            <td className="dashboard__category__td dashboard__category__td--border-double">
+              Retirement Fund
+            </td>
+            <td className="dashboard__category__td dashboard__category__td--right dashboard__category__td--border-double">
+              $3,500.00
+            </td>
+          </tr>
+          <tr>
+            <th className="dashboard__category__td dashboard__category__td--bottom">
+              <a href="/">Add item</a>
+            </th>
+            <th className="dashboard__category__td dashboard__category__td--right dashboard__category__td--bottom">
+              Total: $300.00
+            </th>
+          </tr>
+        </table>
+        <table className="dashboard__category__table">
+          <tr>
+            <th className="dashboard__category__td dashboard__category__td--bottom">
+              SAVING
+            </th>
+            <th className="dashboard__category__td dashboard__category__td--bottom dashboard__category__td--right">
+              <span className="dashboard__tab">
+                <a href="/">Planning</a>
+              </span>
+              <span className="dashboard__tab">|</span>
+              <span className="dashboard__tab">Spent</span>
+              <span className="dashboard__tab">|</span>
+              <span className="dashboard__tab">
+                <a href="/">Difference</a>
+              </span>
+            </th>
+          </tr>
+          <tr>
+            <td className="dashboard__category__td">Emergency Fund</td>
+            <td className="dashboard__category__td dashboard__category__td--right">
+              $3,800.00
+            </td>
+          </tr>
+          <tr>
+            <td className="dashboard__category__td dashboard__category__td--border-double">
+              Retirement Fund
+            </td>
+            <td className="dashboard__category__td dashboard__category__td--right dashboard__category__td--border-double">
+              $3,500.00
+            </td>
+          </tr>
+          <tr>
+            <th className="dashboard__category__td dashboard__category__td--bottom">
+              <a href="/">Add item</a>
+            </th>
+            <th className="dashboard__category__td dashboard__category__td--right dashboard__category__td--bottom">
+              Total: $300.00
             </th>
           </tr>
         </table>

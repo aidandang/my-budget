@@ -44,3 +44,8 @@ body {
 .inline-bold {
   font-weight: 700;
 }
+
+.space--small {
+  margin: 0;
+  padding: 0;
+}
