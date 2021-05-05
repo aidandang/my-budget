@@ -1,10 +1,10 @@
 .dashboard {
-  min-width: 360px;
+  min-width: 330px;
 }
 .dashboard__month {
   font-size: x-large;
   font-weight: 300;
-  margin: 1.5rem 0 1.2rem 0;
+  margin: 1.5rem 0 0.5rem 0;
   padding: 0;
 }
 
@@ -17,29 +17,44 @@
   font-size: large;
   font-weight: 300;
   text-transform: uppercase;
-  margin-top: 1.3rem;
+  margin-top: 1.5rem;
 }
 
-.dashboard__cashflow__table {
+.dashboard__cashflow__table,
+.dashboard__category__table {
   border-collapse: collapse;
   width: 100%;
   font-size: 1.4rem;
+  margin-top: 0.5rem;
 }
 
-.dashboard__cashflow__td {
+.dashboard__cashflow__td,
+.dashboard__category__td {
   border-bottom: 1px solid lightgrey;
   text-align: left;
   padding: 0.2rem 0;
 }
 
-.dashboard__cashflow__td--right {
+.dashboard__cashflow__td--right,
+.dashboard__category__td--right {
   text-align: right;
 }
 
-.dashboard__cashflow__td--bottom {
+.dashboard__cashflow__td--bottom,
+.dashboard__category__td--bottom {
   border-bottom: none;
 }
 
-.dashboard__cashflow__td--border-double {
+.dashboard__cashflow__td--border-double,
+.dashboard__category__td--border-double {
   border-bottom: 2px solid lightgrey;
+}
+
+.dashboard a {
+  font-weight: 400;
+  color: #6593a6;
+}
+
+.dashboard__tab {
+  margin: 0 0 0 0.5rem;
 }
