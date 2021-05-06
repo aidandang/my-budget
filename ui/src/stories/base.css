@@ -48,4 +48,5 @@ body {
 .space--small {
   margin: 0;
   padding: 0;
+  height: 0.5rem;
 }
