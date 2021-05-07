@@ -3,6 +3,7 @@
   margin: 0 auto;
   height: 4.2rem;
   background-color: black;
+  min-width: 360px;
 }
 
 @media screen and (min-width: 1024px) {

@@ -1,15 +1,14 @@
 import React from 'react';
 
 import { Container } from './Container';
+import { Month } from './Month';
 import './dashboard.css';
 
-export const Dashboard = ({ user }) => (
+export const Dashboard = ({ user, data, selected }) => (
   <Container user={user}>
     <div className="dashboard">
-      <h1 className="hidden-title">Dashboard</h1>
-      <div className="dashboard__month">
-        <span className="inline-bold">May</span> 2021
-      </div>
+      <Month data={data} selected={selected} />
+
       <hr className="separator separator--light" />
       <p className="dashboard__note">
         HOW TO USE: Enter your budget for each category in the Summary By
