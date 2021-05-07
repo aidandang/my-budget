@@ -1,0 +1,67 @@
+.transactions {
+  min-width: 330px;
+}
+
+.transactions__title {
+  font-size: x-large;
+  font-weight: 700;
+  padding: 0;
+}
+
+.transactions__month {
+  font-size: x-large;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+
+.transactions__note {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.transactions__headline {
+  font-size: large;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+}
+
+.transactions__cashflow__table,
+.transactions__category__table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+.transactions__cashflow__td,
+.transactions__category__td {
+  border-bottom: 1px solid lightgrey;
+  text-align: left;
+  padding: 0.2rem 0;
+}
+
+.transactions__cashflow__td--right,
+.transactions__category__td--right {
+  text-align: right;
+}
+
+.transactions__cashflow__td--bottom,
+.transactions__category__td--bottom {
+  border-bottom: none;
+}
+
+.transactions__cashflow__td--border-double,
+.transactions__category__td--border-double {
+  border-bottom: 2px solid lightgrey;
+}
+
+.transactions a {
+  font-weight: 400;
+  color: #6593a6;
+}
+
+.transactions__tab {
+  margin: 0 0 0 0.5rem;
+}

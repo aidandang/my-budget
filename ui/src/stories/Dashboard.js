@@ -4,10 +4,10 @@ import { Container } from './Container';
 import { Month } from './Month';
 import './dashboard.css';
 
-export const Dashboard = ({ user, data, selected }) => (
+export const Dashboard = ({ user, data, selected, title }) => (
   <Container user={user}>
     <div className="dashboard">
-      <Month data={data} selected={selected} />
+      <Month data={data} selected={selected} title={title} />
 
       <hr className="separator separator--light" />
       <p className="dashboard__note">
