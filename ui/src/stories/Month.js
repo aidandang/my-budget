@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './month.css';
 
-const Dropdown = ({ list, selected }) => {
+const Dropdown = ({ list, selected, title }) => {
   const [trigger, setTrigger] = useState({
     isListOpen: false,
     selected,
@@ -42,7 +42,7 @@ const Dropdown = ({ list, selected }) => {
               )}
             </span>
           </div>
-          <div className="month__title">BUDGETS</div>
+          <div className="month__title">{title}</div>
         </div>
 
         {trigger.isListOpen && list.length > 0 && (
@@ -74,6 +74,6 @@ const Dropdown = ({ list, selected }) => {
   );
 };
 
-export const Month = ({ data, selected }) => {
-  return <Dropdown list={data} selected={selected} />;
+export const Month = ({ data, selected, title }) => {
+  return <Dropdown list={data} selected={selected} title={title} />;
 };

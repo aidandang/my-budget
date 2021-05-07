@@ -15,10 +15,12 @@ export const LoggedIn = Template.bind({});
 LoggedIn.args = {
   ...NavbarStories.LoggedIn.args,
   ...MonthStories.Primary.args,
+  title: 'Budgets',
 };
 
 export const LoggedOut = Template.bind({});
 LoggedOut.args = {
   ...NavbarStories.LoggedOut.args,
   ...MonthStories.Primary.args,
+  title: 'Budgets',
 };

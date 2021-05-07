@@ -21,6 +21,10 @@
   padding: 0;
 }
 
+.month__title {
+  text-transform: uppercase;
+}
+
 .month__year {
   font-weight: 300;
 }
