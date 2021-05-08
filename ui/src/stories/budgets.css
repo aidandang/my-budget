@@ -1,50 +1,37 @@
-.transactions {
+.budgets {
   min-width: 330px;
 }
 
-.transactions__title {
+.budgets__title {
   font-size: x-large;
   font-weight: 700;
   padding: 0;
 }
 
-.transactions__month {
+.budgets__month {
   font-size: x-large;
   font-weight: 300;
   margin: 0;
   padding: 0;
 }
 
-.transactions__note {
+.budgets__note {
   font-size: 1.2rem;
   margin: 0.5rem 0;
 }
 
-.transactions__headline {
+.budgets__headline {
   font-size: large;
   font-weight: 300;
   text-transform: uppercase;
   margin-top: 1.5rem;
 }
 
-.transactions a {
+.budgets a {
   font-weight: 400;
   color: #6593a6;
 }
 
-.transactions__tab {
+.budgets__tab {
   margin: 0 0 0 0.5rem;
-}
-
-.transactions__button {
-  margin-top: 2.4rem;
-  margin-bottom: 1.5rem;
-}
-
-.transactions__button--space {
-  margin: 0 0.5rem;
-}
-
-.transactions__row:hover {
-  cursor: pointer;
 }

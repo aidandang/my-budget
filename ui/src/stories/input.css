@@ -1,0 +1,31 @@
+.input {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.input__text {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid lightgray;
+  padding: 1rem 0 1.5rem 0;
+  outline: 0;
+  font-size: 1.4rem;
+  height: 2rem;
+  background-color: transparent;
+  transition: border-color 0.2s;
+}
+
+.input__text::placeholder {
+  color: lightgray;
+}
+
+.input__text:focus {
+  border-bottom: 1px solid #6593a6;
+}
+
+.input__label {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
