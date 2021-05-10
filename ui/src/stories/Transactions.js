@@ -130,6 +130,7 @@ export const Transactions = ({ user, data, selected, title }) => {
                 $15.00
               </Td>
             </Tr>
+
             {editItemOpen && <EditItem setEditItemOpen={setEditItemOpen} />}
 
             <Tr
@@ -158,6 +159,7 @@ export const Transactions = ({ user, data, selected, title }) => {
                 </a>
               </Th>
             </Tr>
+
             {addItemOpen && <AddItem setAddItemOpen={setAddItemOpen} />}
           </Table>
         </div>

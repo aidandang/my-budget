@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Container } from './Container';
 import { Month } from './Month';
+import { Input } from './Input';
+import { Button } from './Button';
 import { Table, Tr, Th, Td } from './Table';
 import './budgets.css';
 
@@ -127,6 +129,23 @@ export const Budgets = ({ user, data, selected, title }) => (
             <Th align={'right'} border={'none'} last={true}>
               Total: $300.00
             </Th>
+          </Tr>
+          <Tr>
+            <Td border={'none'} last={true} colSpan="4">
+              <div>
+                <Input type="text" label="Account" />
+              </div>
+              <div className="budgets__button">
+                <Button label="Save" />
+                <span className="transactions__button--space">&nbsp;</span>
+                <Button
+                  label="Cancel"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                />
+              </div>
+            </Td>
           </Tr>
         </Table>
       </div>
