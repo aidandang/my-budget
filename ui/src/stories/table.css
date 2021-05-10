@@ -1,0 +1,47 @@
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+.td,
+.th {
+  font-family: inherit;
+  padding: 0.3rem 0.5rem 0.3rem 0;
+}
+
+.td--left,
+.th--left {
+  text-align: left;
+}
+
+.td--right,
+.th--right {
+  text-align: right;
+}
+
+.td--last,
+.th--last {
+  padding-right: 0;
+}
+
+.td--border-single,
+.th--border-single {
+  border-bottom: 1px solid lightgrey;
+}
+
+.td--border-none,
+.th--border-none {
+  border-bottom: none;
+}
+
+.td--border-double,
+.th--border-double {
+  border-bottom: 2px solid lightgrey;
+}
+
+.table a {
+  font-weight: 400;
+  color: #6593a6;
+}

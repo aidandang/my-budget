@@ -10,12 +10,7 @@ export default {
 
 const Template = (args) => <Container {...args} />;
 
-export const LoggedIn = Template.bind({});
-LoggedIn.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   ...NavbarStories.LoggedIn.args,
-};
-
-export const LoggedOut = Template.bind({});
-LoggedOut.args = {
-  ...NavbarStories.LoggedOut.args,
 };
