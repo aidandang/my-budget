@@ -35,3 +35,12 @@
 .budgets__tab {
   margin: 0 0 0 0.5rem;
 }
+
+.budgets__button {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.budgets__button--space {
+  margin: 0 0.5rem;
+}
