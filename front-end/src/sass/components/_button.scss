@@ -1,7 +1,7 @@
 .button {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  border-radius: 2em;
+  border-radius: 1.5em;
   display: inline-block;
   line-height: 1;
   outline: none;
@@ -9,7 +9,7 @@
   &--primary {
     cursor: pointer;
     background-color: #6593a6;
-    border: 2px solid #d9d9d9;
+    border: 2px solid #6593a6;
     color: #ffffff;
   }
 
@@ -39,15 +39,15 @@
   }
 
   &--disabled {
-    background-color: #d9d9d9;
-    border: 2px solid #d9d9d9;
+    background-color: #b7ccd5;
+    border: 2px solid #b7ccd5;
     color: #ffffff;
     cursor: default;
   }
 
   &--disabled:hover {
-    background-color: #d9d9d9;
-    border: 2px solid #d9d9d9;
+    background-color: #b7ccd5;
+    border: 2px solid #b7ccd5;
     color: #ffffff;
     cursor: default;
   }

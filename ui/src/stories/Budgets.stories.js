@@ -5,7 +5,7 @@ import * as NavbarStories from './Navbar.stories';
 import * as MonthStories from './Month.stories';
 
 export default {
-  title: 'Components/Budgets',
+  title: 'Pages/Budgets',
   component: Budgets,
 };
 

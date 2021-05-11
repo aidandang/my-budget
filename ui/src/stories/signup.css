@@ -1,0 +1,51 @@
+.signup {
+  min-width: 330px;
+}
+
+.signup__title {
+  font-size: x-large;
+  font-weight: 700;
+  padding: 0;
+  margin: 1.5rem 0 0.5rem 0;
+}
+
+.signup__subtitle {
+  font-size: 1.4rem;
+}
+
+.signup__google-box {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.signup__separator {
+  width: 100%;
+}
+
+.signup__separator--or {
+  width: 12%;
+  display: inline-block;
+  text-align: center;
+}
+
+.signup__separator--right,
+.signup__separator--left {
+  width: 44%;
+  border-bottom: 1px solid lightgrey;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.signup__email-box {
+  margin: 2.5rem 0 1rem 0;
+}
+
+.signup__signup {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.signup__terms {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}

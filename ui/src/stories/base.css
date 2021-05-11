@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: 360px;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.6;
@@ -49,4 +49,17 @@ body {
   margin: 0;
   padding: 0;
   height: 0.5rem;
+}
+
+.space--medium {
+  margin: 0;
+  padding: 0;
+  height: 1.5rem;
+}
+
+a {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  color: #6593a6;
 }

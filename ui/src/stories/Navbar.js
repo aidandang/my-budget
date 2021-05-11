@@ -29,7 +29,7 @@ export const Navbar = ({ user }) => {
           </ul>
         </div>
         <div className="navigation__auth-box">
-          {user.displayName ? (
+          {user && user.displayName ? (
             <span
               onClick={(e) => {
                 e.preventDefault();
