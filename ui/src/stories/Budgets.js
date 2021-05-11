@@ -137,7 +137,7 @@ export const Budgets = ({ user, data, selected, title }) => (
               </div>
               <div className="budgets__button">
                 <Button label="Save" />
-                <span className="transactions__button--space">&nbsp;</span>
+                <span className="budgets__button--space">&nbsp;</span>
                 <Button
                   label="Cancel"
                   onClick={(e) => {
