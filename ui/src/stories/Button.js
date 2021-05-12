@@ -2,9 +2,10 @@ import React from 'react';
 import './button.css';
 
 export const Button = ({
-  option,
+  mode,
   size,
   label,
+  disabled,
   fullwidth,
   children,
   ...props
@@ -15,7 +16,8 @@ export const Button = ({
       className={[
         'button',
         `button--${size ? size : 'medium'}`,
-        `button--${option ? option : 'primary'}`,
+        `button--${mode ? mode : 'primary'}`,
+        `${disabled ? 'button--disabled' : null}`,
         `button--${fullwidth ? 'fullwidth' : 'width'}`,
       ].join(' ')}
       {...props}
