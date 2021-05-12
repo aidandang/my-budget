@@ -1,0 +1,36 @@
+.input {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.input__label {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.input__text {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 0.1rem solid var(--color-lightgray);
+  padding-bottom: 0.5rem;
+  outline: 0;
+  font-size: 1.4rem;
+  height: 2rem;
+  background-color: transparent;
+  transition: border-color 0.2s;
+}
+
+.input__text--select {
+  height: 2.3rem;
+}
+
+.input__text::placeholder {
+  color: var(--color-lightgray);
+}
+
+.input__text:focus {
+  border-bottom: 0.1rem solid var(--color-ligthblue);
+}

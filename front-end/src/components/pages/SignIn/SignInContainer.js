@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import SignInRender from './SignInRender';
 import { Button } from '../../common/Button';
-import { Input } from '../../common/Input';
+import { Form, Input } from '../../common/Form';
 import google from '../../../assets/google.svg';
 import { signInWithGoogle } from '../../../firebase/firebase.utils';
 
@@ -50,7 +50,7 @@ class SignInContainer extends Component {
             <span className="sign-in-sign-up__separator--right"></span>
           </div>
 
-          <form
+          <Form
             className="sign-in-sign-up__form"
             onSubmit={handleSubmit(this.onSubmit)}
           >
@@ -96,7 +96,7 @@ class SignInContainer extends Component {
                 Sign in with Email
               </Button>
             </div>
-          </form>
+          </Form>
         </SignInRender>
       </>
     );
