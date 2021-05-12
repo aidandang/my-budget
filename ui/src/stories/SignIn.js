@@ -32,10 +32,11 @@ export const SignIn = ({ user }) => {
 
         <form className="signin__form">
           <div className="signin__input-box">
-            <Input type="email" label="Email" />
+            <Input type="email" label="Email:" />
           </div>
+          <div className="space--small">&nbsp;</div>
           <div className="signin__input-box">
-            <Input type="password" label="Password" />
+            <Input type="password" label="Password:" />
           </div>
           <div className="space--small"></div>
           <div className="signin__input-box">

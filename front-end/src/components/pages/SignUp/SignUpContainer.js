@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import SignUpRender from './SignUpRender';
 import { Button } from '../../common/Button';
-import { Input } from '../../common/Input';
+import { Form, Input } from '../../common/Form';
 
 import { compose } from 'redux';
 import { reduxForm, Field } from 'redux-form';
@@ -21,57 +21,54 @@ class SignUpContainer extends Component {
 
     return (
       <SignUpRender>
-        <form
-          className="sign-in-sign-up__form"
-          onSubmit={handleSubmit(this.onSubmit)}
-        >
+        <Form className="signup__form" onSubmit={handleSubmit(this.onSubmit)}>
           {this.props.errorMessage && (
-            <div className="sign-in-sign-up__error">
-              {this.props.errorMessage}
-            </div>
+            <div className="signup__error">{this.props.errorMessage}</div>
           )}
 
-          <div className="sign-in-sign-up__input-box">
+          <div className="signup__input-box">
             <Field
               name="email"
               type="email"
               component={Input}
-              label="Email"
+              label="Email:"
               size="large"
               autoComplete="none"
             />
           </div>
-          <div className="sign-in-sign-up__input-box">
+          <div className="space--small">&nbsp;</div>
+          <div className="signup__input-box">
             <Field
               name="password"
               type="password"
               component={Input}
-              label="Password"
+              label="Password:"
               size="large"
               autoComplete="none"
             />
           </div>
-          <div className="sign-in-sign-up__input-box">
+          <div className="space--small">&nbsp;</div>
+          <div className="signup__input-box">
             <Field
               name="passwordConfirm"
               type="password"
               component={Input}
-              label="Confirm Password"
+              label="Confirm Password:"
               size="large"
               autoComplete="none"
             />
           </div>
 
-          <div className="sign-in-sign-up__email">
+          <div className="signup__email-box">
             <Button
               size={'large'}
-              otherStyle={'button--sign-in-sign-up'}
+              fullwidth={true}
               disabled={invalid || submitting || pristine}
             >
               Sign up with Email
             </Button>
           </div>
-        </form>
+        </Form>
       </SignUpRender>
     );
   }

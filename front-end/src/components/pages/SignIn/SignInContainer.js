@@ -52,9 +52,7 @@ class SignInContainer extends Component {
 
           <Form className="signin__form" onSubmit={handleSubmit(this.onSubmit)}>
             {this.props.errorMessage && (
-              <div className="sign-in-sign-up__error">
-                {this.props.errorMessage}
-              </div>
+              <div className="signin__error">{this.props.errorMessage}</div>
             )}
 
             <div className="signin__input-box">
@@ -62,17 +60,18 @@ class SignInContainer extends Component {
                 name="email"
                 type="email"
                 component={Input}
-                label="Email"
+                label="Email:"
                 size="large"
                 autoComplete="none"
               />
             </div>
+            <div className="space--small">&nbsp;</div>
             <div className="signin__input-box">
               <Field
                 name="password"
                 type="password"
                 component={Input}
-                label="Password"
+                label="Password:"
                 size="large"
                 autoComplete="none"
               />
