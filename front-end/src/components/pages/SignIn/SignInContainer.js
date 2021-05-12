@@ -33,7 +33,7 @@ class SignInContainer extends Component {
             <Button
               mode={'secondary'}
               size={'large'}
-              otherStyle={'button--sign-in-sign-up'}
+              fullwidth={true}
               onClick={(e) => {
                 e.preventDefault();
                 signInWithGoogle();
@@ -90,7 +90,7 @@ class SignInContainer extends Component {
             <div className="sign-in-sign-up__email">
               <Button
                 size={'large'}
-                otherStyle={'button--sign-in-sign-up'}
+                fullwidth={true}
                 disabled={invalid || submitting || pristine}
               >
                 Sign in with Email

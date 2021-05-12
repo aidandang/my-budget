@@ -3,24 +3,23 @@ import React from 'react';
 export default function Button({
   mode,
   size,
-  otherStyle,
-  disabled,
+  label,
+  fullwidth,
   children,
   ...props
 }) {
   return (
     <button
-      type="submit"
+      type="button"
       className={[
         'button',
         `button--${size ? size : 'medium'}`,
         `button--${mode ? mode : 'primary'}`,
-        `${disabled ? 'button--disabled' : null}`,
-        otherStyle ? otherStyle : null,
+        `button--${fullwidth ? 'fullwidth' : 'width'}`,
       ].join(' ')}
       {...props}
     >
-      {children}
+      {label ? label : children}
     </button>
   );
 }
