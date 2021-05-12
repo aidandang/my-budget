@@ -18,7 +18,7 @@ export const SignIn = ({ user }) => {
         </div>
 
         <div className="signin__google-box">
-          <Button option={'secondary'} size={'large'} fullwidth={true}>
+          <Button mode={'secondary'} size={'large'} fullwidth={true}>
             <img src={google} alt="gl" className="google-logo" />
             <span className="google-text">Sign in with Google</span>
           </Button>
@@ -49,7 +49,6 @@ export const SignIn = ({ user }) => {
           </div>
           <div className="signin__email-box">
             <Button
-              option={'primary'}
               label={'Sign in with Email'}
               size={'large'}
               fullwidth={true}

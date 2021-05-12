@@ -29,7 +29,7 @@ class SignInContainer extends Component {
         {this.props.currentUser && <Redirect to="/dashboard" />}
 
         <SignInRender>
-          <div className="sign-in-sign-up__google">
+          <div className="signin__google-box">
             <Button
               mode={'secondary'}
               size={'large'}
@@ -44,23 +44,20 @@ class SignInContainer extends Component {
             </Button>
           </div>
 
-          <div className="sign-in-sign-up__separator">
-            <span className="sign-in-sign-up__separator--left"></span>
-            <span className="sign-in-sign-up__separator--or">or</span>
-            <span className="sign-in-sign-up__separator--right"></span>
+          <div className="signin__separator">
+            <span className="signin__separator--left"></span>
+            <span className="signin__separator--or">or</span>
+            <span className="signin__separator--right"></span>
           </div>
 
-          <Form
-            className="sign-in-sign-up__form"
-            onSubmit={handleSubmit(this.onSubmit)}
-          >
+          <Form className="signin__form" onSubmit={handleSubmit(this.onSubmit)}>
             {this.props.errorMessage && (
               <div className="sign-in-sign-up__error">
                 {this.props.errorMessage}
               </div>
             )}
 
-            <div className="sign-in-sign-up__input-box">
+            <div className="signin__input-box">
               <Field
                 name="email"
                 type="email"
@@ -70,7 +67,7 @@ class SignInContainer extends Component {
                 autoComplete="none"
               />
             </div>
-            <div className="sign-in-sign-up__input-box">
+            <div className="signin__input-box">
               <Field
                 name="password"
                 type="password"
@@ -80,14 +77,16 @@ class SignInContainer extends Component {
                 autoComplete="none"
               />
             </div>
-            <div className="sign-in-sign-up__input-box">
-              <div className="checkbox--sign-in-sign-up">
+            <div className="signin__input-box">
+              <div className="signin__checkbox">
                 <input type="checkbox" value="lsRememberMe" id="rememberMe" />
                 <span>&nbsp;</span>
-                <label for="rememberMe">Remember me</label>
+                <label htmlFor="rememberMe" className="signin__checkbox__label">
+                  Remember me
+                </label>
               </div>
             </div>
-            <div className="sign-in-sign-up__email">
+            <div className="signin__email-box">
               <Button
                 size={'large'}
                 fullwidth={true}
