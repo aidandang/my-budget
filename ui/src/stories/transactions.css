@@ -24,21 +24,10 @@
   font-size: large;
   font-weight: 300;
   text-transform: uppercase;
-  margin-top: 1.5rem;
-}
-
-.transactions a {
-  font-weight: 400;
-  color: #6593a6;
 }
 
 .transactions__tab {
   margin: 0 0 0 0.5rem;
-}
-
-.transactions__button {
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
 }
 
 .transactions__button--space {

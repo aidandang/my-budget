@@ -29,22 +29,12 @@ export const Navbar = ({ user }) => {
           </ul>
         </div>
         <div className="navigation__auth-box">
-          {user && user.displayName ? (
-            <span
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-              className="navigation__user"
-            >
+          {user ? (
+            <span className="navigation__user">
               <i className="fas fa-user"></i>
             </span>
           ) : (
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
+            <a href="/">
               <i className="far fa-user"></i>
             </a>
           )}

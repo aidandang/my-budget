@@ -1,111 +1,134 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Container } from './Container';
 import { Month } from './Month';
-import { Input } from './Input';
-import { Select } from './Select';
+import { Input, Select } from './Form';
 import { Button } from './Button';
 import { Table, Tr, Th, Td } from './Table';
 import './transactions.css';
 
-const AddItem = ({ setAddItemOpen }) => {
+const AddItem = () => {
   return (
     <>
       <Tr>
         <Td border={'none'} last={true} colSpan="4">
+          <div className="space--small">&nbsp;</div>
           <div>
             <Input type="date" label="Date" />
           </div>
+          <div className="space--small">&nbsp;</div>
           <div>
             <Input type="text" label="Description" />
           </div>
+          <div className="space--small">&nbsp;</div>
           <div>
             <Select label="Category" />
           </div>
+          <div className="space--small">&nbsp;</div>
           <div>
             <Input type="number" label="Amount" placeholder="0.00" />
           </div>
+          <div className="space--medium">&nbsp;</div>
           <div className="transactions__button">
-            <Button label="Save" />
+            <Button
+              label="Save"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            />
             <span className="transactions__button--space">&nbsp;</span>
             <Button
               label="Cancel"
               onClick={(e) => {
                 e.preventDefault();
-                setAddItemOpen(false);
               }}
             />
           </div>
         </Td>
       </Tr>
-      ;
     </>
   );
 };
 
-const EditItem = ({ setEditItemOpen }) => {
+const EditItem = () => {
   return (
     <>
       <Tr>
         <Td border={'none'} last={true} colSpan="4">
+          <div className="space--small">&nbsp;</div>
           <div>
             <Input type="date" label="Date" />
           </div>
+          <div className="space--small">&nbsp;</div>
           <div>
             <Input type="text" label="Description" />
           </div>
+          <div className="space--small">&nbsp;</div>
           <div>
             <Select label="Category" />
           </div>
+          <div className="space--small">&nbsp;</div>
           <div>
             <Input type="number" label="Amount" placeholder="0.00" />
           </div>
+
+          <div className="space--medium">&nbsp;</div>
+
           <div className="transactions__button">
-            <Button label="Save" />
+            <Button
+              label="Save"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            />
             <span className="transactions__button--space">&nbsp;</span>
             <Button
               label="Cancel"
               onClick={(e) => {
                 e.preventDefault();
-                setEditItemOpen(false);
               }}
             />
           </div>
+
+          <div className="space--medium">&nbsp;</div>
         </Td>
       </Tr>
-      ;
     </>
   );
 };
 
-export const Transactions = ({ user, data, selected, title }) => {
-  const [addItemOpen, setAddItemOpen] = useState(false);
-  const [editItemOpen, setEditItemOpen] = useState(false);
-
-  const addItem = () => {
-    setAddItemOpen(!addItemOpen);
-  };
-
-  const editItem = (e) => {
-    e.stopPropagation();
-    setEditItemOpen(!editItemOpen);
-  };
-
+export const Transactions = ({
+  user,
+  isAddItem,
+  isEditItem,
+  data,
+  selected,
+  title,
+}) => {
   return (
     <Container user={user}>
       <div className="transactions">
+        <h1 className="hidden-title space--medium">Transactions</h1>
+
         <Month data={data} selected={selected} title={title} />
 
+        <div className="space--small">&nbsp;</div>
+
         <hr className="separator separator--light" />
+
         <p className="transactions__note">
           HOW TO USE: Enter your information into the Transactions table below.
           Choose a category for each transaction, then check the Budget sheet to
           see how each category compares with your budget.
         </p>
+
         <hr className="separator separator--bold" />
-        <div className="space--small">&nbsp;</div>
+
+        <div className="space--medium">&nbsp;</div>
+
         <div className="transactions__headline">Transaction Table</div>
-        <div className="transactions__cashflow">
+
+        <div>
           <Table>
             <Tr>
               <Th>Date</Th>
@@ -115,28 +138,31 @@ export const Transactions = ({ user, data, selected, title }) => {
                 Amount
               </Th>
             </Tr>
+
+            {!isEditItem ? (
+              <Tr
+                className="transactions__row"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <Td>05/07/2021</Td>
+                <Td>
+                  SolCalGas #283338892 SolCalGas #283338892 SolCalGas #283338892
+                </Td>
+                <Td>Water Water Water</Td>
+                <Td align={'right'} last={true}>
+                  $15.00
+                </Td>
+              </Tr>
+            ) : (
+              <EditItem />
+            )}
+
             <Tr
               className="transactions__row"
               onClick={(e) => {
-                editItem(e);
-              }}
-            >
-              <Td>05/07/2021</Td>
-              <Td>
-                SolCalGas #283338892 SolCalGas #283338892 SolCalGas #283338892
-              </Td>
-              <Td>Water Water Water</Td>
-              <Td align={'right'} last={true}>
-                $15.00
-              </Td>
-            </Tr>
-
-            {editItemOpen && <EditItem setEditItemOpen={setEditItemOpen} />}
-
-            <Tr
-              className="transactions__row"
-              onClick={(e) => {
-                editItem(e);
+                e.preventDefault();
               }}
             >
               <Td>05/07/2021</Td>
@@ -152,15 +178,13 @@ export const Transactions = ({ user, data, selected, title }) => {
                   href="/"
                   onClick={(e) => {
                     e.preventDefault();
-                    addItem();
                   }}
                 >
                   Add item
                 </a>
               </Th>
             </Tr>
-
-            {addItemOpen && <AddItem setAddItemOpen={setAddItemOpen} />}
+            {isAddItem && <AddItem />}
           </Table>
         </div>
       </div>

@@ -11,16 +11,25 @@ export default {
 
 const Template = (args) => <Transactions {...args} />;
 
-export const LoggedIn = Template.bind({});
-LoggedIn.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   ...NavbarStories.LoggedIn.args,
   ...MonthStories.Primary.args,
   title: 'Transactions',
 };
 
-export const LoggedOut = Template.bind({});
-LoggedOut.args = {
-  ...NavbarStories.LoggedOut.args,
+export const AddItem = Template.bind({});
+AddItem.args = {
+  ...NavbarStories.LoggedIn.args,
   ...MonthStories.Primary.args,
   title: 'Transactions',
+  isAddItem: true,
+};
+
+export const EditItem = Template.bind({});
+EditItem.args = {
+  ...NavbarStories.LoggedIn.args,
+  ...MonthStories.Primary.args,
+  title: 'Transactions',
+  isEditItem: true,
 };

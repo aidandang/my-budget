@@ -10,13 +10,13 @@
 }
 
 .button--primary {
-  background-color: #6593a6;
-  border: 2px solid #6593a6;
-  color: #ffffff;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  color: var(--color-white);
 }
 
 .button--primary:focus {
-  border: 2px solid lightblue;
+  border: 2px solid var(--color-ligthblue);
 }
 
 .button--primary:hover {
@@ -50,7 +50,7 @@
 
 .button--small {
   font-size: 1.2rem;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
 }
 
 .button--medium {

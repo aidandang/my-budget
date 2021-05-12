@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container } from './Container';
 import { Button } from './Button';
-import { Input } from './Input';
+import { Input } from './Form';
 import google from './assets/google.svg';
 import './signin.css';
 

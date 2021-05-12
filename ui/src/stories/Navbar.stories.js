@@ -11,12 +11,8 @@ const Template = (args) => <Navbar {...args} />;
 
 export const LoggedIn = Template.bind({});
 LoggedIn.args = {
-  user: {
-    displayName: 'Paul Smith',
-  },
+  user: true,
 };
 
 export const LoggedOut = Template.bind({});
-LoggedOut.args = {
-  user: {},
-};
+LoggedOut.args = {};

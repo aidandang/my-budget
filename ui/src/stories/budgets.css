@@ -1,5 +1,7 @@
 .budgets {
   min-width: 330px;
+  margin: 0;
+  padding: 0;
 }
 
 .budgets__title {
@@ -8,15 +10,8 @@
   padding: 0;
 }
 
-.budgets__month {
-  font-size: x-large;
-  font-weight: 300;
-  margin: 0;
-  padding: 0;
-}
-
 .budgets__note {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin: 0.5rem 0;
 }
 
@@ -24,21 +19,10 @@
   font-size: large;
   font-weight: 300;
   text-transform: uppercase;
-  margin-top: 1.5rem;
-}
-
-.budgets a {
-  font-weight: 400;
-  color: #6593a6;
 }
 
 .budgets__tab {
   margin: 0 0 0 0.5rem;
-}
-
-.budgets__button {
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
 }
 
 .budgets__button--space {

@@ -15,7 +15,7 @@ export const Button = ({
       className={[
         'button',
         `button--${size ? size : 'medium'}`,
-        `button--${option}`,
+        `button--${option ? option : 'primary'}`,
         `button--${fullwidth ? 'fullwidth' : 'width'}`,
       ].join(' ')}
       {...props}

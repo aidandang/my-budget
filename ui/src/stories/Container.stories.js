@@ -10,7 +10,8 @@ export default {
 
 const Template = (args) => <Container {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Example = Template.bind({});
+Example.args = {
+  example: true,
   ...NavbarStories.LoggedIn.args,
 };
