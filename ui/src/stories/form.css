@@ -32,5 +32,5 @@
 }
 
 .input__text:focus {
-  border-bottom: 0.1rem solid var(--color-ligthblue);
+  border-bottom: 0.1rem solid var(--color-lightblue);
 }
