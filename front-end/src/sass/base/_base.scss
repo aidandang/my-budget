@@ -15,11 +15,51 @@ html {
 }
 
 body {
+  min-width: 360px;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.6;
   font-size: 1.6rem;
-  min-width: 320px;
+}
+
+.hidden-title {
+  visibility: hidden;
+}
+
+.separator {
+  width: 100%;
+  background-color: var(--color-lightgray);
+  border: none;
+}
+
+.separator--light {
+  height: 0.1rem;
+}
+
+.separator--bold {
+  height: 0.2rem;
+}
+
+.inline-bold {
+  font-weight: 700;
+}
+
+.space--small {
+  margin: 0;
+  padding: 0;
+  height: 0.5rem;
+}
+
+.space--medium {
+  margin: 0;
+  padding: 0;
+  height: 1.5rem;
+}
+
+.space--large {
+  margin: 0;
+  padding: 0;
+  height: 2.5rem;
 }
 
 a {
@@ -27,8 +67,4 @@ a {
   font-weight: inherit;
   font-size: inherit;
   color: var(--color-primary);
-}
-
-.hidden-title {
-  visibility: hidden;
 }
