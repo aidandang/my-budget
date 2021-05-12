@@ -12,7 +12,7 @@ export const SignUp = ({ user }) => {
         <h2 className="signup__title">Sign Up</h2>
 
         <div className="signup__subtitle">
-          Sign up to Monthly Budget and all other <a href="/">aidandang.com</a>{' '}
+          Sign up to My Budget and all other <a href="/">aidandang.com</a>{' '}
           applications.
         </div>
 
@@ -22,11 +22,11 @@ export const SignUp = ({ user }) => {
           <div className="signup__input-box">
             <Input type="email" label="Email" />
           </div>
-
+          <div className="space--small">&nbsp;</div>
           <div className="signup__input-box">
             <Input type="password" label="Password" />
           </div>
-
+          <div className="space--small">&nbsp;</div>
           <div className="signup__input-box">
             <Input type="password" label="Confirm Password" />
           </div>
