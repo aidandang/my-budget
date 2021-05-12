@@ -15,9 +15,10 @@ const Footer = () => {
           </p>
           <p>
             <small>
-              I made this application to help us managing our individual
-              financial. Signed in users can plan monthly cash flow, allocate
-              spending and income, and record daily transactions.
+              I made this application to help users managing their individual
+              financials. After signing in an user will be able to plan monthly
+              budget, allocate spending and income, record daily transactions,
+              and see overview reports.
             </small>
           </p>
         </div>
@@ -67,7 +68,7 @@ const Footer = () => {
         <hr className="separator separator--light" />
         <div className="footer__copyright">
           <small>
-            2021. Monthly Budget Project,{' '}
+            2021. My Budget Project,{' '}
             <a href="https://aidandang.com">aidandang.com</a>.
           </small>
         </div>
