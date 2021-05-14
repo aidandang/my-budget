@@ -50,7 +50,7 @@ const Dropdown = ({ list, selected, lefttitle, month, title, isBudgets }) => {
             </span>
           )}
 
-          {title}
+          {title ? title : ''}
         </div>
       </div>
 

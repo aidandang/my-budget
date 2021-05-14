@@ -54,16 +54,16 @@ AddBudget.args = {
   data: [
     {
       id: 0,
-      month: 'Latest Month',
+      month: 'Template 01',
       year: '',
     },
     {
       id: 1,
-      month: 'Previous Month',
+      month: 'Template 02',
       year: '',
     },
   ],
   selected: 10,
+  lefttitle: 'Default Template',
   title: 'Add Budget',
-  lefttitle: 'New',
 };

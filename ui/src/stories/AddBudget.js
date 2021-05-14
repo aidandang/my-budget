@@ -3,14 +3,20 @@ import React from 'react';
 import { Container } from './Container';
 import { Input } from './Form';
 import { Table, Tr, Th, Td } from './Table';
+import { PageTitle } from './PageTitle';
 
-export const AddBudget = ({ user }) => {
+export const AddBudget = ({ user, data, selected, lefttitle, title }) => {
   return (
     <Container user={user}>
       <div className="add-budget">
         <div className="space--medium">&nbsp;</div>
 
-        <h2>Add Budget</h2>
+        <PageTitle
+          data={data}
+          selected={selected}
+          lefttitle={lefttitle}
+          title={title}
+        />
 
         <div className="space--small">&nbsp;</div>
 
