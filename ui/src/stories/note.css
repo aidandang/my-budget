@@ -1,0 +1,9 @@
+.note {
+  margin: 0;
+  padding: 0;
+}
+
+.note p {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+}

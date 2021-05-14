@@ -1,11 +1,16 @@
 import React from 'react';
 
 import { Container } from './Container';
+import { Note } from './Note';
 import { Month } from './Month';
 import { Input, Select } from './Form';
 import { Button } from './Button';
 import { Table, Tr, Th, Td } from './Table';
 import './transactions.css';
+
+const noteContent = `HOW TO USE: Enter your information into the Transactions table below.
+Choose a category for each transaction, then check the Budget sheet to
+see how each category compares with your budget.`;
 
 const AddItem = () => {
   return (
@@ -114,15 +119,7 @@ export const Transactions = ({
 
         <div className="space--small">&nbsp;</div>
 
-        <hr className="separator separator--light" />
-
-        <p className="transactions__note">
-          HOW TO USE: Enter your information into the Transactions table below.
-          Choose a category for each transaction, then check the Budget sheet to
-          see how each category compares with your budget.
-        </p>
-
-        <hr className="separator separator--bold" />
+        <Note content={noteContent} />
 
         <div className="space--medium">&nbsp;</div>
 
