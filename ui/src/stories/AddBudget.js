@@ -4,6 +4,7 @@ import { Container } from './Container';
 import { Input } from './Form';
 import { Table, Tr, Th, Td } from './Table';
 import { PageTitle } from './PageTitle';
+import { Button } from './Button';
 
 export const AddBudget = ({ user, data, selected, lefttitle, title }) => {
   return (
@@ -38,17 +39,27 @@ export const AddBudget = ({ user, data, selected, lefttitle, title }) => {
         <div>
           <Table>
             <Tr>
+              <Th last={true}></Th>
+              <Th align={'right'} last={true}>
+                <span className="budgets__tab">Planning</span>
+              </Th>
+            </Tr>
+            <Tr>
+              <Th border={'none'}>Total Budget</Th>
+              <Th align={'right'} border={'none'} last={true}>
+                $3,800.00
+              </Th>
+            </Tr>
+          </Table>
+        </div>
+        <div className="space--medium">&nbsp;</div>
+        <div className="budgets__headline">Summary by Category</div>
+        <div>
+          <Table>
+            <Tr>
               <Th border={'none'}>SAVING</Th>
               <Th align={'right'} border={'none'} last={true}>
-                <span className="budgets__tab">
-                  <a href="/">Planning</a>
-                </span>
-                <span className="budgets__tab">|</span>
-                <span className="budgets__tab">Spent</span>
-                <span className="budgets__tab">|</span>
-                <span className="budgets__tab">
-                  <a href="/">Difference</a>
-                </span>
+                <span className="budgets__tab">Planning</span>
               </Th>
             </Tr>
             <Tr>
@@ -79,6 +90,22 @@ export const AddBudget = ({ user, data, selected, lefttitle, title }) => {
               </Th>
             </Tr>
           </Table>
+        </div>
+        <div className="space--medium">&nbsp;</div>
+        <div className="budgets__button">
+          <Button
+            label="Add Budget"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          />
+          <span className="budgets__button--space">&nbsp;</span>
+          <Button
+            label="Reset"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          />
         </div>
       </div>
     </Container>
