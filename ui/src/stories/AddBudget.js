@@ -4,7 +4,10 @@ import { Container } from './Container';
 import { Input } from './Form';
 import { Table, Tr, Th, Td } from './Table';
 import { PageTitle } from './PageTitle';
+import { Note } from './Note';
 import { Button } from './Button';
+
+const noteContent = `HOW TO USE: Select the default or a custom template to create a monthly budget. Choose a category to enter a budget for each account in it. Add a new account if needed.`;
 
 export const AddBudget = ({ user, data, selected, lefttitle, title }) => {
   return (
@@ -21,15 +24,7 @@ export const AddBudget = ({ user, data, selected, lefttitle, title }) => {
 
         <div className="space--small">&nbsp;</div>
 
-        <hr className="separator separator--light" />
-
-        <p className="budgets__note">
-          HOW TO USE: Enter your budget for each category in the Summary By
-          Category table below. Enter transactions on the Transactions sheet to
-          see how your actual spending compares to your budget.
-        </p>
-
-        <hr className="separator separator--bold" />
+        <Note content={noteContent} />
 
         <div className="space--medium">&nbsp;</div>
         <div>
@@ -82,7 +77,7 @@ export const AddBudget = ({ user, data, selected, lefttitle, title }) => {
                     e.preventDefault();
                   }}
                 >
-                  Add item
+                  Add Account
                 </a>
               </Th>
               <Th align={'right'} border={'none'} last={true}>
@@ -91,6 +86,8 @@ export const AddBudget = ({ user, data, selected, lefttitle, title }) => {
             </Tr>
           </Table>
         </div>
+        <div className="space--medium">&nbsp;</div>
+        <hr className="separator separator--light" />
         <div className="space--medium">&nbsp;</div>
         <div className="budgets__button">
           <Button

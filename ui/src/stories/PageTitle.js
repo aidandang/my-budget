@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './pagetitle.css';
 
-const Dropdown = ({ list, selected, lefttitle, month, title, isBudgets }) => {
+export const PageTitle = ({ list, selected, rightTitle, isBudgets }) => {
   const [trigger, setTrigger] = useState({
     isListOpen: false,
     selected,
@@ -26,9 +26,9 @@ const Dropdown = ({ list, selected, lefttitle, month, title, isBudgets }) => {
   return (
     <div className="pagetitle">
       <div className="pagetitle__title-box">
-        <div className="pagetitle__pagetitle-box">
-          <span>{lefttitle}</span>{' '}
-          {month && <span className="pagetitle__year">2021</span>}{' '}
+        <div className="pagetitle__left-title">
+          <span>{list[0].first}</span>{' '}
+          <span className="pagetitle__year">{list[0].second}</span>{' '}
           <span
             className="pagetitle__icon"
             onClick={(e) => {
@@ -43,14 +43,14 @@ const Dropdown = ({ list, selected, lefttitle, month, title, isBudgets }) => {
             )}
           </span>
         </div>
-        <div className="pagetitle__title">
+        <div className="pagetitle__right-title">
           {isBudgets && (
             <span className="pagetitle__icon pagetitle__space">
               <i className="fas fa-plus-circle"></i>
             </span>
           )}
 
-          {title ? title : ''}
+          {rightTitle ? rightTitle : ''}
         </div>
       </div>
 
@@ -69,7 +69,7 @@ const Dropdown = ({ list, selected, lefttitle, month, title, isBudgets }) => {
                   selectItem(index);
                 }}
               >
-                {item.month} {item.year}
+                {item.first} {item.second}
               </span>
               {index !== list.length - 1 && (
                 <span className="pagetitle__space">|</span>
@@ -79,25 +79,5 @@ const Dropdown = ({ list, selected, lefttitle, month, title, isBudgets }) => {
         </div>
       )}
     </div>
-  );
-};
-
-export const PageTitle = ({
-  data,
-  selected,
-  lefttitle,
-  month,
-  title,
-  isBudgets,
-}) => {
-  return (
-    <Dropdown
-      list={data}
-      selected={selected}
-      lefttitle={lefttitle}
-      month={month}
-      title={title}
-      isBudgets={isBudgets}
-    />
   );
 };

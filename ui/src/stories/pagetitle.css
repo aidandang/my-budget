@@ -14,13 +14,13 @@
   padding: 0;
 }
 
-.pagetitle__pagetitle-box,
-.pagetitle__title {
+.pagetitle__left-title,
+.pagetitle__right-title {
   margin: 0;
   padding: 0;
 }
 
-.pagetitle__title {
+.pagetitle__right-title {
   text-transform: uppercase;
 }
 

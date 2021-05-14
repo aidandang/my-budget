@@ -7,6 +7,7 @@ import { NotFoundPage } from '../../pages/NotFound';
 import { DashboardPage } from '../../pages/Dashboard';
 import { SignInPage } from '../../pages/SignIn';
 import { SignUpPage } from '../../pages/SignUp';
+import { AddBudgetPage } from '../../pages/AddBudget';
 
 class Container extends Component {
   render() {
@@ -21,6 +22,7 @@ class Container extends Component {
             <Route path="/sign-in" exact component={SignInPage} />
             <Route path="/sign-up" exact component={SignUpPage} />
             <Route path="/dashboard" exact component={DashboardPage} />
+            <Route path="/budgets/add" exact component={AddBudgetPage} />
             <Route path="/" component={NotFoundPage} />
           </Switch>
         </div>

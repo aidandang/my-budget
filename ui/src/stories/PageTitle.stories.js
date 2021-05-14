@@ -9,61 +9,40 @@ export default {
 
 const Template = (args) => <PageTitle {...args} />;
 
-export const Month = Template.bind({});
-Month.args = {
-  data: [
+export const Example = Template.bind({});
+Example.args = {
+  list: [
     {
       id: 0,
-      month: 'May',
-      year: '2021',
+      first: 'May',
+      second: '2021',
     },
     {
       id: 1,
-      month: 'April',
-      year: '2021',
+      first: 'April',
+      second: '2021',
     },
     {
       id: 2,
-      month: 'March',
-      year: '2021',
+      first: 'March',
+      second: '2021',
     },
     {
       id: 3,
-      month: 'February',
-      year: '2021',
+      first: 'February',
+      second: '2021',
     },
     {
       id: 4,
-      month: 'January',
-      year: '2021',
+      first: 'January',
+      second: '2021',
     },
     {
       id: 5,
-      month: 'December',
-      year: '2020',
+      first: 'December',
+      second: '2020',
     },
   ],
   selected: 0,
-  title: 'Budgets',
-  lefttitle: 'May',
-  month: true,
-};
-
-export const AddBudget = Template.bind({});
-AddBudget.args = {
-  data: [
-    {
-      id: 0,
-      month: 'Template 01',
-      year: '',
-    },
-    {
-      id: 1,
-      month: 'Template 02',
-      year: '',
-    },
-  ],
-  selected: 10,
-  lefttitle: 'Default Template',
-  title: 'Add Budget',
+  rightTitle: 'Budgets',
 };
