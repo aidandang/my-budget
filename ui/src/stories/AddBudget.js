@@ -9,17 +9,34 @@ import { Button } from './Button';
 
 const noteContent = `HOW TO USE: Select the default or a custom template to create a monthly budget. Choose a category to enter a budget for each account in it. Add a new account if needed.`;
 
-export const AddBudget = ({ user, data, selected, lefttitle, title }) => {
+const titleList = [
+  {
+    id: 0,
+    first: 'Default',
+  },
+  {
+    id: 0,
+    first: '2021050101',
+  },
+  {
+    id: 0,
+    first: '2021050102',
+  },
+];
+
+const rightTitle = 'Add Budget';
+const selected = 0;
+
+export const AddBudget = ({ user }) => {
   return (
     <Container user={user}>
       <div className="add-budget">
         <div className="space--medium">&nbsp;</div>
 
         <PageTitle
-          data={data}
+          list={titleList}
           selected={selected}
-          lefttitle={lefttitle}
-          title={title}
+          rightTitle={rightTitle}
         />
 
         <div className="space--small">&nbsp;</div>
