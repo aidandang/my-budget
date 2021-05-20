@@ -17,6 +17,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   const decodedToken = await admin.auth().verifyIdToken(token);
 
   if (decodedToken) {
+    console.log(decodedToken.uid);
     req.body.uid = decodedToken.uid;
     return next();
   } else {

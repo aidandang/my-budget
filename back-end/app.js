@@ -13,7 +13,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 // firebase authentication
-app.use('/', firebaseAuthController.protect);
+// app.use('/', firebaseAuthController.protect);
 
 router(app);
 
