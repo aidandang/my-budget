@@ -1,5 +1,5 @@
-const mongooge = require('mongoose');
-const Schema = mongooge.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   email: {
@@ -10,6 +10,6 @@ const userSchema = new Schema({
   },
 });
 
-const User = mongooge.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

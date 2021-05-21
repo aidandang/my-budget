@@ -1,5 +1,5 @@
-const auth = require('./controllers/authController');
+const accountRouter = require('./routes/accountRoutes');
 
 module.exports = function (app) {
-  app.post('/signup', auth.signup);
+  app.use('/accounts', accountRouter);
 };
