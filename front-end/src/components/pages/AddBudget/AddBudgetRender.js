@@ -1,11 +1,20 @@
 import React from 'react';
 
-function AddBudgetRender() {
+import { PageTitle } from '../../common/PageTitle';
+import { Note } from '../../common/Note';
+
+function AddBudgetRender({ list, selected, rightTitle, noteContent, budget }) {
   return (
-    <div className="addbudget">
+    <div className="add-budget">
       <div className="space--medium">&nbsp;</div>
-      <h2>Add Budget</h2>
+
+      {list && (
+        <PageTitle list={list} selected={selected} rightTitle={rightTitle} />
+      )}
+
       <div className="space--small">&nbsp;</div>
+
+      <Note content={noteContent} />
     </div>
   );
 }
