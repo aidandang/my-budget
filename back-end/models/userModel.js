@@ -8,6 +8,9 @@ const userSchema = new Schema({
     unique: true,
     lowercase: true,
   },
+  templates: {
+    type: Array,
+  },
 });
 
 const User = mongoose.model('User', userSchema);
