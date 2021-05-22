@@ -1,11 +1,27 @@
 import React from 'react';
 
 import { Container } from './Container';
-import { Month } from './Month';
+import { PageTitle } from './PageTitle';
 import { Input } from './Form';
 import { Button } from './Button';
 import { Table, Tr, Th, Td } from './Table';
 import './budgets.css';
+
+const titleList = [
+  {
+    id: 0,
+    first: 'May',
+    second: '2021',
+  },
+  {
+    id: 0,
+    first: 'April',
+    second: '2021',
+  },
+];
+
+const rightTitle = 'Budgets';
+const selected = 0;
 
 export const AddItem = () => {
   return (
@@ -69,25 +85,16 @@ export const EditItem = () => {
   );
 };
 
-export const Budgets = ({
-  user,
-  isAddItem,
-  isEditItem,
-  isBudgets,
-  data,
-  selected,
-  title,
-}) => {
+export const Budgets = ({ user, isAddItem, isEditItem }) => {
   return (
     <Container user={user}>
       <div className="budgets">
         <h1 className="hidden-title space--medium">Budgets</h1>
 
-        <Month
-          data={data}
+        <PageTitle
+          list={titleList}
           selected={selected}
-          title={title}
-          isBudgets={isBudgets}
+          rightTitle={rightTitle}
         />
 
         <div className="space--small">&nbsp;</div>
