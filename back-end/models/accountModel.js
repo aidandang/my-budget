@@ -1,7 +1,6 @@
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const CATEGORY = [
   'CHARITY',
   'SAVING',
@@ -30,9 +29,13 @@ const accountSchema = new Schema({
   month: {
     type: Number,
     required: true,
-    enum: {
-      values: MONTHS,
-      message: 'Month is only a number from 1 to 12',
+    min: 1,
+    max: 12,
+    validate: {
+      validator: function (value) {
+        return Number.isInteger(value);
+      },
+      message: 'Month must be an integer',
     },
   },
   year: {
@@ -41,12 +44,12 @@ const accountSchema = new Schema({
     min: [2000, 'Year must be greater or equal 2000'],
     validate: {
       validator: function (value) {
-        return value.isInteger();
+        return Number.isInteger(value);
       },
       message: 'Year must be an integer',
     },
   },
-  caterory: {
+  category: {
     type: String,
     required: true,
     enum: {
@@ -60,7 +63,7 @@ const accountSchema = new Schema({
     min: [0, 'Account value must be greater or equal 0'],
     validate: {
       validator: function (value) {
-        return value.isInteger();
+        return Number.isInteger(value);
       },
       message: 'Account value must be an integer',
     },
@@ -70,6 +73,8 @@ const accountSchema = new Schema({
     default: Date.now,
   },
 });
+
+accountSchema.index({ username: 1, month: 1, year: 1 });
 
 const Account = mongoose.model('Account', accountSchema);
 
