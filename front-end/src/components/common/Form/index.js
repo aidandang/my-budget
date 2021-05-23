@@ -1,1 +1,1 @@
-export { Form, Input, Select } from './FormRender';
+export { Form, Input, Select } from './Form';
