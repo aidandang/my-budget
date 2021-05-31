@@ -6,7 +6,7 @@ import { Form, Input } from '../../common/Form';
 
 import { reduxForm, Field } from 'redux-form';
 
-function AddBudgetRender({ list, selected, rightTitle, noteContent, budget }) {
+function AddBudgetRender({ list, selected, rightTitle, noteContent }) {
   return (
     <div className="add-budget">
       <div className="space--medium">&nbsp;</div>
@@ -41,13 +41,8 @@ function AddBudgetRender({ list, selected, rightTitle, noteContent, budget }) {
 const validate = (values) => {
   const errors = {};
 
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
-  if (!values.password) {
-    errors.password = 'Required';
+  if (!values.monthyear) {
+    errors.monthyear = 'Required';
   }
 
   return errors;
