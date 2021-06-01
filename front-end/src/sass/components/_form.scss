@@ -34,3 +34,13 @@
 .input__text:focus {
   border-bottom: 0.1rem solid var(--color-lightblue);
 }
+
+.input__error {
+  font-size: 1.4rem;
+  color: var(--color-danger);
+}
+
+.input__warning {
+  font-size: 1.4rem;
+  color: var(--color-warning);
+}

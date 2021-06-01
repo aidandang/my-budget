@@ -3,7 +3,7 @@ import React from 'react';
 export default function Button({
   mode,
   size,
-  otherStyle,
+  label,
   disabled,
   fullwidth,
   children,
@@ -11,7 +11,7 @@ export default function Button({
 }) {
   return (
     <button
-      type="submit"
+      type="button"
       className={[
         'button',
         `button--${size ? size : 'medium'}`,
@@ -21,7 +21,7 @@ export default function Button({
       ].join(' ')}
       {...props}
     >
-      {children}
+      {label ? label : children}
     </button>
   );
 }
