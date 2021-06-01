@@ -19,8 +19,8 @@ export const Input = ({
         {...props}
       />
       {touched &&
-        ((error && <span className="input-error">{error}</span>) ||
-          (warning && <span className="input-warning">{warning}</span>))}
+        ((error && <span className="input__error">{error}</span>) ||
+          (warning && <span className="input__warning">{warning}</span>))}
     </div>
   );
 };

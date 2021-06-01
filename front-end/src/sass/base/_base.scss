@@ -62,9 +62,19 @@ body {
   height: 2.5rem;
 }
 
+.hspace--small {
+  margin: 0 0.5rem;
+}
+
 a {
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
   color: var(--color-primary);
+}
+
+.headline {
+  font-size: large;
+  font-weight: 300;
+  text-transform: uppercase;
 }

@@ -106,7 +106,7 @@ export const AddBudget = ({ user }) => {
         <div className="space--medium">&nbsp;</div>
         <hr className="separator separator--light" />
         <div className="space--medium">&nbsp;</div>
-        <div className="budgets__button">
+        <div>
           <Button
             label="Add Budget"
             onClick={(e) => {
