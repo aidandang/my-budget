@@ -32,7 +32,7 @@ export const Td = ({ children, align, last, border, ...props }) => (
 
 export const Table = ({ children, ...props }) => (
   <table className="table" {...props}>
-    {children}
+    <tbody>{children}</tbody>
   </table>
 );
 

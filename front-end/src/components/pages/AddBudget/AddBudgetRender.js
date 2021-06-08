@@ -2,11 +2,9 @@ import React from 'react';
 
 import { PageTitle } from '../../common/PageTitle';
 import { Note } from '../../common/Note';
-import { Form, Input } from '../../common/Form';
 import { Table, Tr, Th, Td } from '../../common/Table';
 import { Button } from '../../common/Button';
-
-import { reduxForm, Field } from 'redux-form';
+import AddBudgetForm from './AddBudgetForm';
 
 function AddBudgetRender({ list, selected, rightTitle, noteContent }) {
   return (
@@ -23,17 +21,7 @@ function AddBudgetRender({ list, selected, rightTitle, noteContent }) {
 
       <div className="space--medium">&nbsp;</div>
 
-      <Form>
-        <div>
-          <Field
-            name="monthyear"
-            type="month"
-            component={Input}
-            label="Month:"
-            autoComplete="none"
-          />
-        </div>
-      </Form>
+      <AddBudgetForm />
 
       <div className="space--medium">&nbsp;</div>
 
@@ -121,23 +109,4 @@ function AddBudgetRender({ list, selected, rightTitle, noteContent }) {
   );
 }
 
-const validate = (values) => {
-  const errors = {};
-
-  if (!values.monthyear) {
-    errors.monthyear = 'Required';
-  }
-
-  return errors;
-};
-
-const warn = (values) => {
-  const warnings = {};
-  return warnings;
-};
-
-export default reduxForm({
-  form: 'addbudget',
-  validate,
-  warn,
-})(AddBudgetRender);
+export default AddBudgetRender;
