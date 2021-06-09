@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Button({
+  type,
   mode,
   size,
   label,
@@ -11,7 +12,7 @@ export default function Button({
 }) {
   return (
     <button
-      type="button"
+      type={type ? type : 'button'}
       className={[
         'button',
         `button--${size ? size : 'medium'}`,
