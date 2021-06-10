@@ -22,8 +22,13 @@ const list = [
 const noteContent = `HOW TO USE: Select the default or a custom template to create a monthly budget. Choose each category to enter budgets for accounts in it. Add a new account if needed.`;
 
 class AddBudgetContainer extends Component {
+  onSubmit = (props) => {};
+
   render() {
     const { handleSubmit, pristine, submitting, invalid } = this.props;
+    const { budget } = this.props;
+
+    console.log(budget);
 
     return (
       <div className="add-budget">
@@ -39,7 +44,7 @@ class AddBudgetContainer extends Component {
 
         <div className="space--medium">&nbsp;</div>
 
-        <Form>
+        <Form onSubmit={handleSubmit(this.onSubmit)}>
           <div>
             <Field
               name="monthyear"
@@ -75,41 +80,52 @@ class AddBudgetContainer extends Component {
         <div className="headline">Summary by Category</div>
 
         <div>
-          <Table>
-            <Tr>
-              <Th border={'none'}>SAVING</Th>
-              <Th align={'right'} border={'none'} last={true}>
-                <span className="budgets__tab">Planning</span>
-              </Th>
-            </Tr>
-            <Tr>
-              <Td>Emergency Fund</Td>
-              <Td align={'right'} last={true}>
-                $3,800.00
-              </Td>
-            </Tr>
-            <Tr>
-              <Td border={'double'}>Retirement Fund</Td>
-              <Td align={'right'} border={'double'} last={true}>
-                $3,500.00
-              </Td>
-            </Tr>
-            <Tr>
-              <Th border={'none'}>
-                <a
-                  href="/"
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  Add Account
-                </a>
-              </Th>
-              <Th align={'right'} border={'none'} last={true}>
-                Total: $300.00
-              </Th>
-            </Tr>
-          </Table>
+          {budget &&
+            budget.map((cat) => (
+              <Table key={cat._id}>
+                <Tr>
+                  <Th border={'none'}>{cat._id}</Th>
+                  <Th align={'right'} border={'none'} last={true}>
+                    <span className="budgets__tab">Planning</span>
+                  </Th>
+                </Tr>
+                {cat.accounts.map((acc, index) => (
+                  <Tr key={acc._id}>
+                    <Td
+                      border={`${
+                        cat.accounts.length - 1 === index ? 'double' : 'single'
+                      }`}
+                    >
+                      {acc.name}
+                    </Td>
+                    <Td
+                      align={'right'}
+                      last={true}
+                      border={`${
+                        cat.accounts.length - 1 === index ? 'double' : 'single'
+                      }`}
+                    >
+                      {`$${acc.budget}`}
+                    </Td>
+                  </Tr>
+                ))}
+                <Tr>
+                  <Th border={'none'}>
+                    <a
+                      href="/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                      }}
+                    >
+                      Add Account
+                    </a>
+                  </Th>
+                  <Th align={'right'} border={'none'} last={true}>
+                    Total: {`$0`}
+                  </Th>
+                </Tr>
+              </Table>
+            ))}
         </div>
 
         <div className="space--medium">&nbsp;</div>
