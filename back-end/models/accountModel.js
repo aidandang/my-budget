@@ -14,7 +14,7 @@ const CATEGORY = [
   'PERSONAL',
   'RECREATION',
   'DEBTS',
-  'INCOME',
+  'INCOMES',
 ];
 
 const accountSchema = new Schema({
