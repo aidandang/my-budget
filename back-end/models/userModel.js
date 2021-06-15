@@ -30,7 +30,7 @@ const accountSchema = new Schema({
       message: 'Category name must be in the list',
     },
   },
-  budget: {
+  value: {
     type: Number,
     require: true,
     min: [0, 'Account value must be greater or equal 0'],
@@ -92,7 +92,8 @@ const userSchema = new Schema({
   },
 });
 
-accountSchema.index({ month: 1, year: 1 });
+budgetSchema.index({ month: 1, year: 1 });
+accountSchema.index({ name: 1 });
 
 const User = mongoose.model('User', userSchema);
 
