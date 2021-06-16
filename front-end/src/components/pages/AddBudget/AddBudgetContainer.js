@@ -24,6 +24,10 @@ const noteContent = `HOW TO USE: Select the default or a custom template to crea
 class AddBudgetContainer extends Component {
   onSubmit = (props) => {};
 
+  componentDidMount() {
+    this.props.getBudgetTemplate('/users');
+  }
+
   render() {
     const { handleSubmit, pristine, submitting, invalid } = this.props;
     const { budget } = this.props;
