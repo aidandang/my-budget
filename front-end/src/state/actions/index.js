@@ -3,8 +3,8 @@ import { auth } from '../../firebase/firebase.utils';
 import {
   AUTH_USER,
   AUTH_ERROR,
-  GET_TEMPLATE_BUDGET,
-  GET_TEMPLATE_BUDGET_ERROR,
+  GET_BUDGET_TEMPLATE,
+  GET_BUDGET_TEMPLATE_ERROR,
 } from './types';
 
 const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
@@ -78,16 +78,16 @@ export const authChanged = (userAuth) => (dispatch) => {
   dispatch({ type: AUTH_USER, payload: userAuth });
 };
 
-export const getTemplateBudget = (pathname, params) => async (dispatch) => {
+export const getBudgetTemplate = (pathname) => async (dispatch) => {
   try {
     const token = await auth.currentUser.getIdToken();
 
     const data = await axios
       .create({ headers: { Authorization: `Bearer ${token}` } })
-      .get(BASE_API_URL + pathname, params);
+      .get(BASE_API_URL + pathname);
 
-    dispatch({ type: GET_TEMPLATE_BUDGET, payload: data });
+    dispatch({ type: GET_BUDGET_TEMPLATE, payload: data });
   } catch (err) {
-    dispatch({ type: GET_TEMPLATE_BUDGET_ERROR, payload: err });
+    dispatch({ type: GET_BUDGET_TEMPLATE_ERROR, payload: err });
   }
 };
