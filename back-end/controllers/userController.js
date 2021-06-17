@@ -2,16 +2,17 @@ const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
-exports.readUser = catchAsync(async (req, res, next) => {
+exports.getBudgetTemplates = catchAsync(async (req, res, next) => {
   const { uid } = req.body;
-  const user = await User.findOne({ email: uid });
+  const user = await User.findOne({ uid });
 
-  if (budget) {
+  if (user) {
+    console.log(user.templates);
     res.status(200).json({
       status: 'success',
-      byId: user,
+      templates: user.templates,
     });
   } else {
-    return next(new AppError('Budget is not found', 400));
+    return next(new AppError('No user is found', 400));
   }
 });

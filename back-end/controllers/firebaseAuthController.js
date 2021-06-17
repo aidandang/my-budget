@@ -1,6 +1,7 @@
 const admin = require('../firebase/admin');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
+const User = require('../models/userModel');
 
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
@@ -19,8 +20,15 @@ exports.protect = catchAsync(async (req, res, next) => {
   const decodedToken = await admin.auth().verifyIdToken(token);
 
   if (decodedToken) {
-    console.log(decodedToken.uid);
-    req.body.uid = decodedToken.uid;
+    const { uid } = decodedToken;
+
+    const user = await User.findOne({ uid: uid });
+    if (!user) {
+      const newUser = await User.create({ uid: uid });
+    }
+
+    req.body.uid = uid;
+
     return next();
   } else {
     return next(new AppError('You are not authorized.', 401));

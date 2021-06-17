@@ -78,11 +78,10 @@ const budgetSchema = new Schema({
 });
 
 const userSchema = new Schema({
-  email: {
+  uid: {
     type: String,
-    require: true,
+    required: true,
     unique: true,
-    lowercase: true,
   },
   budgets: {
     type: [budgetSchema],
@@ -94,6 +93,7 @@ const userSchema = new Schema({
 
 budgetSchema.index({ month: 1, year: 1 });
 accountSchema.index({ name: 1 });
+userSchema.index({ uid: 1 });
 
 const User = mongoose.model('User', userSchema);
 

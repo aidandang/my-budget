@@ -3,47 +3,11 @@ import { auth } from '../../firebase/firebase.utils';
 import {
   AUTH_USER,
   AUTH_ERROR,
-  GET_BUDGET_TEMPLATE,
-  GET_BUDGET_TEMPLATE_ERROR,
+  GET_BUDGET_TEMPLATES,
+  GET_BUDGET_TEMPLATES_ERROR,
 } from './types';
 
 const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
-
-export const getReqWithAuth = async (pathname) => {
-  try {
-    const token = await auth.currentUser.getIdToken();
-
-    await axios
-      .create({ headers: { Authorization: `Bearer ${token}` } })
-      .get(BASE_API_URL + pathname);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const postReqWithAuth = async (pathname, reqBody) => {
-  try {
-    const token = await auth.currentUser.getIdToken();
-
-    await axios
-      .create({ headers: { Authorization: `Bearer ${token}` } })
-      .post(BASE_API_URL + pathname, reqBody);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const patchReqWithAuth = async (pathname, reqBody) => {
-  try {
-    const token = await auth.currentUser.getIdToken();
-
-    await axios
-      .create({ headers: { Authorization: `Bearer ${token}` } })
-      .patch(BASE_API_URL + pathname, reqBody);
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 export const signup =
   ({ email, password }, callback) =>
@@ -78,7 +42,7 @@ export const authChanged = (userAuth) => (dispatch) => {
   dispatch({ type: AUTH_USER, payload: userAuth });
 };
 
-export const getBudgetTemplate = (pathname) => async (dispatch) => {
+export const getBudgetTemplates = (pathname) => async (dispatch) => {
   try {
     const token = await auth.currentUser.getIdToken();
 
@@ -86,8 +50,8 @@ export const getBudgetTemplate = (pathname) => async (dispatch) => {
       .create({ headers: { Authorization: `Bearer ${token}` } })
       .get(BASE_API_URL + pathname);
 
-    dispatch({ type: GET_BUDGET_TEMPLATE, payload: data });
+    dispatch({ type: GET_BUDGET_TEMPLATES, payload: data });
   } catch (err) {
-    dispatch({ type: GET_BUDGET_TEMPLATE_ERROR, payload: err });
+    dispatch({ type: GET_BUDGET_TEMPLATES_ERROR, payload: err });
   }
 };

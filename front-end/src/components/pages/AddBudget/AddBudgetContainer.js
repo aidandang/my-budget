@@ -7,6 +7,7 @@ import { Form, Input } from '../../common/Form';
 import { Table, Tr, Th, Td } from '../../common/Table';
 import { reduxForm, Field } from 'redux-form';
 import { Button } from '../../common/Button';
+import { defaultBudget } from '../../../data/defaultBudget';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -25,14 +26,11 @@ class AddBudgetContainer extends Component {
   onSubmit = (props) => {};
 
   componentDidMount() {
-    this.props.getBudgetTemplate('/users');
+    this.props.getBudgetTemplates('/users/get-budget-templates');
   }
 
   render() {
     const { handleSubmit, pristine, submitting, invalid } = this.props;
-    const { budget } = this.props;
-
-    console.log(budget);
 
     return (
       <div className="add-budget">
@@ -84,52 +82,51 @@ class AddBudgetContainer extends Component {
         <div className="headline">Summary by Category</div>
 
         <div>
-          {budget &&
-            budget.map((cat) => (
-              <Table key={cat._id}>
-                <Tr>
-                  <Th border={'none'}>{cat._id}</Th>
-                  <Th align={'right'} border={'none'} last={true}>
-                    <span className="budgets__tab">Planning</span>
-                  </Th>
+          {defaultBudget.map((cat) => (
+            <Table key={cat._id}>
+              <Tr>
+                <Th border={'none'}>{cat._id}</Th>
+                <Th align={'right'} border={'none'} last={true}>
+                  <span className="budgets__tab">Planning</span>
+                </Th>
+              </Tr>
+              {cat.accounts.map((acc, index) => (
+                <Tr key={acc._id}>
+                  <Td
+                    border={`${
+                      cat.accounts.length - 1 === index ? 'double' : 'single'
+                    }`}
+                  >
+                    {acc.name}
+                  </Td>
+                  <Td
+                    align={'right'}
+                    last={true}
+                    border={`${
+                      cat.accounts.length - 1 === index ? 'double' : 'single'
+                    }`}
+                  >
+                    {`$${acc.budget}`}
+                  </Td>
                 </Tr>
-                {cat.accounts.map((acc, index) => (
-                  <Tr key={acc._id}>
-                    <Td
-                      border={`${
-                        cat.accounts.length - 1 === index ? 'double' : 'single'
-                      }`}
-                    >
-                      {acc.name}
-                    </Td>
-                    <Td
-                      align={'right'}
-                      last={true}
-                      border={`${
-                        cat.accounts.length - 1 === index ? 'double' : 'single'
-                      }`}
-                    >
-                      {`$${acc.budget}`}
-                    </Td>
-                  </Tr>
-                ))}
-                <Tr>
-                  <Th border={'none'}>
-                    <a
-                      href="/"
-                      onClick={(e) => {
-                        e.preventDefault();
-                      }}
-                    >
-                      Add Account
-                    </a>
-                  </Th>
-                  <Th align={'right'} border={'none'} last={true}>
-                    Total: {`$0`}
-                  </Th>
-                </Tr>
-              </Table>
-            ))}
+              ))}
+              <Tr>
+                <Th border={'none'}>
+                  <a
+                    href="/"
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                  >
+                    Add Account
+                  </a>
+                </Th>
+                <Th align={'right'} border={'none'} last={true}>
+                  Total: {`$0`}
+                </Th>
+              </Tr>
+            </Table>
+          ))}
         </div>
 
         <div className="space--medium">&nbsp;</div>
@@ -151,8 +148,8 @@ class AddBudgetContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  budget: state.template.budget,
-  errorMessage: state.template.errorMessage,
+  budgets: state.user.budgets,
+  errorMessage: state.user.errorMessage,
 });
 
 const validate = (values) => {
