@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const CORS = require('cors');
 const bodyParser = require('body-parser');
 const firebaseAuthController = require('./controllers/firebaseAuthController');
 const AppError = require('./utils/appError');
@@ -11,6 +12,7 @@ const router = require('./router');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(CORS());
 
 // firebase authentication
 app.use('/', firebaseAuthController.protect);
