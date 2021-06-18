@@ -61,6 +61,7 @@ class SignUpContainer extends Component {
 
           <div className="signup__email-box">
             <Button
+              type={'submit'}
               size={'large'}
               fullwidth={true}
               disabled={invalid || submitting || pristine}

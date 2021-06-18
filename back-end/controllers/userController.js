@@ -7,7 +7,6 @@ exports.getBudgetTemplates = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ uid });
 
   if (user) {
-    console.log(user.templates);
     res.status(200).json({
       status: 'success',
       templates: user.templates,
