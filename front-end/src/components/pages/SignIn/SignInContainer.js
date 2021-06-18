@@ -14,7 +14,7 @@ import * as actions from '../../../state/actions';
 
 class SignInContainer extends Component {
   goToDashboard = () => {
-    this.history.push('/dashboard');
+    this.props.history.push('/dashboard');
   };
 
   onSubmit = (formProps) => {
@@ -87,6 +87,7 @@ class SignInContainer extends Component {
             </div>
             <div className="signin__email-box">
               <Button
+                type={'submit'}
                 size={'large'}
                 fullwidth={true}
                 disabled={invalid || submitting || pristine}
