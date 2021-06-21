@@ -23,11 +23,9 @@ const list = [
 const noteContent = `HOW TO USE: Select the default or a custom template to create a monthly budget. Choose each category to enter budgets for accounts in it. Add a new account if needed.`;
 
 class AddBudgetContainer extends Component {
-
   state = {
-    CHARITY: {
-      
-    }
+    CHARITY: {},
+    SAVING: {},
   };
 
   onSubmit = (props) => {};
