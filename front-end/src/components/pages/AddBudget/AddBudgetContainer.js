@@ -7,7 +7,6 @@ import { Form, Input } from '../../common/Form';
 import { Table, Tr, Th, Td } from '../../common/Table';
 import { reduxForm, Field } from 'redux-form';
 import { Button } from '../../common/Button';
-import { defaultBudget } from '../../../data/defaultBudget';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -16,29 +15,52 @@ import * as actions from '../../../state/actions';
 const rightTitle = 'Add Budget';
 const list = [
   {
-    first: 'Default',
-    second: 'Template',
+    name: 'Default',
+    template: [],
+  },
+  {
+    name: '062221',
+    template: [],
   },
 ];
 const noteContent = `HOW TO USE: Select the default or a custom template to create a monthly budget. Choose each category to enter budgets for accounts in it. Add a new account if needed.`;
 
 class AddBudgetContainer extends Component {
+  state = {
+    selected: 0,
+  };
+
   onSubmit = (props) => {};
+
+  setSelected = (index) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      selected: index,
+    }));
+  };
 
   componentDidMount() {
     this.props.getBudgetTemplates('/users/get-budget-templates');
   }
 
   render() {
-    const { handleSubmit, pristine, submitting, invalid } = this.props;
+    const { handleSubmit, pristine, submitting, invalid, templates } =
+      this.props;
 
     return (
       <div className="add-budget">
         <div className="space--medium">&nbsp;</div>
 
-        {list && (
-          <PageTitle list={list} selected={null} rightTitle={rightTitle} />
-        )}
+        <PageTitle
+          leftTitle={{
+            first: templates[this.state.selected].name,
+            second: 'Template',
+          }}
+          list={templates}
+          selected={this.state.selected}
+          setSelected={this.setSelected}
+          rightTitle={rightTitle}
+        />
 
         <div className="space--small">&nbsp;</div>
 
@@ -81,7 +103,7 @@ class AddBudgetContainer extends Component {
           <div className="headline">Summary by Category</div>
 
           <div>
-            {defaultBudget.map((cat) => (
+            {templates[this.state.selected].budget.map((cat) => (
               <Table key={cat._id}>
                 <Tr>
                   <Th border={'none'}>{cat._id}</Th>
@@ -152,6 +174,7 @@ class AddBudgetContainer extends Component {
 
 const mapStateToProps = (state) => ({
   budgets: state.user.budgets,
+  templates: state.user.templates,
   errorMessage: state.user.errorMessage,
 });
 

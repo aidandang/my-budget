@@ -77,6 +77,17 @@ const budgetSchema = new Schema({
   },
 });
 
+const templateSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  template: {
+    type: Array,
+  },
+});
+
 const userSchema = new Schema({
   uid: {
     type: String,
@@ -87,7 +98,7 @@ const userSchema = new Schema({
     type: [budgetSchema],
   },
   templates: {
-    type: Array,
+    type: [templateSchema],
   },
 });
 

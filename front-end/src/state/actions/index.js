@@ -50,7 +50,7 @@ export const getBudgetTemplates = (pathname) => async (dispatch) => {
       .create({ headers: { Authorization: `Bearer ${token}` } })
       .get(BASE_API_URL + pathname);
 
-    dispatch({ type: GET_BUDGET_TEMPLATES, payload: data });
+    dispatch({ type: GET_BUDGET_TEMPLATES, payload: data.data.templates });
   } catch (err) {
     dispatch({ type: GET_BUDGET_TEMPLATES_ERROR, payload: err });
   }

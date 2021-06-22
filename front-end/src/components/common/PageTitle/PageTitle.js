@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 
-const PageTitle = ({ list, selected, rightTitle, isBudgets }) => {
+const PageTitle = ({
+  leftTitle,
+  list,
+  selected,
+  setSelected,
+  rightTitle,
+  isBudgets,
+}) => {
   const [trigger, setTrigger] = useState({
     isListOpen: false,
     selected,
@@ -13,20 +20,12 @@ const PageTitle = ({ list, selected, rightTitle, isBudgets }) => {
     }));
   };
 
-  const selectItem = (index) => {
-    setTrigger((prevState) => ({
-      ...prevState,
-      isListOpen: false,
-      selected: index,
-    }));
-  };
-
   return (
     <div className="pagetitle">
       <div className="pagetitle__title-box">
         <div className="pagetitle__left-title">
-          <span>{list[0].first}</span>{' '}
-          <span className="pagetitle__year">{list[0].second}</span>{' '}
+          <span>{leftTitle.first}</span>{' '}
+          <span className="pagetitle__year">{leftTitle.second}</span>{' '}
           <span
             className="pagetitle__icon"
             onClick={(e) => {
@@ -64,10 +63,14 @@ const PageTitle = ({ list, selected, rightTitle, isBudgets }) => {
                 }`}
                 onClick={(e) => {
                   e.preventDefault();
-                  selectItem(index);
+                  setTrigger((prevState) => ({
+                    ...prevState,
+                    isListOpen: false,
+                  }));
+                  setSelected(index);
                 }}
               >
-                {item.first} {item.second}
+                {item.name}
               </span>
               {index !== list.length - 1 && (
                 <span className="pagetitle__space">|</span>
