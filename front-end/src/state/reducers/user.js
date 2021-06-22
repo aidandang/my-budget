@@ -20,7 +20,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
     case GET_BUDGET_TEMPLATES:
       return {
         ...state,
-        templates: [ ...state.templates, action.payload.data.templates] ,
+        templates: state.templates.concat(action.payload),
       };
     case GET_BUDGET_TEMPLATES_ERROR:
       return {
