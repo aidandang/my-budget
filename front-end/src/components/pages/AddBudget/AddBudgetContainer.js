@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import withRequiredAuth from '../../common/HOC/withRequiredAuth';
+import CrudAccount from './CrudAccount';
+import MonthYearForm from './MonthYearForm';
 
 import { PageTitle } from '../../common/PageTitle';
 import { Note } from '../../common/Note';
-import { Form, Input } from '../../common/Form';
 import { Table, Tr, Th, Td } from '../../common/Table';
-import { reduxForm, Field } from 'redux-form';
-import { Button } from '../../common/Button';
 
-import { compose } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../../state/actions';
 
@@ -18,6 +16,8 @@ const noteContent = `HOW TO USE: Select the default or a custom template to crea
 class AddBudgetContainer extends Component {
   state = {
     selected: 0,
+    isEdit: false,
+    editId: '',
   };
 
   onSubmit = (props) => {};
@@ -46,8 +46,7 @@ class AddBudgetContainer extends Component {
   }
 
   render() {
-    const { handleSubmit, pristine, submitting, invalid, templates } =
-      this.props;
+    const { templates } = this.props;
 
     return (
       <div className="add-budget">
@@ -70,108 +69,99 @@ class AddBudgetContainer extends Component {
 
         <div className="space--medium">&nbsp;</div>
 
-        <Form onSubmit={handleSubmit(this.onSubmit)}>
-          <div>
-            <Field
-              name="monthyear"
-              type="month"
-              component={Input}
-              label="Month:"
-              autoComplete="none"
-            />
-          </div>
+        <MonthYearForm />
 
-          <div className="space--medium">&nbsp;</div>
+        <div className="space--medium">&nbsp;</div>
 
-          <div>
-            <Table>
+        <div>
+          <Table>
+            <Tr>
+              <Th last={true} border={'double'}></Th>
+              <Th align={'right'} last={true} border={'double'}>
+                <span className="budgets__tab">Planning</span>
+              </Th>
+            </Tr>
+            <Tr>
+              <Th border={'none'}>Total Budget</Th>
+              <Th align={'right'} border={'none'} last={true}>
+                {templates[this.state.selected].budget &&
+                  `$${this.calBudgetTotal(
+                    templates[this.state.selected].budget
+                  )}`}
+              </Th>
+            </Tr>
+          </Table>
+        </div>
+
+        <div className="space--medium">&nbsp;</div>
+
+        <div className="headline">Summary by Category</div>
+
+        <div>
+          {templates[this.state.selected].budget.map((cat, index) => (
+            <Table key={cat._id}>
               <Tr>
-                <Th last={true} border={'double'}></Th>
-                <Th align={'right'} last={true} border={'double'}>
+                <Th border={'none'}>{cat._id}</Th>
+                <Th align={'right'} border={'none'} last={true}>
                   <span className="budgets__tab">Planning</span>
                 </Th>
               </Tr>
+              {cat.accounts.map((acc, index) => (
+                <Tr key={acc._id}>
+                  <Td
+                    border={`${
+                      cat.accounts.length - 1 === index ? 'double' : 'single'
+                    }`}
+                  >
+                    {acc.name}
+                  </Td>
+                  <Td
+                    align={'right'}
+                    last={true}
+                    border={`${
+                      cat.accounts.length - 1 === index ? 'double' : 'single'
+                    }`}
+                  >
+                    {`$${acc.budget}`}
+                  </Td>
+                </Tr>
+              ))}
               <Tr>
-                <Th border={'none'}>Total Budget</Th>
+                <Th border={'none'}>
+                  <a
+                    href="/"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      this.setState((prevState) => ({
+                        ...prevState,
+                        isEdit: !this.state.isEdit,
+                        editId: cat._id,
+                      }));
+                    }}
+                  >
+                    Add Account
+                  </a>
+                </Th>
                 <Th align={'right'} border={'none'} last={true}>
-                  {templates[this.state.selected].budget &&
-                    `$${this.calBudgetTotal(
-                      templates[this.state.selected].budget
-                    )}`}
+                  Total: {`$${cat.total}`}
                 </Th>
               </Tr>
+              {this.state.isEdit && this.state.editId === cat._id && (
+                <Tr>
+                  <Td colSpan="2">
+                    <CrudAccount />
+                  </Td>
+                </Tr>
+              )}
             </Table>
-          </div>
+          ))}
+        </div>
 
-          <div className="space--medium">&nbsp;</div>
+        <div className="space--medium">&nbsp;</div>
 
-          <div className="headline">Summary by Category</div>
+        <hr className="separator separator--bold" />
 
-          <div>
-            {templates[this.state.selected].budget.map((cat, index) => (
-              <Table key={cat._id}>
-                <Tr>
-                  <Th border={'none'}>{cat._id}</Th>
-                  <Th align={'right'} border={'none'} last={true}>
-                    <span className="budgets__tab">Planning</span>
-                  </Th>
-                </Tr>
-                {cat.accounts.map((acc, index) => (
-                  <Tr key={acc._id}>
-                    <Td
-                      border={`${
-                        cat.accounts.length - 1 === index ? 'double' : 'single'
-                      }`}
-                    >
-                      {acc.name}
-                    </Td>
-                    <Td
-                      align={'right'}
-                      last={true}
-                      border={`${
-                        cat.accounts.length - 1 === index ? 'double' : 'single'
-                      }`}
-                    >
-                      {`$${acc.budget}`}
-                    </Td>
-                  </Tr>
-                ))}
-                <Tr>
-                  <Th border={'none'}>
-                    <a
-                      href="/"
-                      onClick={(e) => {
-                        e.preventDefault();
-                      }}
-                    >
-                      Add Account
-                    </a>
-                  </Th>
-                  <Th align={'right'} border={'none'} last={true}>
-                    Total: {`$${cat.total}`}
-                  </Th>
-                </Tr>
-              </Table>
-            ))}
-          </div>
-
-          <div className="space--medium">&nbsp;</div>
-
-          <hr className="separator separator--bold" />
-
-          <div className="space--medium">&nbsp;</div>
-
-          <div>
-            <Button
-              type={'submit'}
-              disabled={invalid || submitting || pristine}
-            >
-              Add Budget
-            </Button>
-            <span className="hspace--small">&nbsp;</span>
-            <Button type={'reset'}>Reset</Button>
-          </div>
-        </Form>
+        <div className="space--medium">&nbsp;</div>
       </div>
     );
   }
@@ -183,26 +173,7 @@ const mapStateToProps = (state) => ({
   errorMessage: state.user.errorMessage,
 });
 
-const validate = (values) => {
-  const errors = {};
-
-  if (!values.monthyear) {
-    errors.monthyear = 'Required';
-  }
-
-  return errors;
-};
-
-const warn = (values) => {
-  const warnings = {};
-  return warnings;
-};
-
-export default compose(
-  connect(mapStateToProps, actions),
-  reduxForm({
-    form: 'addbudget',
-    validate,
-    warn,
-  })
+export default connect(
+  mapStateToProps,
+  actions
 )(withRequiredAuth(AddBudgetContainer));
