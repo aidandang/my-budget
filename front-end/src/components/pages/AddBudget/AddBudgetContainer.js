@@ -13,16 +13,6 @@ import { connect } from 'react-redux';
 import * as actions from '../../../state/actions';
 
 const rightTitle = 'Add Budget';
-const list = [
-  {
-    name: 'Default',
-    template: [],
-  },
-  {
-    name: '062221',
-    template: [],
-  },
-];
 const noteContent = `HOW TO USE: Select the default or a custom template to create a monthly budget. Choose each category to enter budgets for accounts in it. Add a new account if needed.`;
 
 class AddBudgetContainer extends Component {
@@ -37,6 +27,18 @@ class AddBudgetContainer extends Component {
       ...prevState,
       selected: index,
     }));
+  };
+
+  calBudgetTotal = (budget) => {
+    const total = budget.reduce((acc, val) => {
+      if (val._id !== 'INCOMES') {
+        return acc + val.total;
+      } else {
+        return acc;
+      }
+    }, 0);
+
+    return total;
   };
 
   componentDidMount() {
@@ -92,7 +94,10 @@ class AddBudgetContainer extends Component {
               <Tr>
                 <Th border={'none'}>Total Budget</Th>
                 <Th align={'right'} border={'none'} last={true}>
-                  $3,800.00
+                  {templates[this.state.selected].budget &&
+                    `$${this.calBudgetTotal(
+                      templates[this.state.selected].budget
+                    )}`}
                 </Th>
               </Tr>
             </Table>
@@ -103,7 +108,7 @@ class AddBudgetContainer extends Component {
           <div className="headline">Summary by Category</div>
 
           <div>
-            {templates[this.state.selected].budget.map((cat) => (
+            {templates[this.state.selected].budget.map((cat, index) => (
               <Table key={cat._id}>
                 <Tr>
                   <Th border={'none'}>{cat._id}</Th>
@@ -143,7 +148,7 @@ class AddBudgetContainer extends Component {
                     </a>
                   </Th>
                   <Th align={'right'} border={'none'} last={true}>
-                    Total: {`$0`}
+                    Total: {`$${cat.total}`}
                   </Th>
                 </Tr>
               </Table>

@@ -15,6 +15,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'SAVING',
@@ -38,6 +39,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'HOUSING',
@@ -67,6 +69,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'UTILITIES',
@@ -114,6 +117,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'FOOD',
@@ -131,6 +135,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'CLOTHING',
@@ -154,6 +159,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'TRANSPORTATION',
@@ -183,6 +189,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'HEALTH',
@@ -218,6 +225,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'INSURANCE',
@@ -265,6 +273,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'PERSONAL',
@@ -378,6 +387,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'RECREATION',
@@ -401,6 +411,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'DEBTS',
@@ -454,6 +465,7 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
   {
     _id: 'INCOMES',
@@ -489,5 +501,6 @@ export const defaultBudget = [
         budget: 0,
       },
     ],
+    total: 0,
   },
 ];
