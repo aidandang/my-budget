@@ -48,7 +48,7 @@ export const AddBudget = ({ user }) => {
           <Input type="month" label="Month" />
         </div>
         <div className="space--medium">&nbsp;</div>
-        <div>
+        {/* <div>
           <Table>
             <Tr>
               <Th last={true}></Th>
@@ -63,7 +63,7 @@ export const AddBudget = ({ user }) => {
               </Th>
             </Tr>
           </Table>
-        </div>
+        </div> */}
         <div className="space--medium">&nbsp;</div>
         <div className="budgets__headline">Summary by Category</div>
         <div>
