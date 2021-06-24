@@ -107,7 +107,17 @@ class AddBudgetContainer extends Component {
                 </Th>
               </Tr>
               {cat.accounts.map((acc, index) => (
-                <Tr key={acc._id}>
+                <Tr
+                  key={acc._id}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.setState((prevState) => ({
+                      ...prevState,
+                      isEdit: !this.state.isEdit,
+                      editId: acc._id,
+                    }));
+                  }}
+                >
                   <Td
                     border={`${
                       cat.accounts.length - 1 === index ? 'double' : 'single'
@@ -156,12 +166,6 @@ class AddBudgetContainer extends Component {
             </Table>
           ))}
         </div>
-
-        <div className="space--medium">&nbsp;</div>
-
-        <hr className="separator separator--bold" />
-
-        <div className="space--medium">&nbsp;</div>
       </div>
     );
   }

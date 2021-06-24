@@ -17,19 +17,20 @@ class CrudAccount extends Component {
             name="account"
             type="text"
             component={Input}
-            label="Account:"
+            label="Name:"
             autoComplete="none"
           />
         </div>
         <div>
           <Field
-            name="budget"
+            name="amount"
             type="number"
             component={Input}
             label="Amount:"
             autoComplete="none"
           />
         </div>
+        <div className="space--medium">&nbsp;</div>
         <div>
           <Button type={'submit'} disabled={invalid || submitting || pristine}>
             Add Budget
