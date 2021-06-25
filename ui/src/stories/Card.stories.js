@@ -1,15 +1,13 @@
 import React from 'react';
 
-import { Card } from './Card';
+import { Example } from './Card';
 
 export default {
   title: 'Components/Card',
-  component: Card,
+  component: Example,
 };
 
-const Template = (args) => <Card {...args} />;
+const Template = (args) => <Example {...args} />;
 
-export const Example = Template.bind({});
-Example.args = {
-  example: true,
-};
+export const Primary = Template.bind({});
+Primary.args = {};

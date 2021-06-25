@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container } from './Container';
 import { Input } from './Form';
-import { Table, Tr, Th, Td } from './Table';
+import { Card, Row, Col } from './Card';
 import { PageTitle } from './PageTitle';
 import { Note } from './Note';
 import { Button } from './Button';
@@ -44,68 +44,63 @@ export const AddBudget = ({ user }) => {
         <Note content={noteContent} />
 
         <div className="space--medium">&nbsp;</div>
-        <div>
-          <Input type="month" label="Month" />
-        </div>
+
+        <Input type="month" label="Month" />
+
+        <div className="space--small">&nbsp;</div>
+
+        <Card>
+          <Row header={true} border={true}>
+            <Col></Col>
+            <Col>Planning</Col>
+          </Row>
+
+          <Row bold={true}>
+            <Col>Total Budget</Col>
+            <Col>$3,800.00</Col>
+          </Row>
+        </Card>
+
         <div className="space--medium">&nbsp;</div>
-        {/* <div>
-          <Table>
-            <Tr>
-              <Th last={true}></Th>
-              <Th align={'right'} last={true}>
-                <span className="budgets__tab">Planning</span>
-              </Th>
-            </Tr>
-            <Tr>
-              <Th border={'none'}>Total Budget</Th>
-              <Th align={'right'} border={'none'} last={true}>
-                $3,800.00
-              </Th>
-            </Tr>
-          </Table>
-        </div> */}
-        <div className="space--medium">&nbsp;</div>
+
         <div className="budgets__headline">Summary by Category</div>
-        <div>
-          <Table>
-            <Tr>
-              <Th border={'none'}>SAVING</Th>
-              <Th align={'right'} border={'none'} last={true}>
-                <span className="budgets__tab">Planning</span>
-              </Th>
-            </Tr>
-            <Tr>
-              <Td>Emergency Fund</Td>
-              <Td align={'right'} last={true}>
-                $3,800.00
-              </Td>
-            </Tr>
-            <Tr>
-              <Td border={'double'}>Retirement Fund</Td>
-              <Td align={'right'} border={'double'} last={true}>
-                $3,500.00
-              </Td>
-            </Tr>
-            <Tr>
-              <Th border={'none'}>
-                <a
-                  href="/"
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  Add Account
-                </a>
-              </Th>
-              <Th align={'right'} border={'none'} last={true}>
-                Total: $300.00
-              </Th>
-            </Tr>
-          </Table>
-        </div>
+
         <div className="space--medium">&nbsp;</div>
-        <hr className="separator separator--light" />
+
+        <Card>
+          <Row header={true}>
+            <Col>SAVING</Col>
+            <Col>Planning</Col>
+          </Row>
+          <Row border={true}>
+            <Col>Emergency Fund</Col>
+            <Col>$3,800.00</Col>
+          </Row>
+          <Row border={true}>
+            <Col>Retirement Fund</Col>
+            <Col>$0.00</Col>
+          </Row>
+          <Row bold={true}>
+            <Col>
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                Add Account
+              </a>
+            </Col>
+            <Col>Total: $3,800.00</Col>
+          </Row>
+        </Card>
+
+        <div className="space--large">&nbsp;</div>
+
+        <hr className="separator separator--bold" />
+
         <div className="space--medium">&nbsp;</div>
+
         <div>
           <Button
             label="Add Budget"
