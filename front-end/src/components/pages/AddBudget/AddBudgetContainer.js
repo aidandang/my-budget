@@ -5,7 +5,7 @@ import MonthYearForm from './MonthYearForm';
 
 import { PageTitle } from '../../common/PageTitle';
 import { Note } from '../../common/Note';
-import { Table, Tr, Th, Td } from '../../common/Table';
+import { Card, Row, Col } from '../../common/Card';
 
 import { connect } from 'react-redux';
 import * as actions from '../../../state/actions';
@@ -73,71 +73,69 @@ class AddBudgetContainer extends Component {
 
         <div className="space--medium">&nbsp;</div>
 
-        <div>
-          <Table>
-            <Tr>
-              <Th last={true} border={'double'}></Th>
-              <Th align={'right'} last={true} border={'double'}>
-                <span className="budgets__tab">Planning</span>
-              </Th>
-            </Tr>
-            <Tr>
-              <Th border={'none'}>Total Budget</Th>
-              <Th align={'right'} border={'none'} last={true}>
-                {templates[this.state.selected].budget &&
-                  `$${this.calBudgetTotal(
-                    templates[this.state.selected].budget
-                  )}`}
-              </Th>
-            </Tr>
-          </Table>
-        </div>
+        <Card>
+          <Row header={true} border={true}>
+            <Col></Col>
+            <Col right={true}>Planning</Col>
+          </Row>
+          <Row bold={true}>
+            <Col>Total Budget</Col>
+            <Col right={true}>
+              {templates[this.state.selected].budget &&
+                `$${this.calBudgetTotal(
+                  templates[this.state.selected].budget
+                )}`}
+            </Col>
+          </Row>
+        </Card>
 
         <div className="space--medium">&nbsp;</div>
 
         <div className="headline">Summary by Category</div>
 
-        <div>
-          {templates[this.state.selected].budget.map((cat, index) => (
-            <Table key={cat._id}>
-              <Tr>
-                <Th border={'none'}>{cat._id}</Th>
-                <Th align={'right'} border={'none'} last={true}>
-                  <span className="budgets__tab">Planning</span>
-                </Th>
-              </Tr>
+        {templates[this.state.selected].budget.map((cat, index) => (
+          <>
+            <div className="space--medium">&nbsp;</div>
+            <Card key={cat._id}>
+              <Row header={true}>
+                <Col>{cat._id}</Col>
+                <Col right={true}>Planning</Col>
+              </Row>
               {cat.accounts.map((acc, index) => (
-                <Tr
-                  key={acc._id}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    this.setState((prevState) => ({
-                      ...prevState,
-                      isEdit: !this.state.isEdit,
-                      editId: acc._id,
-                    }));
-                  }}
-                >
-                  <Td
-                    border={`${
-                      cat.accounts.length - 1 === index ? 'double' : 'single'
-                    }`}
+                <>
+                  <Row
+                    key={acc._id}
+                    border={true}
+                    last={cat.accounts.length - 1 === index ? true : false}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      this.setState((prevState) => ({
+                        ...prevState,
+                        isEdit: !this.state.isEdit,
+                        editId: acc._id,
+                      }));
+                    }}
                   >
-                    {acc.name}
-                  </Td>
-                  <Td
-                    align={'right'}
-                    last={true}
-                    border={`${
-                      cat.accounts.length - 1 === index ? 'double' : 'single'
-                    }`}
-                  >
-                    {`$${acc.budget}`}
-                  </Td>
-                </Tr>
+                    <Col>{acc.name}</Col>
+                    <Col right={true}>{`$${acc.budget}`}</Col>
+                  </Row>
+                  {this.state.isEdit && this.state.editId === acc._id && (
+                    <>
+                      <div className="space--small">&nbsp;</div>
+
+                      <Row>
+                        <Col>
+                          <CrudAccount account={acc.name} budget={acc.budget} />
+                        </Col>
+                      </Row>
+
+                      <div className="space--small">&nbsp;</div>
+                    </>
+                  )}
+                </>
               ))}
-              <Tr>
-                <Th border={'none'}>
+              <Row bold={true}>
+                <Col>
                   <a
                     href="/"
                     onClick={(e) => {
@@ -151,21 +149,19 @@ class AddBudgetContainer extends Component {
                   >
                     Add Account
                   </a>
-                </Th>
-                <Th align={'right'} border={'none'} last={true}>
-                  Total: {`$${cat.total}`}
-                </Th>
-              </Tr>
+                </Col>
+                <Col right="true">Total: {`$${cat.total}`}</Col>
+              </Row>
               {this.state.isEdit && this.state.editId === cat._id && (
-                <Tr>
-                  <Td colSpan="2">
+                <Row>
+                  <Col>
                     <CrudAccount />
-                  </Td>
-                </Tr>
+                  </Col>
+                </Row>
               )}
-            </Table>
-          ))}
-        </div>
+            </Card>
+          </>
+        ))}
       </div>
     );
   }

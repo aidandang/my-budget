@@ -17,17 +17,19 @@ class CrudAccount extends Component {
             name="account"
             type="text"
             component={Input}
-            label="Name:"
+            label="Account:"
             autoComplete="none"
+            placeholder={this.props.account}
           />
         </div>
         <div>
           <Field
-            name="amount"
+            name="budget"
             type="number"
             component={Input}
-            label="Amount:"
+            label="Budget:"
             autoComplete="none"
+            placeholder={this.props.budget}
           />
         </div>
         <div className="space--medium">&nbsp;</div>
