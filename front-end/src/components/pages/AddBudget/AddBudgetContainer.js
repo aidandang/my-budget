@@ -17,7 +17,7 @@ class AddBudgetContainer extends Component {
   state = {
     selected: 0,
     isEdit: false,
-    editId: '',
+    id: '',
   };
 
   onSubmit = (props) => {};
@@ -26,6 +26,14 @@ class AddBudgetContainer extends Component {
     this.setState((prevState) => ({
       ...prevState,
       selected: index,
+    }));
+  };
+
+  onAccountClick = (id) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      isEdit: id ? true : false,
+      id: id ? id : '',
     }));
   };
 
@@ -94,32 +102,48 @@ class AddBudgetContainer extends Component {
         <div className="headline">Summary by Category</div>
 
         {templates[this.state.selected].budget.map((cat, index) => (
-          <>
+          <div key={cat._id}>
             <div className="space--medium">&nbsp;</div>
-            <Card key={cat._id}>
+            <Card>
               <Row header={true}>
                 <Col>{cat._id}</Col>
                 <Col right={true}>Planning</Col>
               </Row>
               {cat.accounts.map((acc, index) => (
-                <>
+                <div key={acc._id}>
                   <Row
-                    key={acc._id}
                     border={true}
                     last={cat.accounts.length - 1 === index ? true : false}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      this.setState((prevState) => ({
-                        ...prevState,
-                        isEdit: !this.state.isEdit,
-                        editId: acc._id,
-                      }));
-                    }}
                   >
-                    <Col>{acc.name}</Col>
+                    <Col>
+                      {acc.name}{' '}
+                      {this.state.isEdit && this.state.id === acc._id ? (
+                        <a
+                          href="/"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            this.onAccountClick('');
+                          }}
+                        >
+                          <i className="fas fa-minus-circle"></i>
+                        </a>
+                      ) : (
+                        <a
+                          href="/"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (!this.state.isEdit) {
+                              this.onAccountClick(acc._id);
+                            }
+                          }}
+                        >
+                          <i className="fas fa-plus-circle"></i>
+                        </a>
+                      )}
+                    </Col>
                     <Col right={true}>{`$${acc.budget}`}</Col>
                   </Row>
-                  {this.state.isEdit && this.state.editId === acc._id && (
+                  {this.state.isEdit && this.state.id === acc._id && (
                     <>
                       <div className="space--small">&nbsp;</div>
 
@@ -132,7 +156,7 @@ class AddBudgetContainer extends Component {
                       <div className="space--small">&nbsp;</div>
                     </>
                   )}
-                </>
+                </div>
               ))}
               <Row bold={true}>
                 <Col>
@@ -152,7 +176,7 @@ class AddBudgetContainer extends Component {
                 </Col>
                 <Col right="true">Total: {`$${cat.total}`}</Col>
               </Row>
-              {this.state.isEdit && this.state.editId === cat._id && (
+              {this.state.isEdit && this.state.id === cat._id && (
                 <Row>
                   <Col>
                     <CrudAccount />
@@ -160,7 +184,7 @@ class AddBudgetContainer extends Component {
                 </Row>
               )}
             </Card>
-          </>
+          </div>
         ))}
       </div>
     );
