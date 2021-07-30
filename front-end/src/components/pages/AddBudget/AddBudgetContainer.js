@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import withRequiredAuth from '../../common/HOC/withRequiredAuth';
-import CrudAccount from './CrudAccount';
+import CrudAccountForm from './CrudAccountForm';
 import MonthYearForm from './MonthYearForm';
 
 import { PageTitle } from '../../common/PageTitle';
@@ -149,7 +149,10 @@ class AddBudgetContainer extends Component {
 
                       <Row>
                         <Col>
-                          <CrudAccount account={acc.name} budget={acc.budget} />
+                          <CrudAccountForm
+                            account={acc.name}
+                            budget={acc.budget}
+                          />
                         </Col>
                       </Row>
 
@@ -179,7 +182,7 @@ class AddBudgetContainer extends Component {
               {this.state.isEdit && this.state.id === cat._id && (
                 <Row>
                   <Col>
-                    <CrudAccount />
+                    <CrudAccountForm />
                   </Col>
                 </Row>
               )}

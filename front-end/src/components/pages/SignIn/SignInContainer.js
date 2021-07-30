@@ -14,7 +14,7 @@ import * as actions from '../../../state/actions';
 
 class SignInContainer extends Component {
   goToDashboard = () => {
-    this.props.history.push('/dashboard');
+    this.props.history.push('/Dashboard');
   };
 
   onSubmit = (formProps) => {
@@ -26,7 +26,7 @@ class SignInContainer extends Component {
 
     return (
       <>
-        {this.props.currentUser && <Redirect to="/dashboard" />}
+        {this.props.currentUser && <Redirect to={'/Dashboard'} />}
 
         <SignInRender>
           <div className="signin__google-box">
