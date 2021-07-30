@@ -31,8 +31,7 @@ const Footer = () => {
                 Dedicated and efficient developer with 3 years of experience in
                 designing, developing, implementing and testing web
                 applications. Certified in both front-end and back-end
-                technologies. Excited to be at a new chapter of the career as a
-                computer engineer.
+                technologies.
               </small>
             </p>
           </div>

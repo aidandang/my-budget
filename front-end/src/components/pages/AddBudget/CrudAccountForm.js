@@ -4,7 +4,7 @@ import { Form, Input } from '../../common/Form';
 import { reduxForm, Field } from 'redux-form';
 import { Button } from '../../common/Button';
 
-class CrudAccount extends Component {
+class CrudAccountForm extends Component {
   componentDidMount() {
     this.props.initialize({
       account: this.props.account ? this.props.account : '',
@@ -71,4 +71,6 @@ const warn = (values) => {
   return warnings;
 };
 
-export default reduxForm({ form: 'crudaccount', validate, warn })(CrudAccount);
+export default reduxForm({ form: 'crudaccount', validate, warn })(
+  CrudAccountForm
+);

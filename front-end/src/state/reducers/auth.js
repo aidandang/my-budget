@@ -3,7 +3,7 @@ import { AUTH_USER, AUTH_ERROR } from '../actions/types';
 const INITIAL_STATE = {
   currentUser: null,
   errorMessage: '',
-  isAuthChecked: false,
+  checked: false,
 };
 
 export const authReducer = (state = INITIAL_STATE, action) => {
@@ -12,7 +12,7 @@ export const authReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentUser: action.payload,
-        isAuthChecked: true,
+        checked: true,
       };
     case AUTH_ERROR:
       return {
