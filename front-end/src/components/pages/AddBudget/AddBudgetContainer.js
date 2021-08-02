@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import withRequiredAuth from '../../common/HOC/withRequiredAuth';
 import CrudAccountForm from './CrudAccountForm';
 import MonthYearForm from './MonthYearForm';
@@ -89,10 +91,8 @@ class AddBudgetContainer extends Component {
           <Row bold={true}>
             <Col>Total Budget</Col>
             <Col right={true}>
-              {templates[this.state.selected].budget &&
-                `$${this.calBudgetTotal(
-                  templates[this.state.selected].budget
-                )}`}
+              {templates[this.state.selected].value &&
+                `$${this.calBudgetTotal(templates[this.state.selected].value)}`}
             </Col>
           </Row>
         </Card>
@@ -141,7 +141,7 @@ class AddBudgetContainer extends Component {
                         </a>
                       )}
                     </Col>
-                    <Col right={true}>{`$${acc.budget}`}</Col>
+                    <Col right={true}>{`$${acc.value}`}</Col>
                   </Row>
                   {this.state.isEdit && this.state.id === acc._id && (
                     <>
@@ -163,19 +163,35 @@ class AddBudgetContainer extends Component {
               ))}
               <Row bold={true}>
                 <Col>
-                  <a
-                    href="/"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      this.setState((prevState) => ({
-                        ...prevState,
-                        isEdit: !this.state.isEdit,
-                        editId: cat._id,
-                      }));
-                    }}
-                  >
-                    Add Account
-                  </a>
+                  {this.state.isEdit && this.state.id === cat._id ? (
+                    <a
+                      href="/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        this.setState((prevState) => ({
+                          ...prevState,
+                          isEdit: false,
+                          id: '',
+                        }));
+                      }}
+                    >
+                      Add Account
+                    </a>
+                  ) : (
+                    <a
+                      href="/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        this.setState((prevState) => ({
+                          ...prevState,
+                          isEdit: true,
+                          id: cat._id,
+                        }));
+                      }}
+                    >
+                      Add Account
+                    </a>
+                  )}
                 </Col>
                 <Col right="true">Total: {`$${cat.total}`}</Col>
               </Row>
@@ -199,6 +215,29 @@ const mapStateToProps = (state) => ({
   templates: state.user.templates,
   errorMessage: state.user.errorMessage,
 });
+
+AddBudgetContainer.propTypes = {
+  templates: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      budgets: PropTypes.arrayOf(
+        PropTypes.shape({
+          _id: PropTypes.string.isRequired,
+          accounts: PropTypes.arrayOf(
+            PropTypes.shape({
+              _id: PropTypes.string.isRequired,
+              name: PropTypes.string.isRequired,
+              category: PropTypes.string.isRequired,
+              value: PropTypes.number.isRequired,
+            })
+          ),
+          total: PropTypes.number.isRequired,
+        })
+      ),
+    })
+  ).isRequired,
+  getBudgetTemplates: PropTypes.func.isRequired,
+};
 
 export default connect(
   mapStateToProps,

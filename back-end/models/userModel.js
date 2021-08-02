@@ -81,9 +81,8 @@ const templateSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
-  template: {
+  budget: {
     type: Array,
   },
 });
