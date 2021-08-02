@@ -91,10 +91,8 @@ class AddBudgetContainer extends Component {
           <Row bold={true}>
             <Col>Total Budget</Col>
             <Col right={true}>
-              {templates[this.state.selected].budget &&
-                `$${this.calBudgetTotal(
-                  templates[this.state.selected].budget
-                )}`}
+              {templates[this.state.selected].value &&
+                `$${this.calBudgetTotal(templates[this.state.selected].value)}`}
             </Col>
           </Row>
         </Card>
@@ -143,7 +141,7 @@ class AddBudgetContainer extends Component {
                         </a>
                       )}
                     </Col>
-                    <Col right={true}>{`$${acc.budget}`}</Col>
+                    <Col right={true}>{`$${acc.value}`}</Col>
                   </Row>
                   {this.state.isEdit && this.state.id === acc._id && (
                     <>
@@ -219,7 +217,25 @@ const mapStateToProps = (state) => ({
 });
 
 AddBudgetContainer.propTypes = {
-  templates: PropTypes.array.isRequired,
+  templates: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      budgets: PropTypes.arrayOf(
+        PropTypes.shape({
+          _id: PropTypes.string.isRequired,
+          accounts: PropTypes.arrayOf(
+            PropTypes.shape({
+              _id: PropTypes.string.isRequired,
+              name: PropTypes.string.isRequired,
+              category: PropTypes.string.isRequired,
+              value: PropTypes.number.isRequired,
+            })
+          ),
+          total: PropTypes.number.isRequired,
+        })
+      ),
+    })
+  ).isRequired,
   getBudgetTemplates: PropTypes.func.isRequired,
 };
 

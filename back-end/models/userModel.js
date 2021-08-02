@@ -82,7 +82,7 @@ const templateSchema = new Schema({
     type: String,
     required: true,
   },
-  template: {
+  budget: {
     type: Array,
   },
 });
