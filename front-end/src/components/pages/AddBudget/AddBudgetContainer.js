@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import withRequiredAuth from '../../common/HOC/withRequiredAuth';
 import CrudAccountForm from './CrudAccountForm';
 import MonthYearForm from './MonthYearForm';
@@ -163,19 +165,35 @@ class AddBudgetContainer extends Component {
               ))}
               <Row bold={true}>
                 <Col>
-                  <a
-                    href="/"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      this.setState((prevState) => ({
-                        ...prevState,
-                        isEdit: !this.state.isEdit,
-                        editId: cat._id,
-                      }));
-                    }}
-                  >
-                    Add Account
-                  </a>
+                  {this.state.isEdit && this.state.id === cat._id ? (
+                    <a
+                      href="/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        this.setState((prevState) => ({
+                          ...prevState,
+                          isEdit: false,
+                          id: '',
+                        }));
+                      }}
+                    >
+                      Add Account
+                    </a>
+                  ) : (
+                    <a
+                      href="/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        this.setState((prevState) => ({
+                          ...prevState,
+                          isEdit: true,
+                          id: cat._id,
+                        }));
+                      }}
+                    >
+                      Add Account
+                    </a>
+                  )}
                 </Col>
                 <Col right="true">Total: {`$${cat.total}`}</Col>
               </Row>
@@ -199,6 +217,11 @@ const mapStateToProps = (state) => ({
   templates: state.user.templates,
   errorMessage: state.user.errorMessage,
 });
+
+AddBudgetContainer.propTypes = {
+  templates: PropTypes.array.isRequired,
+  getBudgetTemplates: PropTypes.func.isRequired,
+};
 
 export default connect(
   mapStateToProps,
