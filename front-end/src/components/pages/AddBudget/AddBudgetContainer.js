@@ -102,7 +102,7 @@ class AddBudgetContainer extends Component {
 
         <div className="headline">Summary by Category</div>
 
-        {templates[this.state.selected].budget.map((cat, index) => (
+        {templates[this.state.selected].budget.map((cat, catIndex) => (
           <div key={cat._id}>
             <div className="space--medium">&nbsp;</div>
             <Card>
@@ -110,11 +110,11 @@ class AddBudgetContainer extends Component {
                 <Col>{cat._id}</Col>
                 <Col right={true}>Planning</Col>
               </Row>
-              {cat.accounts.map((acc, index) => (
+              {cat.accounts.map((acc, accIndex) => (
                 <div key={acc._id}>
                   <Row
                     border={true}
-                    last={cat.accounts.length - 1 === index ? true : false}
+                    last={cat.accounts.length - 1 === accIndex ? true : false}
                   >
                     <Col>
                       {acc.name}{' '}
@@ -151,10 +151,11 @@ class AddBudgetContainer extends Component {
                       <Row>
                         <Col>
                           <CrudAccountForm
-                            account={acc.name}
-                            budget={acc.budget}
+                            accountName={acc.name}
+                            accountBudget={acc.value}
                             selectedTemplate={this.state.selected}
-                            category={cat._id}
+                            selectedCategory={catIndex}
+                            selectedAccount={accIndex}
                           />
                         </Col>
                       </Row>
