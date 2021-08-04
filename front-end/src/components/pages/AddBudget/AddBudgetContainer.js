@@ -8,6 +8,7 @@ import MonthYearForm from './MonthYearForm';
 import { PageTitle } from '../../common/PageTitle';
 import { Note } from '../../common/Note';
 import { Card, Row, Col } from '../../common/Card';
+import { Button } from '../../common/Button';
 
 import { connect } from 'react-redux';
 import * as actions from '../../../state/actions';
@@ -152,6 +153,8 @@ class AddBudgetContainer extends Component {
                           <CrudAccountForm
                             account={acc.name}
                             budget={acc.budget}
+                            selectedTemplate={this.state.selected}
+                            category={cat._id}
                           />
                         </Col>
                       </Row>
@@ -205,6 +208,20 @@ class AddBudgetContainer extends Component {
             </Card>
           </div>
         ))}
+
+        <div className="space--large">&nbsp;</div>
+        <div>
+          <Button
+            type={'submit'}
+            size={'large'}
+            onClick={(e) => {
+              e.preventDefault();
+              this.onSubmit();
+            }}
+          >
+            Add Budget
+          </Button>
+        </div>
       </div>
     );
   }
