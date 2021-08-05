@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Form, Input } from '../../common/Form';
-import { reduxForm, Field } from 'redux-form';
 import { Button } from '../../common/Button';
+
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import * as actions from '../../../state/actions';
+import { reduxForm, Field } from 'redux-form';
 
 class CrudAccountForm extends Component {
   componentDidMount() {
     this.props.initialize({
-      account: this.props.account ? this.props.account : '',
+      account: this.props.accountName ? this.props.accountName : '',
+      budget: this.props.accountBudget ? this.props.accountBudget : 0,
     });
   }
 
-  onSubmit = (formProps) => {};
+  onSubmit = (formProps) => {
+    this.props.updateBudgetAccount(
+      formProps,
+      this.props.selectedTemplate,
+      this.props.selectedCategory,
+      this.props.selectedAccount
+    );
+  };
 
   render() {
     const { handleSubmit, pristine, submitting, invalid, budget } = this.props;
@@ -71,6 +84,15 @@ const warn = (values) => {
   return warnings;
 };
 
-export default reduxForm({ form: 'crudaccount', validate, warn })(
-  CrudAccountForm
-);
+CrudAccountForm.propTypes = {
+  accountName: PropTypes.string.isRequired,
+  accountBudget: PropTypes.number.isRequired,
+  selectedTemplate: PropTypes.number.isRequired,
+  selectedCategory: PropTypes.number.isRequired,
+  selectedAccount: PropTypes.number.isRequired,
+};
+
+export default compose(
+  connect(null, actions),
+  reduxForm({ form: 'crudaccount', validate, warn })
+)(CrudAccountForm);

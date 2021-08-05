@@ -5,6 +5,7 @@ import {
   AUTH_ERROR,
   GET_BUDGET_TEMPLATES,
   GET_BUDGET_TEMPLATES_ERROR,
+  UPDATE_BUDGET_ACCOUNT,
 } from './types';
 
 const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
@@ -55,3 +56,16 @@ export const getBudgetTemplates = (pathname) => async (dispatch) => {
     dispatch({ type: GET_BUDGET_TEMPLATES_ERROR, payload: err });
   }
 };
+
+export const updateBudgetAccount =
+  ({ account, budget }, selectedTemplate, selectedCategory, selectedAccount) =>
+  (dispatch) => {
+    const payload = {
+      account,
+      budget,
+      selectedTemplate,
+      selectedCategory,
+      selectedAccount,
+    };
+    dispatch({ type: UPDATE_BUDGET_ACCOUNT, payload });
+  };
