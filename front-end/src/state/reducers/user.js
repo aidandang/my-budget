@@ -1,4 +1,6 @@
+import { v1 as uuid } from 'uuid';
 import {
+  ADD_BUDGET_ACCOUNT,
   GET_BUDGET_TEMPLATES,
   GET_BUDGET_TEMPLATES_ERROR,
   UPDATE_BUDGET_ACCOUNT,
@@ -16,7 +18,7 @@ const INITIAL_STATE = {
   errorMessage: '',
 };
 
-const updateTemplateAccount = (templates, payload) => {
+const updateAccount = (templates, payload) => {
   const {
     account,
     budget,
@@ -24,12 +26,25 @@ const updateTemplateAccount = (templates, payload) => {
     selectedCategory,
     selectedAccount,
   } = payload;
+
   templates[selectedTemplate].budget[selectedCategory].accounts[
     selectedAccount
   ].name = account;
   templates[selectedTemplate].budget[selectedCategory].accounts[
     selectedAccount
   ].value = budget;
+
+  return templates;
+};
+
+const addAccount = (templates, payload) => {
+  const { account, budget, selectedTemplate, selectedCategory } = payload;
+
+  templates[selectedTemplate].budget[selectedCategory].accounts.push({
+    _id: uuid(),
+    name: account,
+    value: budget,
+  });
 
   return templates;
 };
@@ -49,7 +64,12 @@ export const userReducer = (state = INITIAL_STATE, action) => {
     case UPDATE_BUDGET_ACCOUNT:
       return {
         ...state,
-        templates: updateTemplateAccount(state.templates, action.payload),
+        templates: updateAccount(state.templates, action.payload),
+      };
+    case ADD_BUDGET_ACCOUNT:
+      return {
+        ...state,
+        templates: addAccount(state.templates, action.payload),
       };
     default:
       return state;
