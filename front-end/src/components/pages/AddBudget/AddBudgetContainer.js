@@ -40,6 +40,14 @@ class AddBudgetContainer extends Component {
     }));
   };
 
+  closeForm = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      isEdit: false,
+      id: '',
+    }));
+  };
+
   calBudgetTotal = (budget) => {
     const total = budget.reduce((acc, val) => {
       if (val._id !== 'INCOMES') {
@@ -156,6 +164,7 @@ class AddBudgetContainer extends Component {
                             selectedTemplate={this.state.selected}
                             selectedCategory={catIndex}
                             selectedAccount={accIndex}
+                            closeForm={this.closeForm}
                           />
                         </Col>
                       </Row>
@@ -202,7 +211,14 @@ class AddBudgetContainer extends Component {
               {this.state.isEdit && this.state.id === cat._id && (
                 <Row>
                   <Col>
-                    <CrudAccountForm />
+                    <CrudAccountForm
+                      accountName={''}
+                      accountBudget={0}
+                      selectedTemplate={this.state.selected}
+                      selectedCategory={catIndex}
+                      selectedAccount={-1}
+                      closeForm={this.closeForm}
+                    />
                   </Col>
                 </Row>
               )}

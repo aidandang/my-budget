@@ -18,12 +18,22 @@ class CrudAccountForm extends Component {
   }
 
   onSubmit = (formProps) => {
-    this.props.updateBudgetAccount(
-      formProps,
-      this.props.selectedTemplate,
-      this.props.selectedCategory,
-      this.props.selectedAccount
-    );
+    if (this.props.selectedAccount >= 0) {
+      this.props.updateBudgetAccount(
+        formProps,
+        this.props.selectedTemplate,
+        this.props.selectedCategory,
+        this.props.selectedAccount
+      );
+    } else {
+      this.props.addBudgetAccount(
+        formProps,
+        this.props.selectedTemplate,
+        this.props.selectedCategory
+      );
+    }
+
+    this.props.closeForm();
   };
 
   render() {
@@ -90,6 +100,8 @@ CrudAccountForm.propTypes = {
   selectedTemplate: PropTypes.number.isRequired,
   selectedCategory: PropTypes.number.isRequired,
   selectedAccount: PropTypes.number.isRequired,
+  closeForm: PropTypes.func.isRequired,
+  updateBudgetAccount: PropTypes.func.isRequired,
 };
 
 export default compose(
