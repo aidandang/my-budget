@@ -60,6 +60,16 @@ class AddBudgetContainer extends Component {
     return total;
   };
 
+  calCategoryTotal = (accounts) => {
+    const total = accounts.reduce((acc, val) => acc + Number(val.value), 0);
+
+    if (total > 0) {
+      return total.toFixed(2);
+    }
+
+    return total;
+  };
+
   componentDidMount() {
     this.props.getBudgetTemplates('/users/get-budget-templates');
   }
@@ -206,7 +216,9 @@ class AddBudgetContainer extends Component {
                     </a>
                   )}
                 </Col>
-                <Col right="true">Total: {`$${cat.total}`}</Col>
+                <Col right="true">
+                  Total: {`$${this.calCategoryTotal(cat.accounts)}`}
+                </Col>
               </Row>
               {this.state.isEdit && this.state.id === cat._id && (
                 <Row>

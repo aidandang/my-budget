@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v1 as uuid } from 'uuid';
 import {
   ADD_BUDGET_ACCOUNT,
   GET_BUDGET_TEMPLATES,
@@ -41,7 +41,7 @@ const addAccount = (templates, payload) => {
   const { account, budget, selectedTemplate, selectedCategory } = payload;
 
   templates[selectedTemplate].budget[selectedCategory].accounts.push({
-    _id: uuidv4(),
+    _id: uuid(),
     name: account,
     value: budget,
   });
