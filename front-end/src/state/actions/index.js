@@ -7,6 +7,7 @@ import {
   GET_BUDGET_TEMPLATES_ERROR,
   UPDATE_BUDGET_ACCOUNT,
   ADD_BUDGET_ACCOUNT,
+  REMOVE_BUDGET_ACCOUNT,
 } from './types';
 
 const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
@@ -80,5 +81,17 @@ export const addBudgetAccount =
       selectedTemplate,
       selectedCategory,
     };
+
     dispatch({ type: ADD_BUDGET_ACCOUNT, payload });
+  };
+
+export const removeBudgetAccount =
+  (selectedTemplate, selectedCategory, selectedAccount) => (dispatch) => {
+    const payload = {
+      selectedTemplate,
+      selectedCategory,
+      selectedAccount,
+    };
+
+    dispatch({ type: REMOVE_BUDGET_ACCOUNT, payload });
   };

@@ -144,7 +144,7 @@ class AddBudgetContainer extends Component {
                             this.onAccountClick('');
                           }}
                         >
-                          <i className="fas fa-minus-circle"></i>
+                          <i className="fas fa-chevron-circle-up"></i>
                         </a>
                       ) : (
                         <a
@@ -156,7 +156,7 @@ class AddBudgetContainer extends Component {
                             }
                           }}
                         >
-                          <i className="fas fa-plus-circle"></i>
+                          <i className="fas fa-chevron-circle-down"></i>
                         </a>
                       )}
                     </Col>
@@ -175,6 +175,7 @@ class AddBudgetContainer extends Component {
                             selectedCategory={catIndex}
                             selectedAccount={accIndex}
                             closeForm={this.closeForm}
+                            buttonText={'Remove'}
                           />
                         </Col>
                       </Row>
