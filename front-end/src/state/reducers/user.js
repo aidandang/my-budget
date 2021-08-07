@@ -19,6 +19,16 @@ const INITIAL_STATE = {
   errorMessage: '',
 };
 
+const calCategoryTotal = (accounts) => {
+  const total = accounts.reduce((acc, val) => acc + Number(val.value), 0);
+
+  if (total > 0) {
+    return total.toFixed(2);
+  }
+
+  return total;
+};
+
 const updateAccount = (templates, payload) => {
   const {
     account,
@@ -34,6 +44,9 @@ const updateAccount = (templates, payload) => {
   templates[selectedTemplate].budget[selectedCategory].accounts[
     selectedAccount
   ].value = budget;
+  templates[selectedTemplate].budget[selectedCategory].total = calCategoryTotal(
+    templates[selectedTemplate].budget[selectedCategory].accounts
+  );
 
   return templates;
 };
@@ -46,6 +59,9 @@ const addAccount = (templates, payload) => {
     name: account,
     value: budget,
   });
+  templates[selectedTemplate].budget[selectedCategory].total = calCategoryTotal(
+    templates[selectedTemplate].budget[selectedCategory].accounts
+  );
 
   return templates;
 };
@@ -57,6 +73,9 @@ const removeAccount = (templates, payload) => {
     selectedTemplate
   ].budget[selectedCategory].accounts.filter(
     (el, index) => index !== selectedAccount
+  );
+  templates[selectedTemplate].budget[selectedCategory].total = calCategoryTotal(
+    templates[selectedTemplate].budget[selectedCategory].accounts
   );
 
   return templates;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import withRequiredAuth from '../../common/HOC/withRequiredAuth';
-import CrudAccountForm from './CrudAccountForm';
+import AccountForm from './AccountForm';
 import MonthYearForm from './MonthYearForm';
 
 import { PageTitle } from '../../common/PageTitle';
@@ -51,17 +51,11 @@ class AddBudgetContainer extends Component {
   calBudgetTotal = (budget) => {
     const total = budget.reduce((acc, val) => {
       if (val._id !== 'INCOMES') {
-        return acc + val.total;
+        return acc + Number(val.total);
       } else {
         return acc;
       }
     }, 0);
-
-    return total;
-  };
-
-  calCategoryTotal = (accounts) => {
-    const total = accounts.reduce((acc, val) => acc + Number(val.value), 0);
 
     if (total > 0) {
       return total.toFixed(2);
@@ -98,10 +92,12 @@ class AddBudgetContainer extends Component {
 
         <div className="space--medium">&nbsp;</div>
 
+        {/* Month and year of the budget */}
         <MonthYearForm />
 
         <div className="space--medium">&nbsp;</div>
 
+        {/* Total amount of the budget */}
         <Card>
           <Row header={true} border={true}>
             <Col></Col>
@@ -110,16 +106,18 @@ class AddBudgetContainer extends Component {
           <Row bold={true}>
             <Col>Total Budget</Col>
             <Col right={true}>
-              {templates[this.state.selected].value &&
-                `$${this.calBudgetTotal(templates[this.state.selected].value)}`}
+              {templates[this.state.selected].budget &&
+                `$${this.calBudgetTotal(
+                  templates[this.state.selected].budget
+                )}`}
             </Col>
           </Row>
         </Card>
 
         <div className="space--medium">&nbsp;</div>
 
+        {/* Budget categories */}
         <div className="headline">Summary by Category</div>
-
         {templates[this.state.selected].budget.map((cat, catIndex) => (
           <div key={cat._id}>
             <div className="space--medium">&nbsp;</div>
@@ -168,7 +166,7 @@ class AddBudgetContainer extends Component {
 
                       <Row>
                         <Col>
-                          <CrudAccountForm
+                          <AccountForm
                             accountName={acc.name}
                             accountBudget={acc.value}
                             selectedTemplate={this.state.selected}
@@ -192,11 +190,7 @@ class AddBudgetContainer extends Component {
                       href="/"
                       onClick={(e) => {
                         e.preventDefault();
-                        this.setState((prevState) => ({
-                          ...prevState,
-                          isEdit: false,
-                          id: '',
-                        }));
+                        this.onAccountClick('');
                       }}
                     >
                       Add Account
@@ -206,25 +200,21 @@ class AddBudgetContainer extends Component {
                       href="/"
                       onClick={(e) => {
                         e.preventDefault();
-                        this.setState((prevState) => ({
-                          ...prevState,
-                          isEdit: true,
-                          id: cat._id,
-                        }));
+                        if (!this.state.isEdit) {
+                          this.onAccountClick(cat._id);
+                        }
                       }}
                     >
                       Add Account
                     </a>
                   )}
                 </Col>
-                <Col right="true">
-                  Total: {`$${this.calCategoryTotal(cat.accounts)}`}
-                </Col>
+                <Col right="true">Total: {`$${cat.total}`}</Col>
               </Row>
               {this.state.isEdit && this.state.id === cat._id && (
                 <Row>
                   <Col>
-                    <CrudAccountForm
+                    <AccountForm
                       accountName={''}
                       accountBudget={0}
                       selectedTemplate={this.state.selected}
@@ -240,6 +230,8 @@ class AddBudgetContainer extends Component {
         ))}
 
         <div className="space--large">&nbsp;</div>
+
+        {/* Button to add a new budget */}
         <div>
           <Button
             type={'submit'}
@@ -267,7 +259,7 @@ AddBudgetContainer.propTypes = {
   templates: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      budgets: PropTypes.arrayOf(
+      budget: PropTypes.arrayOf(
         PropTypes.shape({
           _id: PropTypes.string.isRequired,
           accounts: PropTypes.arrayOf(
@@ -278,7 +270,7 @@ AddBudgetContainer.propTypes = {
               value: PropTypes.number.isRequired,
             })
           ),
-          total: PropTypes.number.isRequired,
+          total: PropTypes.string.isRequired,
         })
       ),
     })

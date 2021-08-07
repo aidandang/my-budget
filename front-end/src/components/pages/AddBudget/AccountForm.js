@@ -9,7 +9,7 @@ import { compose } from 'redux';
 import * as actions from '../../../state/actions';
 import { reduxForm, Field } from 'redux-form';
 
-class CrudAccountForm extends Component {
+class AccountForm extends Component {
   componentDidMount() {
     this.props.initialize({
       account: this.props.accountName ? this.props.accountName : '',
@@ -107,7 +107,7 @@ const warn = (values) => {
   return warnings;
 };
 
-CrudAccountForm.propTypes = {
+AccountForm.propTypes = {
   accountName: PropTypes.string.isRequired,
   accountBudget: PropTypes.number.isRequired,
   selectedTemplate: PropTypes.number.isRequired,
@@ -122,4 +122,4 @@ CrudAccountForm.propTypes = {
 export default compose(
   connect(null, actions),
   reduxForm({ form: 'crudaccount', validate, warn })
-)(CrudAccountForm);
+)(AccountForm);
