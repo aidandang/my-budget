@@ -67,12 +67,25 @@ class CrudAccountForm extends Component {
             disabled={invalid || submitting || pristine}
             size={'small'}
           >
-            Add
+            {this.props.buttonText ? 'Update' : 'Add'}
           </Button>
           <span className="hspace--small">&nbsp;</span>
-          <Button type={'reset'} size={'small'}>
-            Reset
-          </Button>
+          {this.props.buttonText && (
+            <Button
+              size={'small'}
+              onClick={(e) => {
+                e.preventDefault();
+                this.props.removeBudgetAccount(
+                  this.props.selectedTemplate,
+                  this.props.selectedCategory,
+                  this.props.selectedAccount
+                );
+                this.props.closeForm();
+              }}
+            >
+              {this.props.buttonText}
+            </Button>
+          )}
         </div>
       </Form>
     );
@@ -102,6 +115,8 @@ CrudAccountForm.propTypes = {
   selectedAccount: PropTypes.number.isRequired,
   closeForm: PropTypes.func.isRequired,
   updateBudgetAccount: PropTypes.func.isRequired,
+  removeBudgetAccount: PropTypes.func.isRequired,
+  buttonText: PropTypes.string,
 };
 
 export default compose(

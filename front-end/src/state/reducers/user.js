@@ -3,6 +3,7 @@ import {
   ADD_BUDGET_ACCOUNT,
   GET_BUDGET_TEMPLATES,
   GET_BUDGET_TEMPLATES_ERROR,
+  REMOVE_BUDGET_ACCOUNT,
   UPDATE_BUDGET_ACCOUNT,
 } from '../actions/types';
 import { defaultBudget } from '../../data/defaultBudget';
@@ -49,6 +50,18 @@ const addAccount = (templates, payload) => {
   return templates;
 };
 
+const removeAccount = (templates, payload) => {
+  const { selectedTemplate, selectedCategory, selectedAccount } = payload;
+
+  templates[selectedTemplate].budget[selectedCategory].accounts = templates[
+    selectedTemplate
+  ].budget[selectedCategory].accounts.filter(
+    (el, index) => index !== selectedAccount
+  );
+
+  return templates;
+};
+
 export const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case GET_BUDGET_TEMPLATES:
@@ -70,6 +83,11 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         templates: addAccount(state.templates, action.payload),
+      };
+    case REMOVE_BUDGET_ACCOUNT:
+      return {
+        ...state,
+        templates: removeAccount(state.templates, action.payload),
       };
     default:
       return state;
