@@ -9,32 +9,31 @@ import { compose } from 'redux';
 import * as actions from '../../../state/actions';
 import { reduxForm, Field } from 'redux-form';
 
-class CrudAccountForm extends Component {
+class AccountForm extends Component {
+  onSubmit = (formProps) => {
+    if (this.props.selectedAccount) {
+      this.props.updateBudgetAccount(
+        formProps,
+        this.props.selectedTemplate,
+        this.props.selectedAccount,
+        this.props.closeForm
+      );
+    } else {
+      this.props.addBudgetAccount(
+        formProps,
+        this.props.selectedTemplate,
+        this.props.selectedCategory,
+        this.props.closeForm
+      );
+    }
+  };
+
   componentDidMount() {
     this.props.initialize({
       account: this.props.accountName ? this.props.accountName : '',
       budget: this.props.accountBudget ? this.props.accountBudget : 0,
     });
   }
-
-  onSubmit = (formProps) => {
-    if (this.props.selectedAccount >= 0) {
-      this.props.updateBudgetAccount(
-        formProps,
-        this.props.selectedTemplate,
-        this.props.selectedCategory,
-        this.props.selectedAccount
-      );
-    } else {
-      this.props.addBudgetAccount(
-        formProps,
-        this.props.selectedTemplate,
-        this.props.selectedCategory
-      );
-    }
-
-    this.props.closeForm();
-  };
 
   render() {
     const { handleSubmit, pristine, submitting, invalid, budget } = this.props;
@@ -53,7 +52,7 @@ class CrudAccountForm extends Component {
         <div>
           <Field
             name="budget"
-            type="number"
+            type="text"
             component={Input}
             label="Budget:"
             autoComplete="none"
@@ -77,10 +76,9 @@ class CrudAccountForm extends Component {
                 e.preventDefault();
                 this.props.removeBudgetAccount(
                   this.props.selectedTemplate,
-                  this.props.selectedCategory,
-                  this.props.selectedAccount
+                  this.props.selectedAccount,
+                  this.props.closeForm
                 );
-                this.props.closeForm();
               }}
             >
               {this.props.buttonText}
@@ -107,19 +105,19 @@ const warn = (values) => {
   return warnings;
 };
 
-CrudAccountForm.propTypes = {
+AccountForm.propTypes = {
   accountName: PropTypes.string.isRequired,
-  accountBudget: PropTypes.number.isRequired,
-  selectedTemplate: PropTypes.number.isRequired,
-  selectedCategory: PropTypes.number.isRequired,
-  selectedAccount: PropTypes.number.isRequired,
+  accountBudget: PropTypes.string.isRequired,
+  selectedAccount: PropTypes.string,
+  selectedCategory: PropTypes.string,
+  selectedTemplate: PropTypes.number,
+  buttonText: PropTypes.string,
   closeForm: PropTypes.func.isRequired,
   updateBudgetAccount: PropTypes.func.isRequired,
   removeBudgetAccount: PropTypes.func.isRequired,
-  buttonText: PropTypes.string,
 };
 
 export default compose(
   connect(null, actions),
   reduxForm({ form: 'crudaccount', validate, warn })
-)(CrudAccountForm);
+)(AccountForm);

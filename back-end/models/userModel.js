@@ -85,6 +85,10 @@ const templateSchema = new Schema({
   budget: {
     type: Array,
   },
+  total: {
+    type: String,
+    required: true,
+  },
 });
 
 const userSchema = new Schema({
