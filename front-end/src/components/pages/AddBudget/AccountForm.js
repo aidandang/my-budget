@@ -14,14 +14,12 @@ class AccountForm extends Component {
     if (this.props.selectedAccount) {
       this.props.updateBudgetAccount(
         formProps,
-        this.props.selectedTemplate,
         this.props.selectedAccount,
         this.props.closeForm
       );
     } else {
       this.props.addBudgetAccount(
         formProps,
-        this.props.selectedTemplate,
         this.props.selectedCategory,
         this.props.closeForm
       );
@@ -36,7 +34,17 @@ class AccountForm extends Component {
   }
 
   render() {
-    const { handleSubmit, pristine, submitting, invalid, budget } = this.props;
+    const {
+      handleSubmit,
+      pristine,
+      submitting,
+      invalid,
+      budget,
+      closeForm,
+      selectedAccount,
+      buttonText,
+      removeBudgetAccount,
+    } = this.props;
 
     return (
       <Form onSubmit={handleSubmit(this.onSubmit)}>
@@ -66,22 +74,18 @@ class AccountForm extends Component {
             disabled={invalid || submitting || pristine}
             size={'small'}
           >
-            {this.props.buttonText ? 'Update' : 'Add'}
+            {buttonText ? 'Update' : 'Add'}
           </Button>
           <span className="hspace--small">&nbsp;</span>
-          {this.props.buttonText && (
+          {buttonText && (
             <Button
               size={'small'}
               onClick={(e) => {
                 e.preventDefault();
-                this.props.removeBudgetAccount(
-                  this.props.selectedTemplate,
-                  this.props.selectedAccount,
-                  this.props.closeForm
-                );
+                removeBudgetAccount(selectedAccount, closeForm);
               }}
             >
-              {this.props.buttonText}
+              {buttonText}
             </Button>
           )}
         </div>

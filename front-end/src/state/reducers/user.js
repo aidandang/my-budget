@@ -3,8 +3,11 @@ import {
   ADD_BUDGET_ACCOUNT,
   GET_BUDGET_TEMPLATES,
   GET_BUDGET_TEMPLATES_ERROR,
+  SELECT_TEMPLATE,
   REMOVE_BUDGET_ACCOUNT,
   UPDATE_BUDGET_ACCOUNT,
+  ADD_BUDGET,
+  ADD_BUDGET_ERROR,
 } from '../actions/types';
 import { defaultBudget } from '../../data/defaultBudget';
 
@@ -14,70 +17,50 @@ const INITIAL_STATE = {
     {
       name: 'default',
       budget: defaultBudget,
-      total: '0',
     },
   ],
+  selectedTemplate: {
+    name: 'default',
+    budget: defaultBudget,
+  },
   errorMessage: '',
 };
 
-const calBudgetTotal = (budget) => {
-  const total = budget.reduce((acc, el) => {
-    if (el.category !== 'INCOMES') {
-      return acc + Number(el.value);
+const updateAccount = (selectedTemplate, payload) => {
+  const { account, budget, selectedAccount } = payload;
+
+  selectedTemplate.budget = selectedTemplate.budget.map((el) => {
+    if (el._id === selectedAccount) {
+      return { ...el, name: account, value: budget };
     } else {
-      return acc;
+      return el;
     }
-  }, 0);
+  });
 
-  return total ? total.toFixed(2) : '0';
+  return selectedTemplate;
 };
 
-const updateAccount = (templates, payload) => {
-  const { account, budget, selectedTemplate, selectedAccount } = payload;
+const addAccount = (selectedTemplate, payload) => {
+  const { account, budget, selectedCategory } = payload;
 
-  templates[selectedTemplate].budget = templates[selectedTemplate].budget.map(
-    (el) => {
-      if (el._id === selectedAccount) {
-        return { ...el, name: account, value: budget };
-      } else {
-        return el;
-      }
-    }
-  );
-  templates[selectedTemplate].total = calBudgetTotal(
-    templates[selectedTemplate].budget
-  );
-
-  return templates;
-};
-
-const addAccount = (templates, payload) => {
-  const { account, budget, selectedTemplate, selectedCategory } = payload;
-
-  templates[selectedTemplate].budget.push({
+  selectedTemplate.budget.push({
     _id: uuid(),
     name: account,
     category: selectedCategory,
     value: budget,
   });
-  templates[selectedTemplate].total = calBudgetTotal(
-    templates[selectedTemplate].budget
-  );
 
-  return templates;
+  return selectedTemplate;
 };
 
-const removeAccount = (templates, payload) => {
-  const { selectedTemplate, selectedAccount } = payload;
+const removeAccount = (selectedTemplate, payload) => {
+  const { selectedAccount } = payload;
 
-  templates[selectedTemplate].budget = templates[
-    selectedTemplate
-  ].budget.filter((el) => el._id !== selectedAccount);
-  templates[selectedTemplate].total = calBudgetTotal(
-    templates[selectedTemplate].budget
+  selectedTemplate.budget = selectedTemplate.budget.filter(
+    (el) => el._id !== selectedAccount
   );
 
-  return templates;
+  return selectedTemplate;
 };
 
 export const userReducer = (state = INITIAL_STATE, action) => {
@@ -92,20 +75,35 @@ export const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         errorMessage: action.payload,
       };
+    case SELECT_TEMPLATE:
+      return {
+        ...state,
+        selectedTemplate: action.payload,
+      };
     case UPDATE_BUDGET_ACCOUNT:
       return {
         ...state,
-        templates: updateAccount(state.templates, action.payload),
+        selectedTemplate: updateAccount(state.selectedTemplate, action.payload),
       };
     case ADD_BUDGET_ACCOUNT:
       return {
         ...state,
-        templates: addAccount(state.templates, action.payload),
+        selectedTemplate: addAccount(state.selectedTemplate, action.payload),
       };
     case REMOVE_BUDGET_ACCOUNT:
       return {
         ...state,
-        templates: removeAccount(state.templates, action.payload),
+        selectedTemplate: removeAccount(state.selectedTemplate, action.payload),
+      };
+    case ADD_BUDGET:
+      return {
+        ...state,
+        budgets: action.payload,
+      };
+    case ADD_BUDGET_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload,
       };
     default:
       return state;

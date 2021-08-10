@@ -10,7 +10,6 @@ const PageTitle = ({
 }) => {
   const [trigger, setTrigger] = useState({
     isListOpen: false,
-    selected,
   });
 
   const toggleList = () => {
@@ -57,7 +56,7 @@ const PageTitle = ({
             <div className="pagetitle__item-box" key={index}>
               <span
                 className={`${
-                  index === selected
+                  item.name === selected.name
                     ? 'pagetitle__selected'
                     : 'pagetitle__not-selected'
                 }`}
@@ -67,7 +66,7 @@ const PageTitle = ({
                     ...prevState,
                     isListOpen: false,
                   }));
-                  setSelected(index);
+                  setSelected(selected);
                 }}
               >
                 {item.name}
