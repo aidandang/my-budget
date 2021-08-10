@@ -60,20 +60,20 @@ export const getBudgetTemplates = (pathname) => async (dispatch) => {
 };
 
 export const updateBudgetAccount =
-  ({ account, budget }, selectedTemplate, selectedCategory, selectedAccount) =>
+  ({ account, budget }, selectedTemplate, selectedAccount, closeForm) =>
   (dispatch) => {
     const payload = {
       account,
       budget,
       selectedTemplate,
-      selectedCategory,
       selectedAccount,
     };
     dispatch({ type: UPDATE_BUDGET_ACCOUNT, payload });
+    closeForm();
   };
 
 export const addBudgetAccount =
-  ({ account, budget }, selectedTemplate, selectedCategory) =>
+  ({ account, budget }, selectedTemplate, selectedCategory, closeForm) =>
   (dispatch) => {
     const payload = {
       account,
@@ -83,15 +83,16 @@ export const addBudgetAccount =
     };
 
     dispatch({ type: ADD_BUDGET_ACCOUNT, payload });
+    closeForm();
   };
 
 export const removeBudgetAccount =
-  (selectedTemplate, selectedCategory, selectedAccount) => (dispatch) => {
+  (selectedTemplate, selectedAccount, closeForm) => (dispatch) => {
     const payload = {
       selectedTemplate,
-      selectedCategory,
       selectedAccount,
     };
 
     dispatch({ type: REMOVE_BUDGET_ACCOUNT, payload });
+    closeForm();
   };

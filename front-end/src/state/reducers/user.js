@@ -14,38 +14,38 @@ const INITIAL_STATE = {
     {
       name: 'default',
       budget: defaultBudget,
+      total: '0',
     },
   ],
   errorMessage: '',
 };
 
-const calCategoryTotal = (accounts) => {
-  const total = accounts.reduce((acc, val) => acc + Number(val.value), 0);
+const calBudgetTotal = (budget) => {
+  const total = budget.reduce((acc, el) => {
+    if (el.category !== 'INCOMES') {
+      return acc + Number(el.value);
+    } else {
+      return acc;
+    }
+  }, 0);
 
-  if (total > 0) {
-    return total.toFixed(2);
-  }
-
-  return total;
+  return total ? total.toFixed(2) : '0';
 };
 
 const updateAccount = (templates, payload) => {
-  const {
-    account,
-    budget,
-    selectedTemplate,
-    selectedCategory,
-    selectedAccount,
-  } = payload;
+  const { account, budget, selectedTemplate, selectedAccount } = payload;
 
-  templates[selectedTemplate].budget[selectedCategory].accounts[
-    selectedAccount
-  ].name = account;
-  templates[selectedTemplate].budget[selectedCategory].accounts[
-    selectedAccount
-  ].value = budget;
-  templates[selectedTemplate].budget[selectedCategory].total = calCategoryTotal(
-    templates[selectedTemplate].budget[selectedCategory].accounts
+  templates[selectedTemplate].budget = templates[selectedTemplate].budget.map(
+    (el) => {
+      if (el._id === selectedAccount) {
+        return { ...el, name: account, value: budget };
+      } else {
+        return el;
+      }
+    }
+  );
+  templates[selectedTemplate].total = calBudgetTotal(
+    templates[selectedTemplate].budget
   );
 
   return templates;
@@ -54,28 +54,27 @@ const updateAccount = (templates, payload) => {
 const addAccount = (templates, payload) => {
   const { account, budget, selectedTemplate, selectedCategory } = payload;
 
-  templates[selectedTemplate].budget[selectedCategory].accounts.push({
+  templates[selectedTemplate].budget.push({
     _id: uuid(),
     name: account,
+    category: selectedCategory,
     value: budget,
   });
-  templates[selectedTemplate].budget[selectedCategory].total = calCategoryTotal(
-    templates[selectedTemplate].budget[selectedCategory].accounts
+  templates[selectedTemplate].total = calBudgetTotal(
+    templates[selectedTemplate].budget
   );
 
   return templates;
 };
 
 const removeAccount = (templates, payload) => {
-  const { selectedTemplate, selectedCategory, selectedAccount } = payload;
+  const { selectedTemplate, selectedAccount } = payload;
 
-  templates[selectedTemplate].budget[selectedCategory].accounts = templates[
+  templates[selectedTemplate].budget = templates[
     selectedTemplate
-  ].budget[selectedCategory].accounts.filter(
-    (el, index) => index !== selectedAccount
-  );
-  templates[selectedTemplate].budget[selectedCategory].total = calCategoryTotal(
-    templates[selectedTemplate].budget[selectedCategory].accounts
+  ].budget.filter((el) => el._id !== selectedAccount);
+  templates[selectedTemplate].total = calBudgetTotal(
+    templates[selectedTemplate].budget
   );
 
   return templates;
