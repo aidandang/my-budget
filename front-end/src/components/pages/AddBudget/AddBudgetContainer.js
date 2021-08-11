@@ -32,17 +32,27 @@ const CATEGORY = [
 ];
 
 class AddBudgetContainer extends Component {
-  state = {
-    selected: 0,
+  onSubmit = () => {
+    const reqBody = {
+      budget: {
+        monthyear: this.props.monthyear.values.monthyear,
+        accounts: this.props.selectedTemplate.budget,
+      },
+    };
+
+    this.props.addBudget('/users/add-budget', reqBody);
   };
 
-  onSubmit = (props) => {};
+  calBudgetTotal = () => {
+    const total = this.props.selectedTemplate.budget.reduce((acc, el) => {
+      if (el.category !== 'INCOMES') {
+        return acc + Number(el.value);
+      } else {
+        return acc;
+      }
+    }, 0);
 
-  setSelected = (index) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      selected: index,
-    }));
+    return total ? total.toFixed(2) : '0';
   };
 
   componentDidMount() {
@@ -50,7 +60,8 @@ class AddBudgetContainer extends Component {
   }
 
   render() {
-    const { templates } = this.props;
+    const { templates, selectedTemplate, selectTemplate, monthyear } =
+      this.props;
 
     return (
       <div className="add-budget">
@@ -58,12 +69,12 @@ class AddBudgetContainer extends Component {
 
         <PageTitle
           leftTitle={{
-            first: templates[this.state.selected].name,
+            first: selectedTemplate.name,
             second: 'Template',
           }}
           list={templates}
-          selected={this.state.selected}
-          setSelected={this.setSelected}
+          selected={selectedTemplate}
+          setSelected={selectTemplate}
           rightTitle={rightTitle}
         />
 
@@ -79,7 +90,7 @@ class AddBudgetContainer extends Component {
         <div className="space--medium">&nbsp;</div>
 
         {/* Total amount of the budget */}
-        <BudgetTotal selectedTemplate={this.state.selected} />
+        <BudgetTotal total={this.calBudgetTotal} />
 
         <div className="space--medium">&nbsp;</div>
 
@@ -88,10 +99,7 @@ class AddBudgetContainer extends Component {
 
         {CATEGORY.map((cat) => (
           <div key={cat}>
-            <CategoryRender
-              selectedTemplate={this.state.selected}
-              category={cat}
-            />
+            <CategoryRender category={cat} />
           </div>
         ))}
 
@@ -101,7 +109,7 @@ class AddBudgetContainer extends Component {
         <div>
           <Button
             size={'large'}
-            disabled={!(this.props.monthyear && this.props.monthyear.values)}
+            disabled={!(monthyear && monthyear.values)}
             onClick={(e) => {
               e.preventDefault();
               this.onSubmit();
@@ -117,12 +125,23 @@ class AddBudgetContainer extends Component {
 
 const mapStateToProps = (state) => ({
   monthyear: state.form.monthyear,
-  budgets: state.user.budgets,
   templates: state.user.templates,
+  selectedTemplate: state.user.selectedTemplate,
   errorMessage: state.user.errorMessage,
 });
 
 AddBudgetContainer.propTypes = {
+  selectedTemplate: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    budget: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
+      })
+    ),
+  }).isRequired,
   templates: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -137,6 +156,9 @@ AddBudgetContainer.propTypes = {
     })
   ).isRequired,
   getBudgetTemplates: PropTypes.func.isRequired,
+  selectTemplate: PropTypes.func.isRequired,
+  addBudget: PropTypes.func.isRequired,
+  monthyear: PropTypes.object,
 };
 
 export default connect(

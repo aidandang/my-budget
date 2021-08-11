@@ -8,6 +8,9 @@ import {
   UPDATE_BUDGET_ACCOUNT,
   ADD_BUDGET_ACCOUNT,
   REMOVE_BUDGET_ACCOUNT,
+  SELECT_TEMPLATE,
+  ADD_BUDGET,
+  ADD_BUDGET_ERROR,
 } from './types';
 
 const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
@@ -59,13 +62,16 @@ export const getBudgetTemplates = (pathname) => async (dispatch) => {
   }
 };
 
+export const selectTemplate = (template) => (dispatch) => {
+  dispatch({ type: SELECT_TEMPLATE, payload: template });
+};
+
 export const updateBudgetAccount =
-  ({ account, budget }, selectedTemplate, selectedAccount, closeForm) =>
+  ({ account, budget }, selectedAccount, closeForm) =>
   (dispatch) => {
     const payload = {
       account,
       budget,
-      selectedTemplate,
       selectedAccount,
     };
     dispatch({ type: UPDATE_BUDGET_ACCOUNT, payload });
@@ -73,12 +79,11 @@ export const updateBudgetAccount =
   };
 
 export const addBudgetAccount =
-  ({ account, budget }, selectedTemplate, selectedCategory, closeForm) =>
+  ({ account, budget }, selectedCategory, closeForm) =>
   (dispatch) => {
     const payload = {
       account,
       budget,
-      selectedTemplate,
       selectedCategory,
     };
 
@@ -87,12 +92,25 @@ export const addBudgetAccount =
   };
 
 export const removeBudgetAccount =
-  (selectedTemplate, selectedAccount, closeForm) => (dispatch) => {
+  (selectedAccount, closeForm) => (dispatch) => {
     const payload = {
-      selectedTemplate,
       selectedAccount,
     };
 
     dispatch({ type: REMOVE_BUDGET_ACCOUNT, payload });
     closeForm();
   };
+
+export const addBudget = (pathname, reqBody) => async (dispatch) => {
+  try {
+    const token = await auth.currentUser.getIdToken();
+
+    const data = await axios
+      .create({ headers: { Authorization: `Bearer ${token}` } })
+      .patch(BASE_API_URL + pathname, reqBody);
+
+    dispatch({ type: ADD_BUDGET, payload: data.data.budgets });
+  } catch (err) {
+    dispatch({ type: ADD_BUDGET_ERROR, payload: err });
+  }
+};

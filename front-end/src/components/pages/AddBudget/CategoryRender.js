@@ -7,7 +7,7 @@ import { Card, Row, Col } from '../../common/Card';
 
 import { connect } from 'react-redux';
 
-const CategoryRender = ({ selectedTemplate, category, templates }) => {
+const CategoryRender = ({ selectedTemplate, category }) => {
   const [edit, setEdit] = useState('');
 
   const onAccountClick = (id) => {
@@ -15,7 +15,7 @@ const CategoryRender = ({ selectedTemplate, category, templates }) => {
   };
 
   const calCategoryTotal = () => {
-    const total = templates[selectedTemplate].budget.reduce((acc, el) => {
+    const total = selectedTemplate.budget.reduce((acc, el) => {
       if (el.category === category) {
         return acc + Number(el.value);
       } else {
@@ -38,16 +38,14 @@ const CategoryRender = ({ selectedTemplate, category, templates }) => {
           <Col>{category}</Col>
           <Col right={true}>Planning</Col>
         </Row>
-        {templates[selectedTemplate].budget
+        {selectedTemplate.budget
           .filter((el) => el.category === category)
           .map((acc, index) => (
             <div key={acc._id}>
               <Row
                 border={true}
                 last={
-                  templates[selectedTemplate].budget.length - 1 === index
-                    ? true
-                    : false
+                  selectedTemplate.budget.length - 1 === index ? true : false
                 }
               >
                 <Col>
@@ -87,7 +85,6 @@ const CategoryRender = ({ selectedTemplate, category, templates }) => {
                       <AccountForm
                         accountName={acc.name}
                         accountBudget={acc.value}
-                        selectedTemplate={selectedTemplate}
                         selectedAccount={acc._id}
                         closeForm={closeForm}
                         buttonText={'Remove'}
@@ -134,7 +131,6 @@ const CategoryRender = ({ selectedTemplate, category, templates }) => {
               <AccountForm
                 accountName={''}
                 accountBudget={'0'}
-                selectedTemplate={selectedTemplate}
                 selectedCategory={category}
                 closeForm={closeForm}
               />
@@ -147,25 +143,22 @@ const CategoryRender = ({ selectedTemplate, category, templates }) => {
 };
 
 const mapStateToProps = (state) => ({
-  templates: state.user.templates,
+  selectedTemplate: state.user.selectedTemplate,
 });
 
 CategoryRender.propTypes = {
-  selectedTemplate: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
-  templates: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      budget: PropTypes.arrayOf(
-        PropTypes.shape({
-          _id: PropTypes.string.isRequired,
-          name: PropTypes.string.isRequired,
-          category: PropTypes.string.isRequired,
-          value: PropTypes.string.isRequired,
-        })
-      ),
-    })
-  ).isRequired,
+  selectedTemplate: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    budget: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
+      })
+    ),
+  }).isRequired,
 };
 
 export default connect(mapStateToProps)(CategoryRender);

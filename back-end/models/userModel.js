@@ -48,28 +48,10 @@ const accountSchema = new Schema({
 });
 
 const budgetSchema = new Schema({
-  month: {
-    type: Number,
+  monthyear: {
+    type: String,
     required: true,
-    min: 1,
-    max: 12,
-    validate: {
-      validator: function (value) {
-        return Number.isInteger(value);
-      },
-      message: 'Month must be an integer',
-    },
-  },
-  year: {
-    type: Number,
-    required: true,
-    min: [2000, 'Year must be greater or equal 2000'],
-    validate: {
-      validator: function (value) {
-        return Number.isInteger(value);
-      },
-      message: 'Year must be an integer',
-    },
+    unique: true,
   },
   accounts: {
     type: [accountSchema],
@@ -84,10 +66,6 @@ const templateSchema = new Schema({
   },
   budget: {
     type: Array,
-  },
-  total: {
-    type: String,
-    required: true,
   },
 });
 
@@ -105,7 +83,7 @@ const userSchema = new Schema({
   },
 });
 
-budgetSchema.index({ month: 1, year: 1 });
+budgetSchema.index({ monthyear: 1 });
 accountSchema.index({ name: 1 });
 userSchema.index({ uid: 1 });
 
